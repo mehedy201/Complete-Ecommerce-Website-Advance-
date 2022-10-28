@@ -1,5 +1,5 @@
 import React from 'react';
-import MainNavigation from '../../Shared/MainNavigation/MainNavigation';
+import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 
 const Home = () => {
@@ -7,7 +7,7 @@ const Home = () => {
         <>
             <header>
                  <TopNavigation></TopNavigation>
-                 <MainNavigation></MainNavigation>
+                 <Navigation></Navigation>
             </header>
         </>
     );

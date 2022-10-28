@@ -3,6 +3,7 @@ import './TopNavigation.css'
 import { SlCallOut } from 'react-icons/sl';
 import { CiShoppingCart } from 'react-icons/ci';
 import { CiUser } from 'react-icons/ci';
+import { Avatar, Badge } from 'antd'
 
 const TopNavigation = () => {
     return (
@@ -26,7 +27,9 @@ const TopNavigation = () => {
                                 </div> 
                             </div>
                         </div>
-                         <CiShoppingCart className='navigation_icon me-2'/>
+                         <Badge count={0}>
+                            <CiShoppingCart className='navigation_icon me-2' />
+                        </Badge>
                          <CiUser className='navigation_icon'/>
                     </div>
                 </div>

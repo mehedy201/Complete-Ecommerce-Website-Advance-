@@ -1,10 +1,13 @@
 import React from 'react';
+import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 
 const Home = () => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <header>
+                 <TopNavigation></TopNavigation>
+            </header>
+        </>
     );
 };
 

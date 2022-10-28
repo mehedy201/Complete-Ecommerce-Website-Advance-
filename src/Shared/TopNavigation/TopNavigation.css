@@ -1,0 +1,45 @@
+.for_navigation_background{
+    background-color: #FFC000;
+}
+.input_design:focus{
+    outline: none;
+}
+.navigation_icon{
+    height: 30px;
+    width: 30px;
+    margin-right: 6px;
+    margin-left: 6px;
+}
+.for_responsivness_phone_input{
+    display: none;
+}
+.mobile_input_size{
+    width: 80%;
+}
+.mobile_button_size{
+    width: 20%;
+}
+
+
+
+@media (max-width: 992px) {
+    .for_responsivness_call{
+        display: none;
+    }
+  }
+@media (max-width: 768px) {
+    .for_responsivness_input{
+        display: none;
+    }
+    .for_responsivness_phone_input{
+        display: block
+    }
+  }
+@media (max-width: 460px) {
+    .mobile_input_size{
+        width: 70%;
+    }
+    .mobile_button_size{
+        width: 30%;
+    }
+  }

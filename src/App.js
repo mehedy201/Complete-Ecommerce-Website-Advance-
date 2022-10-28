@@ -1,12 +1,14 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home/Home';
 
 function App() {
   return (
-    <div className="App">
-      <div className="App-header">
-        <button className='btn'>mehedi</button>
-      </div>
+    <div>
+      <Routes>
+        <Route path='/' element={<Home/>}></Route>
+      </Routes>
     </div>
   );
 }

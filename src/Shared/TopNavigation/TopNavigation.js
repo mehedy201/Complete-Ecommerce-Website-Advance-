@@ -3,7 +3,7 @@ import './TopNavigation.css'
 import { SlCallOut } from 'react-icons/sl';
 import { CiShoppingCart } from 'react-icons/ci';
 import { CiUser } from 'react-icons/ci';
-import { Avatar, Badge } from 'antd'
+import {  Badge } from 'antd'
 
 const TopNavigation = () => {
     return (

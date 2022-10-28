@@ -1,4 +1,5 @@
 import React from 'react';
+import HeroSection from '../../Componentes/HeroSection/HeroSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 
@@ -9,6 +10,9 @@ const Home = () => {
                  <TopNavigation></TopNavigation>
                  <Navigation></Navigation>
             </header>
+            <main>
+                <HeroSection></HeroSection>
+            </main>
         </>
     );
 };

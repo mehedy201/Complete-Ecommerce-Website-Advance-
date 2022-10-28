@@ -1,0 +1,29 @@
+.slide_img{
+    height: 250px;
+    width: auto;
+}
+.slide_img_laptop{
+    height: auto;
+    width: 100%;
+}
+.slide-hight{
+    height: 340px;
+}
+
+
+
+
+/* Media Queary ------------------------------------- */
+@media (max-width: 992px) {
+    .slide_img{
+        height: 200px; 
+    }
+    .for_responsive_col{
+        display: none;
+    }
+  }
+@media (max-width: 768px) {
+    .for_responsive_col{
+        display: none;
+    }
+  }

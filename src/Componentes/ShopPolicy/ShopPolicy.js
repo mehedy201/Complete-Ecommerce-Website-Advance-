@@ -8,7 +8,7 @@ import { BiSupport } from 'react-icons/bi';
 const ShopPolicy = () => {
     return (
         <div className='container'>
-            <div className="row py-3 rounded mb-4 for_box_shadow">
+            <div className="row py-3 rounded for_box_shadow">
                 <div className="col-md-3 col-sm-6 my-2 col_hover_effect border-end">
                     <CiDeliveryTruck className='shop_policy_icon'/>
                     <div>

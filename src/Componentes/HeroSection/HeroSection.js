@@ -2,6 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Slider from '../Slider/Slider';
 import './HeroSection.css';
+import { BsArrowRight } from 'react-icons/bs';
+import { IoIosLaptop } from 'react-icons/io';
+import { CiMobile2 } from 'react-icons/ci';
+import { CiCamera } from 'react-icons/ci';
+import { CiHeadphones } from 'react-icons/ci';
+import { CiSpeaker } from 'react-icons/ci';
+import { CiMonitor } from 'react-icons/ci';
+import { TfiGame } from 'react-icons/tfi';
+
 
 
 
@@ -14,13 +23,13 @@ const HeroSection = () => {
                     <div className='for_responsive_col'>
                         <h2 className='text-secondary fs-5'>Categorys..</h2>
                         <hr />
-                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded' to="laptop">Laptop</Link>
-                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded' to="laptop">Smart Phone</Link>
-                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded' to="laptop">Camera</Link>
-                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded' to="laptop">Gaming</Link>
-                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded' to="laptop">Headphones</Link>
-                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded' to="laptop">Speakers</Link>
-                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded' to="laptop">Monitor</Link>  
+                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><IoIosLaptop className='hero_section_catagory_icon'/>Laptop<BsArrowRight className='hero_animeted_icon'/></Link>
+                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><CiMobile2 className='hero_section_catagory_icon'/>Smart Phone<BsArrowRight className='hero_animeted_icon'/></Link>
+                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><CiCamera className='hero_section_catagory_icon'/>Camera<BsArrowRight className='hero_animeted_icon'/></Link>
+                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><TfiGame className='hero_section_catagory_icon'/>Gaming<BsArrowRight className='hero_animeted_icon'/></Link>
+                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><CiHeadphones className='hero_section_catagory_icon'/>Headphones<BsArrowRight className='hero_animeted_icon'/></Link>
+                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><CiSpeaker className='hero_section_catagory_icon'/>Speakers<BsArrowRight className='hero_animeted_icon'/></Link>
+                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><CiMonitor className='hero_section_catagory_icon'/>Monitor<BsArrowRight className='hero_animeted_icon'/></Link>  
                     </div>
                 </div>
                 {/* Slider Section ----------------------------------- */}

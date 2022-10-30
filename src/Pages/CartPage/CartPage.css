@@ -1,0 +1,14 @@
+.cart_page_image{
+    width: 100%;
+    height: auto;
+}
+.cart_page_input{
+    border: 0.5px solid rgb(214, 214, 214);
+    width: 4em;
+    padding: 5px 15px;
+    margin: 0 5px;
+}
+.cart_page_input:focus{
+    border: none;
+    outline: 0.5px solid rgb(177, 177, 177);
+}

@@ -11,16 +11,16 @@ const Navigation = () => {
                   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                   <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                      <Nav.Link className='fs-6 fw-semibold text-white'>Home</Nav.Link>
-                      <Nav.Link className='fs-6 fw-semibold text-white'>Shop</Nav.Link>
-                      <NavDropdown className="fs-6 fw-semibold text-white" title="Man Fasion" id="collasible-nav-dropdown">
-                        <NavDropdown.Item className='fs-6 text-dark'>Demo 1</NavDropdown.Item>
-                        <NavDropdown.Item className='fs-6 text-dark'>Demo 2</NavDropdown.Item>
-                        <NavDropdown.Item className='fs-6 text-dark'>Demo 3</NavDropdown.Item>
-                        <NavDropdown.Item className='fs-6 text-dark'>Demo link</NavDropdown.Item>
+                      <Link to={'/'} className='fs-6 fw-semibold text-white pe-3 py-2'>Home</Link>
+                      <Link to={'/shop'} className='fs-6 fw-semibold text-white pe-3 py-2'>Shop</Link>
+                      <NavDropdown className="fs-6 fw-semibold text-white pe-3 py-2" title="Man Fasion" id="collasible-nav-dropdown">
+                        <Link to={'demo-1'} className='fw-normal hover_dropdown_link text-dark  d-block px-2 py-1'>Demo 1</Link>
+                        <Link to={'/demo2'} className='fw-normal hover_dropdown_link text-dark d-block px-2 py-1'>Demo 2</Link>
+                        <Link to={'/demo3'} className='fw-normal hover_dropdown_link text-dark d-block px-2 py-1'>Demo 3</Link>
+                        <Link to={'/demo4'} className='fw-normal hover_dropdown_link text-dark d-block px-2 py-1'>Demo link</Link>
                       </NavDropdown>
-                      <Nav.Link className='fs-6 fw-semibold text-white'>About Us</Nav.Link>
-                      <Nav.Link className='fs-6 fw-semibold text-white'>Contact US</Nav.Link>
+                      <Link to={'/about'} className='fs-6 fw-semibold text-white pe-3 py-2'>About Us</Link>
+                      <Link to={'/contact'} className='fs-6 fw-semibold text-white pe-3 py-2'>Contact US</Link>
                     </Nav>
                   </Navbar.Collapse>
                 </Container>

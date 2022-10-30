@@ -1,3 +1,7 @@
 .nav-link{
     color: white !important;
+    padding: 0 !important;
+}
+.hover_dropdown_link:hover{
+    background-color: aliceblue;
 }

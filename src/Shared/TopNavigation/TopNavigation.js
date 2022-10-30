@@ -10,7 +10,7 @@ const TopNavigation = () => {
         <div className='for_navigation_background'>
             <div className='container py-2'>
                 <div className="d-flex justify-content-between align-items-center">
-                    <div className=''><h1 className='fs-4 fw-bold'>Ecommerce Shop</h1></div>
+                    <h1 className='fs-4 fw-bold my-auto'>Ecommerce Shop</h1>
                     <div className='for_responsivness_input'>
                         <div className='d-flex rounded-pill overflow-hidden'>
                             <input className='input_design border-0 px-4 py-2' type="text" name="" id="" />
@@ -27,8 +27,8 @@ const TopNavigation = () => {
                                 </div> 
                             </div>
                         </div>
-                         <Badge count={0}>
-                            <CiShoppingCart className='navigation_icon me-2' />
+                         <Badge count={0} showZero size="small">
+                            <CiShoppingCart className='navigation_icon ' />
                         </Badge>
                          <CiUser className='navigation_icon'/>
                     </div>

@@ -1,0 +1,9 @@
+.footer_social_icon{
+    width: 30px;
+    height: 30px;
+    margin-top: 5px;
+    margin-right: 10px;
+    padding: 4px;
+    outline: 1px solid black;
+    border-radius: 50%;
+}

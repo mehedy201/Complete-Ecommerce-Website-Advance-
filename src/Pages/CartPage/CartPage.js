@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CartPage.css'
 import mobileImage from '../../Images/Iphone14.jpg'
 import { Rate } from 'antd';
@@ -8,6 +8,32 @@ import FooterSection from '../../Shared/FooterSection/FooterSection';
 import OnlyHpLaptop from '../../Componentes/OnlyHpLaptop/OnlyHpLaptop';
 
 const CartPage = () => {
+
+    // Increase and decress product number ---------------------
+    const [count, setCount] = useState(1)
+
+    // Handle Product increase button --------------------------
+    const handlePlus = () => {
+        const plusCount = count + 1;
+        setCount(plusCount);
+    }
+    // Handle Product increase button --------------------------
+    const handleMinas = () => {
+            if(count < 2){
+                return alert('Must you buy 1 Product')
+            }
+            else{
+                const minasCount = count - 1;
+                setCount(minasCount);
+            }
+    }
+    console.log(count);
+
+
+
+
+
+
     return (
         <>
         {/* Header Section -------------------------------- */}
@@ -28,9 +54,9 @@ const CartPage = () => {
                         <h5>Price: $1000</h5>
                         <Rate value={5}/>
                         <div className='mt-2 mb-4'>
-                            <button className='btn border fw-bold'>-</button>
-                            <input value={100} className='cart_page_input' type="text" />
-                            <button className='btn border fw-bold'>+</button>
+                            <button onClick={handleMinas} className='btn border fw-bold'>-</button>
+                            <input value={count} className='cart_page_input' type="text" />
+                            <button onClick={handlePlus} className='btn border fw-bold'>+</button>
                         </div>
                         <div className='d-flex '>
                             <button className='btn btn-info me-3 fw-semibold text-white'>Add To Cart</button>

@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import CartPage from './Pages/CartPage/CartPage';
 import 'react-multi-carousel/lib/styles.css';
+import ShopPage from './Pages/ShopPage/ShopPage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/cart' element={<CartPage/>}></Route>
+        <Route path='/shop' element={<ShopPage/>}></Route>
       </Routes>
     </>
   );

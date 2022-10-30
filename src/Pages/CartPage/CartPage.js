@@ -27,8 +27,6 @@ const CartPage = () => {
                 setCount(minasCount);
             }
     }
-    console.log(count);
-
 
 
 

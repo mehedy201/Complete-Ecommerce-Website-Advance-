@@ -27,7 +27,7 @@ const ShopPage = () => {
                     <div className='for_responsive_col'>
                         <h2 className='text-secondary fs-5'>Categorys..</h2>
                         <hr />
-                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><IoIosLaptop className='hero_section_catagory_icon'/>Laptop<BsArrowRight className='hero_animeted_icon'/></Link>
+                        <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="/laptop"><IoIosLaptop className='hero_section_catagory_icon'/>Laptop<BsArrowRight className='hero_animeted_icon'/></Link>
                         <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><CiMobile2 className='hero_section_catagory_icon'/>Smart Phone<BsArrowRight className='hero_animeted_icon'/></Link>
                         <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><CiCamera className='hero_section_catagory_icon'/>Camera<BsArrowRight className='hero_animeted_icon'/></Link>
                         <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><TfiGame className='hero_section_catagory_icon'/>Gaming<BsArrowRight className='hero_animeted_icon'/></Link>
@@ -36,7 +36,7 @@ const ShopPage = () => {
                         <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop"><CiMonitor className='hero_section_catagory_icon'/>Monitor<BsArrowRight className='hero_animeted_icon'/></Link>  
                     </div>
                 </div>
-                {/* Slider Section ----------------------------------- */}
+                {/* Product Section ----------------------------------- */}
                 <div className="col-md-9 py-4">
                     <div className="shop_page_grid">
                         <ShopProduct></ShopProduct>

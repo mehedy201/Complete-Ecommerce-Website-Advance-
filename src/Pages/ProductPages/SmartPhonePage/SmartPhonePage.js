@@ -5,10 +5,10 @@ import TopNavigation from '../../../Shared/TopNavigation/TopNavigation';
 import ShopProduct from '../../ShopPage/ShopProduct/ShopProduct';
 import ProductPageLeftSideComponents from '../ProductPageLeftSideComponents/ProductPageLeftSideComponents';
 
-const LaptopPage = () => {
+const SmartPhonePage = () => {
     // Props for Product Page left side components ---------------------------
-    const brandName = 'Laptop';
-
+    const brandName = 'Smart Phone';
+    
     return (
         <>
         {/* Navigation ---------------------------------------------------- */}
@@ -35,4 +35,4 @@ const LaptopPage = () => {
     );
 };
 
-export default LaptopPage;
+export default SmartPhonePage;

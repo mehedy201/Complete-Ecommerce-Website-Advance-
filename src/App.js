@@ -7,6 +7,12 @@ import CartPage from './Pages/CartPage/CartPage';
 import 'react-multi-carousel/lib/styles.css';
 import ShopPage from './Pages/ShopPage/ShopPage';
 import LaptopPage from './Pages/ProductPages/LaptopPage/LaptopPage';
+import SmartPhonePage from './Pages/ProductPages/SmartPhonePage/SmartPhonePage';
+import CameraPage from './Pages/ProductPages/CameraPage/CameraPage';
+import HeadPhonePage from './Pages/ProductPages/HeadPhonePage/HeadPhonePage';
+import MonitorPage from './Pages/ProductPages/MonitorPage/MonitorPage';
+import GamingPage from './Pages/ProductPages/GamingPage/GamingPage';
+import SpeakarsPage from './Pages/ProductPages/SpeakarsPage/SpeakarsPage';
 
 function App() {
   return (
@@ -17,6 +23,12 @@ function App() {
         <Route path='/cart' element={<CartPage/>}></Route>
         <Route path='/shop' element={<ShopPage/>}></Route>
         <Route path='/laptop' element={<LaptopPage/>}></Route>
+        <Route path='/smartPhone' element={<SmartPhonePage/>}></Route>
+        <Route path='/camera' element={<CameraPage/>}></Route>
+        <Route path='/headPhone' element={<HeadPhonePage/>}></Route>
+        <Route path='/monitor' element={<MonitorPage/>}></Route>
+        <Route path='/speakers' element={<SpeakarsPage/>}></Route>
+        <Route path='/gameing' element={<GamingPage/>}></Route>
       </Routes>
     </>
   );

@@ -5,10 +5,9 @@ import TopNavigation from '../../../Shared/TopNavigation/TopNavigation';
 import ShopProduct from '../../ShopPage/ShopProduct/ShopProduct';
 import ProductPageLeftSideComponents from '../ProductPageLeftSideComponents/ProductPageLeftSideComponents';
 
-const LaptopPage = () => {
+const CameraPage = () => {
     // Props for Product Page left side components ---------------------------
-    const brandName = 'Laptop';
-
+    const brandName = 'Camera';
     return (
         <>
         {/* Navigation ---------------------------------------------------- */}
@@ -35,4 +34,4 @@ const LaptopPage = () => {
     );
 };
 
-export default LaptopPage;
+export default CameraPage;

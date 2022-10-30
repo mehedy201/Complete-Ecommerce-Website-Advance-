@@ -5,9 +5,9 @@ import TopNavigation from '../../../Shared/TopNavigation/TopNavigation';
 import ShopProduct from '../../ShopPage/ShopProduct/ShopProduct';
 import ProductPageLeftSideComponents from '../ProductPageLeftSideComponents/ProductPageLeftSideComponents';
 
-const LaptopPage = () => {
+const GamingPage = () => {
     // Props for Product Page left side components ---------------------------
-    const brandName = 'Laptop';
+    const brandName = 'Gaming';
 
     return (
         <>
@@ -35,4 +35,4 @@ const LaptopPage = () => {
     );
 };
 
-export default LaptopPage;
+export default GamingPage;

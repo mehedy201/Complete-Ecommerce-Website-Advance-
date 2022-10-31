@@ -1,17 +1,30 @@
 import React from 'react';
 import './TopNavigation.css'
+import { Dropdown, Menu, Space } from 'antd'
 import { SlCallOut } from 'react-icons/sl';
 import { CiShoppingCart } from 'react-icons/ci';
 import { CiUser } from 'react-icons/ci';
 import {  Badge } from 'antd'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const TopNavigation = () => {
      // useNavigete from react hooks ----------------------
     const navigate = useNavigate();
     const logoNavigate = () => {
       navigate('/')
-    }
+    };
+    // User Icon Dropdown ---------------------------------
+    const menu = (
+        <Menu
+          items={[
+            { key: '1', label: ( <Link to={'/'}>Log In</Link>),},
+            { key: '1', label: ( <Link to={'/shop'}>Sign Up</Link>),},
+            { key: '1', label: ( <Link to={'/'}>Sign Out</Link>),},
+            { key: '1', label: ( <Link to={'/'}>My Order History</Link>),},
+
+          ]}
+        />
+      );
 
 
     return (
@@ -38,7 +51,16 @@ const TopNavigation = () => {
                          <Badge count={0} showZero size="small">
                             <CiShoppingCart className='navigation_icon ' />
                         </Badge>
-                         <CiUser className='navigation_icon'/>
+                         {/* <CiUser className='navigation_icon'/> */}
+                         <Badge count={0} size="small">
+                            <Dropdown overlay={menu} placement="bottom" arrow>
+                                <Link onClick={(e) => e.preventDefault()}>
+                                    <Space>
+                                         <CiUser className='navigation_icon'/>
+                                    </Space>
+                                </Link>
+                            </Dropdown>
+                        </Badge>
                     </div>
                 </div>
                 {/* Responsive search option when screen under 668 px -------------------------------------------------------- */}

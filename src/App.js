@@ -15,6 +15,7 @@ import GamingPage from './Pages/ProductPages/GamingPage/GamingPage';
 import SpeakarsPage from './Pages/ProductPages/SpeakarsPage/SpeakarsPage';
 import PaymentCheckOut from './Pages/PaymentCheckOut/PaymentCheckOut';
 import LogIn from './Shared/LogIn/LogIn';
+import RegistretionPage from './Shared/RegistretionPage/RegistretionPage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path='/gameing' element={<GamingPage/>}></Route>
         <Route path='/paymentCheckOut' element={<PaymentCheckOut/>}></Route>
         <Route path='/log-in' element={<LogIn/>}></Route>
+        <Route path='/sign-up' element={<RegistretionPage/>}></Route>
       </Routes>
     </>
   );

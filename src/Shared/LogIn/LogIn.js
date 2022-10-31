@@ -8,9 +8,16 @@ import { FiUser } from 'react-icons/fi';
 import { BsGithub } from 'react-icons/bs';
 import { FaGoogle } from 'react-icons/fa';
 import { Divider } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const LogIn = () => {
-    // For React form hooks ---------------------
+    // Use Navigate from React hooks ---------------------------------------------
+    const navigate = useNavigate()
+    const handleSignUpPage = () => {
+        navigate('/sign-up')
+    }
+
+    // For React form hooks ------------------------------------------------------
     const { register, formState: { errors }, handleSubmit } = useForm();
     const onSubmit = (data) => console.log(data);
 
@@ -26,9 +33,12 @@ const LogIn = () => {
             <div className='container d-flex justify-content-center my-5'>
                 <div className="border p-4 md-w-50 rounded">
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <span className='d-flex justify-content-center'><FiUser className='log_in_icon'/></span>
-                        <h4 className='text-center mt-2 mb-1'>Please Log In</h4>
-                        <p className='text-center'>If you have an account, sign in with your email address.</p>    
+                        <div>
+                            <span className='d-flex justify-content-center'><FiUser className='log_in_icon'/></span>
+                            <h4 className='text-center mt-2 mb-1'>Please Log In</h4>
+                            <p className='text-center'>If you have an account, sign in with your email address.</p> 
+                        </div>   
+                        
                         {/* Email Input Field ------------------------------------------------- */}
                         <input 
                             type='email'
@@ -53,7 +63,7 @@ const LogIn = () => {
                         <input type="submit" className='log_in_input_submit fw-semibold' />
                     </form>
                     <p className='mt-1 forget_password'>Forget Password</p>
-                    <p>Don't have account Please <span className='log_and_sign_toggole'>Click Here</span></p>
+                    <p>Don't have account Please <span onClick={handleSignUpPage} className='log_and_sign_toggole'>Click Here</span></p>
                     <Divider>Register With Social</Divider>
                     <div className='d-flex justify-content-center'>
                         <BsGithub className='sign_up_icon'/>

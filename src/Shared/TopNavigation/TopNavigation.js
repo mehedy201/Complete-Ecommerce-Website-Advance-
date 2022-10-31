@@ -4,13 +4,21 @@ import { SlCallOut } from 'react-icons/sl';
 import { CiShoppingCart } from 'react-icons/ci';
 import { CiUser } from 'react-icons/ci';
 import {  Badge } from 'antd'
+import { useNavigate } from 'react-router-dom';
 
 const TopNavigation = () => {
+     // useNavigete from react hooks ----------------------
+    const navigate = useNavigate();
+    const logoNavigate = () => {
+      navigate('/')
+    }
+
+
     return (
-        <div className='for_navigation_background'>
+        <div className='for_navigation_background sticky-top z-index'>
             <div className='container py-2'>
                 <div className="d-flex justify-content-between align-items-center">
-                    <h1 className='fs-4 fw-bold my-auto'>Ecommerce Shop</h1>
+                    <h1 onClick={logoNavigate} className='fs-4 fw-bold my-auto for_logo_cursor'>Ecommerce Shop</h1>
                     <div className='for_responsivness_input'>
                         <div className='d-flex rounded-pill overflow-hidden'>
                             <input className='input_design border-0 px-4 py-2' type="text" name="" id="" />

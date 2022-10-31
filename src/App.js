@@ -13,6 +13,8 @@ import HeadPhonePage from './Pages/ProductPages/HeadPhonePage/HeadPhonePage';
 import MonitorPage from './Pages/ProductPages/MonitorPage/MonitorPage';
 import GamingPage from './Pages/ProductPages/GamingPage/GamingPage';
 import SpeakarsPage from './Pages/ProductPages/SpeakarsPage/SpeakarsPage';
+import PaymentCheckOut from './Pages/PaymentCheckOut/PaymentCheckOut';
+import LogIn from './Shared/LogIn/LogIn';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
         <Route path='/monitor' element={<MonitorPage/>}></Route>
         <Route path='/speakers' element={<SpeakarsPage/>}></Route>
         <Route path='/gameing' element={<GamingPage/>}></Route>
+        <Route path='/paymentCheckOut' element={<PaymentCheckOut/>}></Route>
+        <Route path='/log-in' element={<LogIn/>}></Route>
       </Routes>
     </>
   );

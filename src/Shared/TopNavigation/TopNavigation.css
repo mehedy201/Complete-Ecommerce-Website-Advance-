@@ -1,6 +1,9 @@
 .for_navigation_background{
     background-color: #FFC000;
 }
+.for_logo_cursor{
+    cursor: pointer;
+}
 .input_design:focus{
     outline: none;
 }

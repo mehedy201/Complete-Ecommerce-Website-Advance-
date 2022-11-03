@@ -1,0 +1,10 @@
+.divider_color{
+    color: white !important;
+}
+.my_image{
+    height: 220px;
+    width: auto;
+    border-radius: 10px;
+    outline: 1px solid aqua;
+    padding: 5px;
+}

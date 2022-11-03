@@ -11,16 +11,19 @@ const TopNavigation = () => {
      // useNavigete from react hooks ----------------------
     const navigate = useNavigate();
     const logoNavigate = () => {
-      navigate('/')
+        navigate('/')
     };
+    const cartNavigate = () => {
+        navigate('/cart')
+    }
     // User Icon Dropdown ---------------------------------
     const menu = (
         <Menu
           items={[
-            { key: '1', label: ( <Link to={'/'}>Log In</Link>),},
-            { key: '1', label: ( <Link to={'/shop'}>Sign Up</Link>),},
-            { key: '1', label: ( <Link to={'/'}>Sign Out</Link>),},
-            { key: '1', label: ( <Link to={'/'}>My Order History</Link>),},
+            { key: '1', label: ( <Link to={'/sing-in'}>Sing In</Link>),},
+            { key: '2', label: ( <Link to={'/sign-up'}>Sign Up</Link>),},
+            { key: '3', label: ( <Link to={'/'}>Sign Out</Link>),},
+            { key: '4', label: ( <Link to={'/order-history'}>My Order History</Link>),},
 
           ]}
         />
@@ -48,8 +51,8 @@ const TopNavigation = () => {
                                 </div> 
                             </div>
                         </div>
-                         <Badge count={0} showZero size="small">
-                            <CiShoppingCart className='navigation_icon ' />
+                         <Badge count={1} showZero size="small">
+                            <CiShoppingCart onClick={cartNavigate} className='navigation_icon cart_icon_cursor' />
                         </Badge>
                          {/* <CiUser className='navigation_icon'/> */}
                          <Badge count={0} size="small">

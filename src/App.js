@@ -16,6 +16,9 @@ import SpeakarsPage from './Pages/ProductPages/SpeakarsPage/SpeakarsPage';
 import PaymentCheckOut from './Pages/PaymentCheckOut/PaymentCheckOut';
 import LogIn from './Shared/LogIn/LogIn';
 import RegistretionPage from './Shared/RegistretionPage/RegistretionPage';
+import SingleProduct from './Pages/SingleProduct/SingleProduct';
+import AboutUs from './Pages/AboutUs/AboutUs';
+import ContactUs from './Pages/ContactUs/ContactUs';
 
 function App() {
   return (
@@ -25,6 +28,7 @@ function App() {
         <Route path='/' element={<Home/>}></Route>
         <Route path='/cart' element={<CartPage/>}></Route>
         <Route path='/shop' element={<ShopPage/>}></Route>
+        <Route path='/single-product' element={<SingleProduct/>}></Route>
         <Route path='/laptop' element={<LaptopPage/>}></Route>
         <Route path='/smartPhone' element={<SmartPhonePage/>}></Route>
         <Route path='/camera' element={<CameraPage/>}></Route>
@@ -32,9 +36,11 @@ function App() {
         <Route path='/monitor' element={<MonitorPage/>}></Route>
         <Route path='/speakers' element={<SpeakarsPage/>}></Route>
         <Route path='/gameing' element={<GamingPage/>}></Route>
-        <Route path='/paymentCheckOut' element={<PaymentCheckOut/>}></Route>
+        <Route path='/payment-check-out' element={<PaymentCheckOut/>}></Route>
         <Route path='/log-in' element={<LogIn/>}></Route>
         <Route path='/sign-up' element={<RegistretionPage/>}></Route>
+        <Route path='/about-us' element={<AboutUs/>}></Route>
+        <Route path='/contact-us' element={<ContactUs/>}></Route>
       </Routes>
     </>
   );

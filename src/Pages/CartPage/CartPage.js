@@ -1,34 +1,20 @@
+import { Divider } from 'antd';
 import React, { useState } from 'react';
-import './CartPage.css'
-import mobileImage from '../../Images/Iphone14.jpg'
-import { Rate } from 'antd';
-import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
-import Navigation from '../../Shared/Navigation/Navigation';
+import { useNavigate } from 'react-router-dom';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
-import OnlyHpLaptop from '../../Componentes/OnlyHpLaptop/OnlyHpLaptop';
+import Navigation from '../../Shared/Navigation/Navigation';
+import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
+import OrderdOverView from '../PaymentCheckOut/OrderdOverView/OrderdOverView';
+import PaymentSummary from '../PaymentCheckOut/PaymentSummary/PaymentSummary';
+import './CartPage.css'
+
 
 const CartPage = () => {
-
-    // Increase and decress product number ---------------------
-    const [count, setCount] = useState(1)
-
-    // Handle Product increase button --------------------------
-    const handlePlus = () => {
-        const plusCount = count + 1;
-        setCount(plusCount);
+    // UseNavigate from React hooks -----------------------------------------------------
+    const navigate = useNavigate();
+    const proceedCheckOut = () => {
+        navigate('/payment-check-out')
     }
-    // Handle Product increase button --------------------------
-    const handleMinas = () => {
-            if(count < 2){
-                return alert('Must you buy 1 Product')
-            }
-            else{
-                const minasCount = count - 1;
-                setCount(minasCount);
-            }
-    }
-
-
 
 
 
@@ -39,33 +25,22 @@ const CartPage = () => {
             <TopNavigation></TopNavigation>
             <Navigation></Navigation>
         </header>
-        {/* Cart Page Main Section ------------------------ */}
-            <main className='container my-5'>
-                <div className="row mb-5">
-                    <div className="col-md-6 p-4">
-                        <img className='cart_page_image' src={mobileImage} alt="" />
+        {/* Cart Page Main Section -----------------------= */}
+            <div className='container my-5'>
+                <div className="row">
+                    <h4>Cart Over View</h4>
+                    <Divider className='mt-0'/>
+                    <div className="col-md-8">
+                        <OrderdOverView/>
                     </div>
-                    <div className="col-md-6 p-4">
-                        <small>Brand: <span className='text-info'>Apple</span></small>
-                        <h3>Iphone 14 pro max</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, natus a eos quod ullam error quisquam aperiam excepturi voluptatum totam!</p>
-                        <h5>Price: $1000</h5>
-                        <Rate value={5}/>
-                        <div className='mt-2 mb-4'>
-                            <button onClick={handleMinas} className='btn border fw-bold'>-</button>
-                            <input value={count} className='cart_page_input' type="text" />
-                            <button onClick={handlePlus} className='btn border fw-bold'>+</button>
-                        </div>
-                        <div className='d-flex '>
-                            <button className='btn btn-info me-3 fw-semibold text-white'>Add To Cart</button>
-                            <button className='btn btn-warning fw-semibold'>Buy Now</button>
+                    <div className="col-md-4 mt-2">
+                        <PaymentSummary/>
+                        <div className='d-flex justify-content-end'>
+                            <button onClick={proceedCheckOut} className='bg-info payment_check_out_btn fw-bold mt-3'>Procced to Check Out</button>
                         </div>
                     </div>
                 </div>
-                {/* Laptop Section -------------------------- */}
-                <h4 className='text-center pt-md-5 pb-4'>Our Recomended Product</h4>
-                <OnlyHpLaptop></OnlyHpLaptop>
-            </main>
+            </div>
         {/* Footer Section ---------------------------------- */}
         <footer className='footer_color mt-4'>
           <FooterSection></FooterSection>

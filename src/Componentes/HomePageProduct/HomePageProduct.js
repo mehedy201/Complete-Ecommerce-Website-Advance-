@@ -8,7 +8,7 @@ const HomePageProduct = () => {
     // useNavigate hook From React -------------------------
     const navigate = useNavigate();
     const handleBuyNowButton = () => {
-        navigate('/cart')
+        navigate('/single-product')
     }
 
 

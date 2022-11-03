@@ -1,0 +1,21 @@
+.contact_us_background_image{
+    height: 15rem;
+    background-image: url(../../Images/mehedi-cover-image1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.overly_contact_us_background{
+    background-color: rgba(0, 0, 0, 0.555);
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+.contact_us_page_icon{
+    height: 1.5rem;
+    width: auto;
+}
+.contact_us_page_social_icon{
+    height: 1.8rem;
+    width: auto;
+}

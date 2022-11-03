@@ -4,11 +4,17 @@
 }
 .cart_page_input{
     border: 0.5px solid rgb(214, 214, 214);
-    width: 4em;
-    padding: 5px 15px;
-    margin: 0 5px;
+    width: 2.5rem;
+    padding: 2.2px 10px;
+    margin: 0 8px;
 }
 .cart_page_input:focus{
     border: none;
     outline: 0.5px solid rgb(177, 177, 177);
+}
+.cart_page_icon{
+    font-size: 1.8rem;
+    padding: 5px;
+    border: 1px solid gainsboro;
+    cursor: pointer;
 }

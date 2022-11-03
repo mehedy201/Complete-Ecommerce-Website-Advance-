@@ -1,4 +1,5 @@
 import React from 'react';
+import './ProductPageLeftSideComponents.css'
 import { Link } from 'react-router-dom';
 import { BsArrowRight } from 'react-icons/bs';
 

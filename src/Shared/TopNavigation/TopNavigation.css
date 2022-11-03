@@ -4,6 +4,9 @@
 .for_logo_cursor{
     cursor: pointer;
 }
+.cart_icon_cursor{
+    cursor: pointer;
+}
 .input_design:focus{
     outline: none;
 }

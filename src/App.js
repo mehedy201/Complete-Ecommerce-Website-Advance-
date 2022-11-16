@@ -19,12 +19,18 @@ import RegistretionPage from './Shared/RegistretionPage/RegistretionPage';
 import SingleProduct from './Pages/SingleProduct/SingleProduct';
 import AboutUs from './Pages/AboutUs/AboutUs';
 import ContactUs from './Pages/ContactUs/ContactUs';
+import DashBoard from './AdminPages/DashBoard/DashBoard';
+import AddProduct from './AdminPages/AddProduct/AddProduct';
+import DashBoardMain from './AdminPages/DashBoardMain/DashBoardMain';
+import ManageProduct from './AdminPages/ManageProduct/ManageProduct';
+import ManageOrder from './AdminPages/ManageOrder/ManageOrder';
 
 function App() {
   return (
     <>
     {/* React Router Routes ---------------------------- */}
       <Routes>
+        {/* Web site Front End ---------------------------------------------------------------------------- */}
         <Route path='/' element={<Home/>}></Route>
         <Route path='/cart' element={<CartPage/>}></Route>
         <Route path='/shop' element={<ShopPage/>}></Route>
@@ -41,6 +47,13 @@ function App() {
         <Route path='/sign-up' element={<RegistretionPage/>}></Route>
         <Route path='/about-us' element={<AboutUs/>}></Route>
         <Route path='/contact-us' element={<ContactUs/>}></Route>
+        {/* Admin Pages ----------------------------------------------------------------------------------- */}
+        <Route path='/dashboard' element={<DashBoard/>}>
+          <Route index element={<DashBoardMain/>}/>
+          <Route path='add-product' element={<AddProduct/>}/>
+          <Route path='manage-product' element={<ManageProduct/>}/>
+          <Route path='manage-order' element={<ManageOrder/>}/>
+        </Route>
       </Routes>
     </>
   );

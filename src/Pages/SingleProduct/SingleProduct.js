@@ -7,8 +7,15 @@ import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 import mobileImage from '../../Images/Iphone14.jpg'
 import { IoMdRemove } from 'react-icons/io';
 import { MdOutlineAdd } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 const SingleProduct = () => {
+
+    // useNavigate from react hooks
+    const navigate = useNavigate();
+    const handleBuyButton = () => {
+        navigate('/payment-check-out')
+    }
    
     // Increase and decress product number ----------------------------------------------
     const [count, setCount] = useState(1)
@@ -54,7 +61,7 @@ const SingleProduct = () => {
                         </div>
                         <div className='d-flex '>
                             <button className='btn btn-info me-3 fw-semibold text-white'>Add To Cart</button>
-                            <button className='btn btn-warning fw-semibold'>Buy Now</button>
+                            <button onClick={handleBuyButton} className='btn btn-warning fw-semibold'>Buy Now</button>
                         </div>
                     </div>
                 </div>

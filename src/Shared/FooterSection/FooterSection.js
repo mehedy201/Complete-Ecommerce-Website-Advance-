@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { CiUser } from 'react-icons/ci';
+import { TiSocialFacebook } from 'react-icons/ti';
+import { RiLinkedinLine } from 'react-icons/ri';
+import { AiFillGithub } from 'react-icons/ai';
 import './FooterSection.css'
 
 
@@ -33,9 +35,9 @@ const FooterSection = () => {
                     <p className='mb-1'>Email: mehedi.hasan.mern@gmail.com</p>
                     <p className='mb-1'>Skype: mehedi643</p>
                     <div>
-                        <Link to={'/'} target='_blank'><CiUser className='footer_social_icon text-dark'/></Link>
-                        <Link to={'/'} target='_blank'><CiUser className='footer_social_icon text-dark'/></Link>
-                        <Link to={'/'} target='_blank'><CiUser className='footer_social_icon text-dark'/></Link>
+                        <Link to={'https://www.linkedin.com/in/md-mehedi-hasan-65b110178/'} target='_blank'><RiLinkedinLine className='footer_social_icon text-dark'/></Link>
+                        <Link to={'https://github.com/mehedy201'} target='_blank'><AiFillGithub className='footer_social_icon text-dark'/></Link>
+                        <Link to={'https://web.facebook.com/mehedi.mern/'} target='_blank'><TiSocialFacebook className='footer_social_icon text-dark'/></Link>
                     </div>
                 </div>
             </div>

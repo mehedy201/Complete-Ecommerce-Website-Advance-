@@ -4,7 +4,16 @@ import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 import { Divider } from 'antd';
-import { CiUser } from 'react-icons/ci';
+import { FiMapPin } from 'react-icons/fi';
+import { CgSmartphone } from 'react-icons/cg';
+import { TbMail } from 'react-icons/tb';
+import { FaWhatsapp } from 'react-icons/fa';
+import { SlSocialSkype } from 'react-icons/sl';
+import { CgWebsite } from 'react-icons/cg';
+import { FaLinkedin } from 'react-icons/fa';
+import { GoMarkGithub } from 'react-icons/go';
+import { BsFacebook } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const ContactUs = () => {
     return (
@@ -34,32 +43,32 @@ const ContactUs = () => {
                                 <h5 className='mb-0'>Md. Mehedi hasan</h5>
                                 <small>Full-Stack Web Developer</small>
                                 <div className='d-flex align-items-center py-1'>
-                                    <CiUser className='contact_us_page_icon'/>
+                                    <CgSmartphone className='contact_us_page_icon'/>
                                     <p className='mb-0 ms-2'>+880 1612013433</p>
                                 </div>
                                 <div className='d-flex align-items-center py-1'>
-                                    <CiUser className='contact_us_page_icon'/>
+                                    <FaWhatsapp className='contact_us_page_icon'/>
                                     <p className='mb-0 ms-2'>+880 1853762637</p>
                                 </div>
                                 <div className='d-flex align-items-center py-1'>
-                                    <CiUser className='contact_us_page_icon'/>
+                                    <TbMail className='contact_us_page_icon'/>
                                     <p className='mb-0 ms-2'>mehedi.hasan.mern@gmail.com</p>
                                 </div>
                                 <div className='d-flex align-items-center py-1'>
-                                    <CiUser className='contact_us_page_icon'/>
+                                    <SlSocialSkype className='contact_us_page_icon'/>
                                     <p className='mb-0 ms-2'>mehedy643</p>
                                 </div>
                                 <div className='d-flex align-items-center py-1'>
-                                    <CiUser className='contact_us_page_icon'/>
+                                    <FiMapPin className='contact_us_page_icon'/>
                                     <p className='mb-0 ms-2'>Chalkdomadi, Puthia-6260, Rajshahi, Bangladesh</p>
                                 </div>
                                 <h5 className='text-center text-secondary mt-4'>Social Link</h5>
                                 <Divider className='mt-0'/>
                                 <div className='d-flex align-items-center justify-content-center'>
-                                    <CiUser className='contact_us_page_social_icon mx-2'/>
-                                    <CiUser className='contact_us_page_social_icon mx-2'/>
-                                    <CiUser className='contact_us_page_social_icon mx-2'/>
-                                    <CiUser className='contact_us_page_social_icon mx-2'/>
+                                    <Link to={'https://www.linkedin.com/in/md-mehedi-hasan-65b110178/'} target='_blank'><FaLinkedin className='contact_us_page_social_icon mx-2'/></Link>
+                                    <Link to={'https://github.com/mehedy201'} target='_blank'><GoMarkGithub className='contact_us_page_social_icon mx-2'/></Link>
+                                    <Link to={'https://github.com/mehedy201'} target='_blank'><BsFacebook className='contact_us_page_social_icon mx-2'/></Link>
+                                    <Link to={'https://github.com/mehedy201'} target='_blank'><CgWebsite className='contact_us_page_social_icon mx-2'/></Link>
                                 </div>
                             </div>
                         </div>

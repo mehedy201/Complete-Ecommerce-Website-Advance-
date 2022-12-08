@@ -1,0 +1,10 @@
+.manage_order_image{
+    height: 2.5rem;
+    width: auto;
+}
+.manage_order_button{
+    border: none;
+    padding: 5px 20px;
+    margin: 0 20px;
+    
+}

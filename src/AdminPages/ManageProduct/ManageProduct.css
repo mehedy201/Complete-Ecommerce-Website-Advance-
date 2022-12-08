@@ -1,0 +1,9 @@
+.manage_product_img{
+    height: 5rem;
+    width: auto;
+    margin-right: 2rem;
+}
+.manage_product_button{
+    border: none;
+    border-radius: 5px;
+}

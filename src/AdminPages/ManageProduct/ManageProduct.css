@@ -1,9 +1,39 @@
-.manage_product_img{
-    height: 5rem;
+/* .manage_product_img{
+    height: 4rem;
     width: auto;
     margin-right: 2rem;
+    padding: 5px;
 }
 .manage_product_button{
     border: none;
     border-radius: 5px;
+} */
+
+.search_input_design{
+    border: 1px solid gainsboro;
+    height: 41px;
+    width: 250px;
+    font-size: 20px;
 }
+.search_input_design:focus{
+    border: 1px solid aqua;
+    outline: none;
+}
+.add_product_icon{
+    font-weight: bold;
+    font-size: 17px;
+    margin-right: 10px;
+}
+.button_add_product{
+    border: none;
+    padding: 9px 20px;
+}
+
+
+
+/* Responsive ----------- */
+@media (max-width: 640px) {
+    .search_input_design{
+        width: 200px;
+    }
+  }

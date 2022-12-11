@@ -1,9 +1,4 @@
-.for_height_admin_left{
-    height: 43rem;
-    position: sticky;
-  position: -webkit-sticky;
-  top: 0 !important; /* required */
-}
+
 .admin_dasboard_icon{
   height: 22px;
   width: 22px;

@@ -2,5 +2,12 @@
     height: 120px;
 }
 .chart_height{
-    height: 18rem;
+    height: 23rem;
+}
+.for_admin_shadow{
+    background-image: linear-gradient(to right, rgb(0, 179, 255), rgb(0, 209, 232) );
+}
+.piechart_height_width{
+    height: 100px;
+    width: 100px;
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './DashBoardMain.css'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts';
+import ManageOrder from '../ManageOrder/ManageOrder';
 
 const DashBoardMain = () => {
 
@@ -169,7 +170,7 @@ const DashBoardMain = () => {
                 </div>
               </div>
               <div>
-                <p className='fs-4 fw-bold ps-md-5'>Panding Order</p>
+                <ManageOrder/>
               </div>
         </div>
     );

@@ -5,7 +5,6 @@ import headphone from '../../Images/headphones.jpg';
 import laptop from '../../Images/Hp-removebg-preview.png'
 import { MdOutlineCloudDone } from 'react-icons/md';
 import { RiEditBoxLine } from 'react-icons/ri';
-import { BsEye } from 'react-icons/bs';
 import { AiOutlineDelete } from 'react-icons/ai';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
 import { BsPlusLg } from 'react-icons/bs';
@@ -44,24 +43,22 @@ const ManageProduct = () => {
               <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td><img src={headphone} style={{height: '35px', width: 'auto', marginRight: '10px'}} alt="" /> Product Title Demo</td>
+                  <td className='fw-bold'><img src={headphone} style={{height: '35px', width: '35px', marginRight: '10px'}} alt="" /> Product Title Demo</td>
                   <td>alkdjfkfjaaaaaa</td>
                   <td><MdOutlineCloudDone className='text-success' style={{height: '25px', width: 'auto'}}/></td>
                   <td>
                     <RiEditBoxLine className='me-2' style={{height: '20px', width: 'auto', color: '#4903fc'}}/> 
-                    <BsEye className='text-primary me-2' style={{height: '20px', width: 'auto'}}/> 
                     <AiOutlineDelete className='text-danger me-3' style={{height: '20px', width: 'auto'}}/> 
                     <BiDotsVerticalRounded className='text-secondary' style={{height: '20px', width: 'auto'}}/>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">2</th>
-                  <td><img src={laptop} style={{height: '35px', width: 'auto'}} alt="" /> Product Title Demo Product Title Demo</td>
-                  <td>Id: alkdjfkfjaaaaaa</td>
+                  <td className='fw-bold'><img src={laptop} style={{height: '35px', width: '35px', marginRight: '10px'}} alt="" /> Product Title Demo Product Title Demo</td>
+                  <td>alkdjfkfjaaaaaa</td>
                   <td><MdOutlineCloudDone className='text-success' style={{height: '25px', width: 'auto'}}/></td>
                   <td>
                     <RiEditBoxLine className='me-2' style={{height: '20px', width: 'auto', color: '#4903fc'}}/> 
-                    <BsEye className='text-primary me-2' style={{height: '20px', width: 'auto'}}/> 
                     <AiOutlineDelete className='text-danger me-3' style={{height: '20px', width: 'auto'}}/> 
                     <BiDotsVerticalRounded className='text-secondary' style={{height: '20px', width: 'auto'}}/>
                   </td>

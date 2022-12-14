@@ -3,9 +3,10 @@
     justify-content: center;
     height: 150px;
     width: auto;
+    transition: all 0.5s;
 }
 .hompage_product_image_size:hover{
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s;
     transform: scale(1.2);
 }
 .for_grid{

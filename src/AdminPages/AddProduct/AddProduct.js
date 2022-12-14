@@ -119,7 +119,7 @@ const AddProduct = () => {
                             <input type="file" style={{width: '100%'}} className='border py-2 mt-3'  {...register("image")}/>
                         </div>
                     </div>
-                    <input className='submit_button me-md-5 me-sm-4 me-3 mt-3' type="submit" value='Post' />
+                    <input className='submit_button me-md-5 me-sm-4 me-3 mt-3' type="submit" value='Publish' />
                 </div> 
             </form>
         </div>

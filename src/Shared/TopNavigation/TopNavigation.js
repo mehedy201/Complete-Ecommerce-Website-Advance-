@@ -1,13 +1,21 @@
 import React from 'react';
 import './TopNavigation.css'
-import { Dropdown, Menu, Space } from 'antd'
+import { Dropdown, Menu, Space, Spin } from 'antd'
 import { SlCallOut } from 'react-icons/sl';
 import { CiShoppingCart } from 'react-icons/ci';
 import { CiUser } from 'react-icons/ci';
 import {  Badge } from 'antd'
 import { Link, useNavigate } from 'react-router-dom';
+import auth from '../../Firebase.init';
+import { signOut } from 'firebase/auth';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const TopNavigation = () => {
+    // Sign Out button 
+    const singOutButton = () => {
+      signOut(auth);
+      navigate('/')
+    }
      // useNavigete from react hooks ----------------------
     const navigate = useNavigate();
     const logoNavigate = () => {
@@ -17,17 +25,34 @@ const TopNavigation = () => {
         navigate('/cart')
     }
     // User Icon Dropdown ---------------------------------
+    const [user, loading] = useAuthState(auth);
+    console.log('user', user)
+    if(loading){
+        return <Spin/>
+    }
+
+
     const menu = (
         <Menu
           items={[
-            { key: '1', label: ( <Link to={'/sing-in'}>Sing In</Link>),},
-            { key: '2', label: ( <Link to={'/sign-up'}>Sign Up</Link>),},
-            { key: '3', label: ( <Link to={'/'}>Sign Out</Link>),},
-            { key: '4', label: ( <Link to={'/order-history'}>My Order History</Link>),},
-
+            { key: '1', label: ( 
+                user? 
+                <button onClick={singOutButton}>Sing Out</button>
+                :
+                <Link to={'/log-in'}>Log In</Link>
+                )
+            },
+            { key: '2', label: ( 
+                user? <Link to={'/order-history'}>My Order History</Link>
+                    : ''
+            )},
           ]}
         />
       );
+
+
+
+
 
 
     return (

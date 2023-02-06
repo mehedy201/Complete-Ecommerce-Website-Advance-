@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './RegistretionPage.css'
 import { useForm } from "react-hook-form";
 import FooterSection from '../FooterSection/FooterSection';
@@ -7,8 +7,11 @@ import Navigation from '../Navigation/Navigation';
 import { MdAppRegistration } from 'react-icons/md';
 import { BsGithub } from 'react-icons/bs';
 import { FaGoogle } from 'react-icons/fa';
-import { Divider } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Divider, Spin } from 'antd';
+import { useLocation, useNavigate } from 'react-router-dom';
+import auth from '../../Firebase.init';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+
 
 const RegistretionPage = () => {
     // Use Navigate from React hooks ---------------------------------------------
@@ -16,9 +19,45 @@ const RegistretionPage = () => {
     const handleLogInPage = () => {
         navigate('/log-in')
     }
+
+
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+      ] = useCreateUserWithEmailAndPassword(auth);
+    // Update Profile
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
+
+
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
     // For React form hooks ---------------------
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = (data) => console.log(data);
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const onSubmit = async (data) => {
+        const {email, password, name} = data;
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({displayName: name});
+        reset();
+        navigate(from, { replace: true })
+        console.log(user)
+    };
+
+    //   Condition User, Loading and Error --------------
+    let load;
+    if(loading || updating){
+        load = <Spin />
+    }
+
+    
+    let logInError;
+    if(error || updateError){
+        logInError = <p className="text-danger fw-bold">{error?.message} {updateError?.message}</p>;
+    }
+
     return (
         <>
         {/* Navigation ------------------------------------------------------------------------------------ */}
@@ -66,6 +105,10 @@ const RegistretionPage = () => {
                             {/* Email Error Message -------------------- */}
                             {errors.password && <p className='text-danger' role="alert">Password is required</p>}
                             {/* Submit Button ----------------------------------------------------- */}
+                            <div className='d-flex justify-content-center align-items-center'>
+                                {load}
+                                {logInError}
+                            </div>
                             <input type="submit" className='log_in_input_submit fw-semibold' />
                         </form>
                         <p className='mt-2'>If have account Please <span onClick={handleLogInPage} className='log_and_sign_toggole'>Log In</span></p>

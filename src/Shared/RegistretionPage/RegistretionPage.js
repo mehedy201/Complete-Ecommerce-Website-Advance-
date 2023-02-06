@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './RegistretionPage.css'
 import { useForm } from "react-hook-form";
 import FooterSection from '../FooterSection/FooterSection';
@@ -11,6 +11,8 @@ import { Divider, Spin } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../Firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+
 
 
 const RegistretionPage = () => {
@@ -20,7 +22,7 @@ const RegistretionPage = () => {
         navigate('/log-in')
     }
 
-
+    // Sign Up using Email and Password __________________________________
     const [
         createUserWithEmailAndPassword,
         user,
@@ -45,6 +47,38 @@ const RegistretionPage = () => {
         navigate(from, { replace: true })
         console.log(user)
     };
+
+
+    // Sign Up Using Google _______________________________________________
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, googleProvider)
+        .then(result => {
+            if(result){
+                navigate(from, { replace: true })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+    // Sign Up Using GitHub _______________________________________________
+    const githubProvider = new GithubAuthProvider();
+    const handleGithubLogin = () => {
+        signInWithPopup(auth, githubProvider)
+        .then(result => {
+            if(result){
+                navigate(from, { replace: true })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
+
+
+
 
     //   Condition User, Loading and Error --------------
     let load;
@@ -114,8 +148,8 @@ const RegistretionPage = () => {
                         <p className='mt-2'>If have account Please <span onClick={handleLogInPage} className='log_and_sign_toggole'>Log In</span></p>
                         <Divider>Register With Social</Divider>
                         <div className='d-flex justify-content-center'>
-                            <BsGithub className='sign_up_icon'/>
-                            <FaGoogle className='sign_up_icon'/>
+                            <BsGithub onClick={() => handleGithubLogin()} className='sign_up_icon'/>
+                            <FaGoogle onClick={() => handleGoogleLogin()} className='sign_up_icon'/>
                         </div>
                     </div>
                 </div>

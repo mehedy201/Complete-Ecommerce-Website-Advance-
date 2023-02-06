@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './LogIn.css';
 import { useForm } from "react-hook-form";
 import FooterSection from '../FooterSection/FooterSection';
@@ -11,6 +11,8 @@ import { Divider, Spin } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../Firebase.init';
+import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+
 
 const LogIn = () => {
     // Use Navigate from React hooks ---------------------------------------------
@@ -29,7 +31,6 @@ const LogIn = () => {
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    const [userError, setUserError] = useState('')
     // For React form hooks ------------------------------------------------------
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
@@ -44,6 +45,33 @@ const LogIn = () => {
             return
         }
     };
+
+    // Sign Up Using Google _______________________________________________
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, googleProvider)
+        .then(result => {
+            if(result){
+                navigate(from, { replace: true })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+    // Sign Up Using GitHub _______________________________________________
+    const githubProvider = new GithubAuthProvider();
+    const handleGithubLogin = () => {
+        signInWithPopup(auth, githubProvider)
+        .then(result => {
+            if(result){
+                navigate(from, { replace: true })
+            }
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
 
     //   Condition User, Loading and Error --------------
     let load;
@@ -83,7 +111,7 @@ const LogIn = () => {
                         />
                         {/* Email Error Message -------------------- */}
                         {errors.email?.type === 'required' && <p className='text-danger' role="alert">Email is required</p>}
-                        {/* Email Input Field ------------------------------------------------- */}
+                        {/* Password Input Field ------------------------------------------------- */}
                         <input 
                             type='password'
                             className='log_in_input'
@@ -91,7 +119,7 @@ const LogIn = () => {
                             {...register("password", { required: true })} 
                             aria-invalid={errors.password ? "true" : "false"} 
                         />
-                        {/* Email Error Message -------------------- */}
+                        {/* Password Error Message -------------------- */}
                         {errors.password && <p className='text-danger' role="alert">Password is required</p>}
                         {/* Submit Button ----------------------------------------------------- */}
                         <div className='d-flex justify-content-center align-items-center'>
@@ -100,12 +128,12 @@ const LogIn = () => {
                         </div>
                         <input type="submit" className='log_in_input_submit fw-semibold' />
                     </form>
-                    <p className='mt-1 forget_password'>Forget Password</p>
+                    <p  className='mt-1 forget_password'>Forget Password</p>
                     <p>Don't have account Please <span onClick={handleSignUpPage} className='log_and_sign_toggole'>Sign Up</span></p>
                     <Divider>Register With Social</Divider>
                     <div className='d-flex justify-content-center'>
-                        <BsGithub className='sign_up_icon'/>
-                        <FaGoogle className='sign_up_icon'/>
+                        <BsGithub onClick={() => handleGithubLogin()} className='sign_up_icon'/>
+                        <FaGoogle onClick={()=> handleGoogleLogin()} className='sign_up_icon'/>
                     </div>
                 </div>
             </div>

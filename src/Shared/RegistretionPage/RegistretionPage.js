@@ -9,7 +9,7 @@ import { BsGithub } from 'react-icons/bs';
 import { FaGoogle } from 'react-icons/fa';
 import { Divider, Spin } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
-import auth from '../../Firebase.init';
+import {auth} from '../../Firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
 

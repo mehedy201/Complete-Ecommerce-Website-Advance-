@@ -1,35 +1,37 @@
 import React, { useState } from 'react';
 import './AddProduct.css'
-import fitucherImage from '../../Images/Iphone14.jpg'
+import defaultImage from '../../Images/background_image.png'
 import { Select } from 'antd';
 import { useForm } from 'react-hook-form';
+import {storage} from '../../Firebase.init';
+import { ref , getDownloadURL, uploadBytesResumable} from "firebase/storage";
 
 const AddProduct = () => {
 
   // Select Category and Brand Name Start -------------------
-  const provinceData  = ['Laptop', 'SmartPhone', 'Camera', 'Gaming', 'Headphones', 'Speakers', 'Monitor'];
-  const cityData = {
+  const categoryData  = ['Laptop', 'SmartPhone', 'Camera', 'Gaming', 'Headphones', 'Speakers', 'Monitor'];
+  const brandData = {
     Laptop: ['HP', 'Asus', 'Dell'],
     SmartPhone: ['Iphone', 'Nokia', 'Samsung'],
     Camera: ['Canon', 'Nikon', 'Sony'],
     Gaming: ['game1', 'game2', 'game3'],
-    Headphones: ['Iphone', 'Redmi', 'Symphony'],
+    Headphones: ['Bose', 'Apple', 'Sony'],
     Speakers: ['Spekar1', 'Spekar2', 'Spekar3'],
     Monitor: ['monitor1', 'monitor2', 'monitor3'],
   };
-  const [cities, setCities] = useState(cityData[provinceData[0]]);
-  const [secondCity, setSecondCity] = useState(cityData[provinceData[0]][0]);
+  const [category, setCategory] = useState(brandData[categoryData[0]]);
+  const [brand, setBrand] = useState(brandData[categoryData[0]][0]);
   const [inputCategoryData, setInputCategoryData] = useState('')
   const [inputBrandData, setInputBrandData] = useState('')
   const [inputCriteriaData, setInputCriteriaData] = useState('')
   const handleProvinceChange = (value) => {
     setInputCategoryData(value)
     setInputBrandData('')
-    setCities(cityData[value]);
-    setSecondCity(cityData[value][0]);
+    setCategory(brandData[value]);
+    setBrand(brandData[value][0]);
   };
-  const onSecondCityChange = (value) => {
-    setSecondCity(value);
+  const onbrandChange = (value) => {
+    setBrand(value);
   };
   const onSelect = (value) => {
     setInputBrandData(value)
@@ -43,12 +45,64 @@ const AddProduct = () => {
   };
 
 
+  // const [inputUpload, setInputUpload] = useState('')
+  const [featuredImage , setFeaturedImage] = useState('');
+
+  // Handle upload OnChange---------------------------------
+  const handleUpload = async  (file) => {
+    // console.log(file)
+    // setInputUpload([]);
+    try {
+            var imageUrl = [];
+            for (let i = 0; i < file.length; i++) {
+                const imgName = file[i].name + Date.now();
+                const storageRef = ref(storage, `/product_images/${imgName}`);
+                const uploadTask = await uploadBytesResumable(storageRef, file[i]);
+                const url = await getDownloadURL(uploadTask.ref);
+                imageUrl.push({src: url});
+            
+                console.log(imageUrl)
+                for (let i = 0; i < imageUrl.length; i++) {
+                    const element = imageUrl[i];
+                    setFeaturedImage(element.src)
+                    console.log('inputUpload', featuredImage)
+                }
+            console.log('imageUpload')
+        }
+    } catch (error) {
+        console.log(error)
+    }
+  }
+
   // React Hook Form --------------------------------------
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const onSubmit = data => {
-    const formData = {...data, inputCategoryData, inputBrandData, inputCriteriaData}
+    const formData = {...data, inputCategoryData, inputBrandData, inputCriteriaData, featuredImage}
     console.log('Form Data =', formData);
-  };
+    
+  // Sent Email Data Server ----------------------
+    fetch('http://localhost:5000/products',{
+      method: 'POST',
+      headers: {
+          'content-type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    })
+      .then(res => res.json())
+      .then(data => {
+          if(data.success){
+              console.log('data', data)
+              alert('Email Sent')
+              setFeaturedImage('')
+              reset();
+          }
+          if(data.error){
+              alert('Email Not Sent')
+          }
+      })
+  }
+
+
 
 
 
@@ -61,19 +115,19 @@ const AddProduct = () => {
                         <p className='fw-semibold mb-1 mt-2'>Product Title</p>
                         <input className='input_title' type="text" placeholder='Product Title........'  {...register("title")}/>
                         <p className='fw-semibold mb-1 mt-2'>Product Description</p>
-                        <textarea className='input_description' id="" cols="30" rows="10" placeholder='Type Product Description.........'  {...register("descriptio")}/>
+                        <textarea className='input_description' id="" cols="30" rows="10" placeholder='Type Product Description.........'  {...register("description")}/>
                         <div className='mt-3 d-md-flex'>
                             <div className='mb-3'>
                               <span className='fw-semibold mb-1 mt-2 me-2'>Select Category :</span>
                               <Select
-                                // defaultValue={provinceData[0]}
+                                // defaultValue={categoryData[0]}
                                 placeholder='Select Category'
                                 className='me-3'
                                 style={{
                                   width: 200,
                                 }}
                                 onChange={handleProvinceChange}
-                                options={provinceData.map((province) => ({
+                                options={categoryData.map((province) => ({
                                   label: province,
                                   value: province,
                                 }))}
@@ -85,10 +139,10 @@ const AddProduct = () => {
                                 style={{
                                   width: 200,
                                 }}
-                                value={secondCity}
+                                value={brand}
                                 onSelect={onSelect}
-                                onChange={onSecondCityChange}
-                                options={cities.map((city) => ({
+                                onChange={onbrandChange}
+                                options={category.map((city) => ({
                                   label: city,
                                   value: city,
                                 }))}
@@ -113,10 +167,10 @@ const AddProduct = () => {
                     <div className="col-md-4">
                         <div className='bg-light mx-3 mt-4 p-3'>
                             <p className='fw-bold'>Featured Image</p>
-                            <div>
-                                <img src={fitucherImage} style={{width: '100%', }} alt="" />
+                            <div className='background_default_image' style={{width: '100%', height: '180px'}}>
+                                <img src={featuredImage? featuredImage : defaultImage} style={{width: '100%', height: '100%' }} alt="" />
                             </div>
-                            <input type="file" style={{width: '100%'}} className='border py-2 mt-3'  {...register("image")}/>
+                            <input type="file" onChange={(e) => handleUpload(e.target.files)} style={{width: '100%'}} className='border py-2 mt-3' multiple/>
                         </div>
                     </div>
                     <input className='submit_button me-md-5 me-sm-4 me-3 mt-3' type="submit" value='Publish' />

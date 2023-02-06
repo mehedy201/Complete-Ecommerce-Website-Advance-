@@ -10,7 +10,7 @@ import { FaGoogle } from 'react-icons/fa';
 import { Divider, Spin } from 'antd';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import auth from '../../Firebase.init';
+import {auth} from '../../Firebase.init';
 import { GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
 
 

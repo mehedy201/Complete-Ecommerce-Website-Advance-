@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './TopNavigation.css'
 import { Dropdown, Menu, Space, Spin } from 'antd'
 import { SlCallOut } from 'react-icons/sl';
@@ -6,7 +6,7 @@ import { CiShoppingCart } from 'react-icons/ci';
 import { CiUser } from 'react-icons/ci';
 import {  Badge } from 'antd'
 import { Link, useNavigate } from 'react-router-dom';
-import auth from '../../Firebase.init';
+import {auth} from '../../Firebase.init';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
@@ -42,9 +42,7 @@ const TopNavigation = () => {
                 <Link to={'/log-in'}>Log In</Link>
                 )
             },
-            { key: '2', label: ( 
-                user && <Link to={'/order-history'}>My Order History</Link>
-            )},
+            { key: '2', label: ( user && <Link to={'/order-history'}>My Order History</Link>)},
           ]}
         />
       );

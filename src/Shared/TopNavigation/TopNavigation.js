@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './TopNavigation.css'
 import { Dropdown, Menu, Space, Spin } from 'antd'
 import { SlCallOut } from 'react-icons/sl';
@@ -14,7 +14,7 @@ const TopNavigation = () => {
     // Sign Out button 
     const singOutButton = () => {
       signOut(auth);
-      navigate('/')
+      navigate('/log-in')
     }
      // useNavigete from react hooks ----------------------
     const navigate = useNavigate();
@@ -24,35 +24,30 @@ const TopNavigation = () => {
     const cartNavigate = () => {
         navigate('/cart')
     }
+
     // User Icon Dropdown ---------------------------------
     const [user, loading] = useAuthState(auth);
-    console.log('user', user)
+
     if(loading){
         return <Spin/>
     }
-
 
     const menu = (
         <Menu
           items={[
             { key: '1', label: ( 
                 user? 
-                <button onClick={singOutButton}>Sing Out</button>
+                <p className='mb-0' onClick={singOutButton}>Sing Out</p>
                 :
                 <Link to={'/log-in'}>Log In</Link>
                 )
             },
             { key: '2', label: ( 
-                user? <Link to={'/order-history'}>My Order History</Link>
-                    : ''
+                user && <Link to={'/order-history'}>My Order History</Link>
             )},
           ]}
         />
       );
-
-
-
-
 
 
     return (
@@ -80,15 +75,20 @@ const TopNavigation = () => {
                             <CiShoppingCart onClick={cartNavigate} className='navigation_icon cart_icon_cursor' />
                         </Badge>
                          {/* <CiUser className='navigation_icon'/> */}
-                         <Badge count={0} size="small">
                             <Dropdown overlay={menu} placement="bottom" arrow>
                                 <Link onClick={(e) => e.preventDefault()}>
                                     <Space>
-                                         <CiUser className='navigation_icon'/>
+                                        {
+                                            user? <Badge count={user.displayName.slice(0,1)} style={{backgroundColor: '#52c41a'}} size="small" offset={[-5, 0]}>
+                                                    <CiUser className='navigation_icon'/>
+                                                  </Badge>
+                                                  :
+                                                  <CiUser className='navigation_icon'/>
+                                        }
                                     </Space>
                                 </Link>
                             </Dropdown>
-                        </Badge>
+                        
                     </div>
                 </div>
                 {/* Responsive search option when screen under 668 px -------------------------------------------------------- */}

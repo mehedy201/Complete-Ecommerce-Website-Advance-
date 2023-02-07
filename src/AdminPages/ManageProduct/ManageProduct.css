@@ -29,6 +29,17 @@
     padding: 9px 20px;
 }
 
+.for_pointer{
+    cursor: pointer;
+}
+.for_hover{
+    margin: 0 !important;
+    padding: 4px;
+}
+.for_hover:hover{
+    background-color: antiquewhite;
+}
+
 
 
 /* Responsive ----------- */

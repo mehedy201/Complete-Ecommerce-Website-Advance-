@@ -12,7 +12,7 @@ const AddProduct = () => {
   const categoryData  = ['Laptop', 'SmartPhone', 'Camera', 'Gaming', 'Headphones', 'Speakers', 'Monitor'];
   const brandData = {
     Laptop: ['HP', 'Asus', 'Dell'],
-    SmartPhone: ['Iphone', 'Nokia', 'Samsung'],
+    SmartPhone: ['Iphone', 'Nokia', 'Samsung', 'Vivo'],
     Camera: ['Canon', 'Nikon', 'Sony'],
     Gaming: ['game1', 'game2', 'game3'],
     Headphones: ['Bose', 'Apple', 'Sony'],

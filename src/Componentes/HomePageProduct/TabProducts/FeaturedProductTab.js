@@ -1,7 +1,8 @@
-import { Badge, Rate } from 'antd';
+import { useQuery } from '@tanstack/react-query';
+import { Spin } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import laptopImage from '../../../Images/Hp-removebg-preview.png'
+import ProductCardComponents from '../../../Shared/ProductCardComponents/ProductCardComponents';
 
 
 const FeaturedProductTab = () => {
@@ -10,78 +11,31 @@ const FeaturedProductTab = () => {
     const handleBuyNowButton = () => {
         navigate(`/single-product`)
     }
+
+    const {data,  isLoading} = useQuery({
+        queryKey: ['featuredProduct'],
+        queryFn: () => fetch('http://localhost:5000/products')
+        .then(res => res.json())
+      })
+  
+    let loadingElement;
+    if(isLoading){
+      return  loadingElement = <Spin/>
+    }
+
+    const matched1 = [];
+    let featured;
+    for(const product of data){
+      if(product.inputCriteriaData.includes("Featured")){
+        matched1.push(product) 
+      }
+      featured = matched1.slice(0, 8)
+    }
+
     return (
             <div className="for_grid mt-3">
-                <Badge.Ribbon text="Featured">
-                    <div className="product_border_top overflow-hidden rounded shadow-sm">
-                        <div className='d-flex justify-content-center'>
-                            <img className='hompage_product_image_size p-1' src={laptopImage} alt="" />
-                        </div>
-                        <div className='px-4 pb-4'>
-                            <small>HP</small>
-                            <h5 className='mb-1'>Laptop</h5>
-                            <p className='mb-0 text-info fw-semibold'>Price: $100.00</p>
-                            <Rate value={5} disabled/>
-                            <button onClick={handleBuyNowButton} className='btn btn-sm bg-warning mt-2 d-block'>Buy Now</button>
-                        </div>
-                    </div>
-                </Badge.Ribbon>
-                <Badge.Ribbon text="Featured">
-                    <div className="product_border_top overflow-hidden rounded shadow-sm">
-                        <div className='d-flex justify-content-center'>
-                            <img className='hompage_product_image_size p-1' src={laptopImage} alt="" />
-                        </div>
-                        <div className='px-4 pb-4'>
-                            <small>HP</small>
-                            <h5 className='mb-1'>Laptop</h5>
-                            <p className='mb-0 text-info fw-semibold'>Price: $100.00</p>
-                            <Rate value={5} disabled/>
-                            <button onClick={handleBuyNowButton} className='btn btn-sm bg-warning mt-2 d-block'>Buy Now</button>
-                        </div>
-                    </div>
-                </Badge.Ribbon>
-                <Badge.Ribbon text="Featured">
-                    <div className="product_border_top overflow-hidden rounded shadow-sm">
-                        <div className='d-flex justify-content-center'>
-                            <img className='hompage_product_image_size p-1' src={laptopImage} alt="" />
-                        </div>
-                        <div className='px-4 pb-4'>
-                            <small>HP</small>
-                            <h5 className='mb-1'>Laptop</h5>
-                            <p className='mb-0 text-info fw-semibold'>Price: $100.00</p>
-                            <Rate value={5} disabled/>
-                            <button onClick={handleBuyNowButton} className='btn btn-sm bg-warning mt-2 d-block'>Buy Now</button>
-                        </div>
-                    </div>
-                </Badge.Ribbon>
-                <Badge.Ribbon text="Featured">
-                    <div className="product_border_top overflow-hidden rounded shadow-sm">
-                        <div className='d-flex justify-content-center'>
-                            <img className='hompage_product_image_size p-1' src={laptopImage} alt="" />
-                        </div>
-                        <div className='px-4 pb-4'>
-                            <small>HP</small>
-                            <h5 className='mb-1'>Laptop</h5>
-                            <p className='mb-0 text-info fw-semibold'>Price: $100.00</p>
-                            <Rate value={5} disabled/>
-                            <button onClick={handleBuyNowButton} className='btn btn-sm bg-warning mt-2 d-block'>Buy Now</button>
-                        </div>
-                    </div>
-                </Badge.Ribbon>
-                <Badge.Ribbon text="Featured">
-                    <div className="product_border_top overflow-hidden rounded shadow-sm">
-                        <div className='d-flex justify-content-center'>
-                            <img className='hompage_product_image_size p-1' src={laptopImage} alt="" />
-                        </div>
-                        <div className='px-4 pb-4'>
-                            <small>HP</small>
-                            <h5 className='mb-1'>Laptop</h5>
-                            <p className='mb-0 text-info fw-semibold'>Price: $100.00</p>
-                            <Rate value={5} disabled/>
-                            <button onClick={handleBuyNowButton} className='btn btn-sm bg-warning mt-2 d-block'>Buy Now</button>
-                        </div>
-                    </div>
-                </Badge.Ribbon>
+                {loadingElement}
+                {featured.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton}/>)}
             </div>
     );
 };

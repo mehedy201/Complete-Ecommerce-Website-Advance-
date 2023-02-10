@@ -24,6 +24,7 @@ import AddProduct from './AdminPages/AddProduct/AddProduct';
 import DashBoardMain from './AdminPages/DashBoardMain/DashBoardMain';
 import ManageProduct from './AdminPages/ManageProduct/ManageProduct';
 import ManageOrder from './AdminPages/ManageOrder/ManageOrder';
+import EditProduct from './AdminPages/ManageProduct/EditProduct';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
         <Route path='/dashboard' element={<DashBoard/>}>
           <Route index element={<DashBoardMain/>}/>
           <Route path='add-product' element={<AddProduct/>}/>
+          <Route path='edit-product/:id' element={<EditProduct/>}/>
           <Route path='manage-product' element={<ManageProduct/>}/>
           <Route path='manage-order' element={<ManageOrder/>}/>
         </Route>

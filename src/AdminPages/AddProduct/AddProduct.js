@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './AddProduct.css'
 import defaultImage from '../../Images/background_image.png'
-import { Select } from 'antd';
+import { Rate, Select } from 'antd';
 import { useForm } from 'react-hook-form';
 import {storage} from '../../Firebase.init';
 import { ref , getDownloadURL, uploadBytesResumable} from "firebase/storage";
@@ -21,6 +21,8 @@ const AddProduct = () => {
   };
   const [category, setCategory] = useState(brandData[categoryData[0]]);
   const [brand, setBrand] = useState(brandData[categoryData[0]][0]);
+
+  const [inputRating, setInputRating] = useState('')
   const [inputCategoryData, setInputCategoryData] = useState('')
   const [inputBrandData, setInputBrandData] = useState('')
   const [inputCriteriaData, setInputCriteriaData] = useState('')
@@ -35,6 +37,11 @@ const AddProduct = () => {
   };
   const onSelect = (value) => {
     setInputBrandData(value)
+  }
+
+
+  const ratingValue = (value) => {
+    setInputRating(value)
   }
   // Select Category and Brand Name End -------------------
 
@@ -77,7 +84,7 @@ const AddProduct = () => {
   // React Hook Form --------------------------------------
   const { register, handleSubmit, formState: { errors }, reset } = useForm();
   const onSubmit = data => {
-    const formData = {...data, inputCategoryData, inputBrandData, inputCriteriaData, featuredImage}
+    const formData = {...data, inputCategoryData, inputBrandData, inputCriteriaData, featuredImage, inputRating}
     console.log('Form Data =', formData);
     
   // Sent Email Data Server ----------------------
@@ -163,6 +170,10 @@ const AddProduct = () => {
                             { value: 'Best Saleing', label: 'Best Saleing',},
                           ]}
                         />
+                        <p className='fw-semibold mb-1 mt-2'>Product Price</p>
+                        <input className='product_price' type="text" placeholder='Product Price'  {...register("price")}/>
+                        <p className='fw-semibold mb-1 mt-2'>Product Rating</p>
+                        <Rate allowHalf onChange={ratingValue} />
                     </div>
                     <div className="col-md-4">
                         <div className='bg-light mx-3 mt-4 p-3'>

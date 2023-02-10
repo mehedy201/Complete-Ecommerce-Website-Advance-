@@ -1,6 +1,6 @@
 import React from 'react';
 import './ShopPolicy.css'
-import { CiDeliveryTruck } from 'react-icons/ci';
+import { BsTruck } from 'react-icons/bs';
 import { VscFeedback } from 'react-icons/vsc';
 import { GiPayMoney } from 'react-icons/gi';
 import { BiSupport } from 'react-icons/bi';
@@ -10,7 +10,7 @@ const ShopPolicy = () => {
         <div className='container'>
             <div className="row py-3 rounded for_box_shadow">
                 <div className="col-md-3 col-sm-6 my-2 col_hover_effect border-end">
-                    <CiDeliveryTruck className='shop_policy_icon'/>
+                    <BsTruck className='shop_policy_icon'/>
                     <div>
                         <h6>Free Delivery</h6>
                         <p className='mb-0'>From $10</p>

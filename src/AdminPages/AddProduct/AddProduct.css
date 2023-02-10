@@ -10,6 +10,16 @@
     border: 1px solid aqua;
     outline: none;
 }
+.product_price{
+    height: 33px;
+    width: 200px;
+    padding: 10px;
+    border: 1px solid gainsboro;
+}
+.product_price:focus{
+    border: 1px solid aqua;
+    outline: none;
+}
 .input_description{
     width: 100%;
     border: 1px solid gainsboro;

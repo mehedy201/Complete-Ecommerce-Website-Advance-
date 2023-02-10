@@ -2,8 +2,8 @@ import React from 'react';
 import './TopNavigation.css'
 import { Dropdown, Menu, Space, Spin } from 'antd'
 import { SlCallOut } from 'react-icons/sl';
-import { CiShoppingCart } from 'react-icons/ci';
 import { CiUser } from 'react-icons/ci';
+import { FiShoppingCart } from 'react-icons/fi';
 import {  Badge } from 'antd'
 import { Link, useNavigate } from 'react-router-dom';
 import {auth} from '../../Firebase.init';
@@ -70,7 +70,7 @@ const TopNavigation = () => {
                             </div>
                         </div>
                          <Badge count={1} showZero size="small">
-                            <CiShoppingCart onClick={cartNavigate} className='navigation_icon cart_icon_cursor' />
+                            <FiShoppingCart onClick={cartNavigate} className='navigation_icon p-1'/>
                         </Badge>
                          {/* <CiUser className='navigation_icon'/> */}
                             <Dropdown overlay={menu} placement="bottom" arrow>

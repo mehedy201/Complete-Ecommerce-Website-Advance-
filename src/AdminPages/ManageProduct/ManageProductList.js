@@ -8,12 +8,10 @@ import { Popover, Tooltip } from 'antd';
 
 const ManageProductList = ({index, product, handleDelete}) => {
 
-    console.log(product._id)
-
     // Navigate to Add Product Page
     const navigate = useNavigate()
-    const editProduct = () => {
-        navigate('/dashboard/add-product')
+    const editProduct = (id) => {
+        navigate(`/dashboard/edit-product/${id}`)
     }
 
     
@@ -34,7 +32,7 @@ const ManageProductList = ({index, product, handleDelete}) => {
                 <td><MdOutlineCloudDone className='text-success' style={{height: '25px', width: 'auto'}}/></td>
                 <td>
                     <Tooltip title="Edit">
-                      <RiEditBoxLine onClick={editProduct} className='me-2 for_pointer' style={{height: '20px', width: 'auto', color: '#4903fc'}}/> 
+                      <RiEditBoxLine onClick={() => editProduct(product._id)} className='me-2 for_pointer' style={{height: '20px', width: 'auto', color: '#4903fc'}}/> 
                     </Tooltip>
                     <Tooltip title="Delete">
                       <AiOutlineDelete onClick={() => handleDelete(product._id)} className='text-danger me-3 for_pointer' style={{height: '20px', width: 'auto'}}/> 

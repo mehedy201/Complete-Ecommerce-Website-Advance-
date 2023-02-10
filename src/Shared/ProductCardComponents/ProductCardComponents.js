@@ -16,7 +16,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         {product?.title.length > 22 ? <h5 className='mb-1'>{product.title.slice(0,22)}..</h5> : <h5 className='mb-1'>{product?.title}</h5>}
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
-                        <button onClick={handleBuyNowButton} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                        <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
                     </div>
                 </div>
                 </Badge.Ribbon>
@@ -33,7 +33,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         {product?.title.length > 22 ? <h5 className='mb-1'>{product.title.slice(0,22)}..</h5> : <h5 className='mb-1'>{product?.title}</h5>}
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
-                        <button onClick={handleBuyNowButton} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                        <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
                     </div>
                 </div>
                 </Badge.Ribbon>
@@ -50,7 +50,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         {product?.title.length > 22 ? <h5 className='mb-1'>{product.title.slice(0,22)}..</h5> : <h5 className='mb-1'>{product?.title}</h5>}
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
-                        <button onClick={handleBuyNowButton} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                        <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
                     </div>
                 </div>
                 </Badge.Ribbon>
@@ -67,7 +67,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         <h5 className='mb-1'>{product?.title}</h5>
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
-                        <button onClick={handleBuyNowButton} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                        <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
                     </div>
                 </div>
                 </Badge.Ribbon>

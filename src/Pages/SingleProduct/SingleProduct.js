@@ -1,15 +1,18 @@
-import { Rate } from 'antd';
-import React, { useState } from 'react';
-import OnlyHpLaptop from '../../Componentes/OnlyHpLaptop/OnlyHpLaptop';
+import { Rate, Spin } from 'antd';
+import React, { useEffect, useRef, useState } from 'react';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
-import mobileImage from '../../Images/Iphone14.jpg'
 import { IoMdRemove } from 'react-icons/io';
 import { MdOutlineAdd } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import './SingleProduct.css'
+import OnlyHpLaptop from '../../Componentes/OnlyHpLaptop/OnlyHpLaptop';
 
 const SingleProduct = () => {
+
+    const {id} = useParams();
 
     // useNavigate from react hooks
     const navigate = useNavigate();
@@ -35,6 +38,18 @@ const SingleProduct = () => {
                 setCount(minasCount);
             }
     }
+
+    const {data,  isLoading} = useQuery({
+        queryKey: ['featuredProduct'],
+        queryFn: () => fetch(`http://localhost:5000/products/${id}`)
+        .then(res => res.json())
+    })
+  
+    let loadingElement;
+    if(isLoading){
+      return  loadingElement = <Spin/>
+    }
+
     return (
         <>
         {/* Header Section -------------------------------- */}
@@ -44,19 +59,20 @@ const SingleProduct = () => {
         </header>
         {/* Single Product Page Main Section ------------------------ */}
             <main className='container my-5'>
-                <div className="row mb-5">
+                {loadingElement}
+                <div className="row mb-5 align-items-center">
                     <div className="col-md-6 p-4">
-                        <img className='cart_page_image' src={mobileImage} alt="" />
+                        <img className='cart_page_image' src={data?.featuredImage} alt="" />
                     </div>
                     <div className="col-md-6 p-4">
-                        <small>Brand: <span className='text-info'>Apple</span></small>
-                        <h3>Iphone 14 pro max</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, natus a eos quod ullam error quisquam aperiam excepturi voluptatum totam!</p>
-                        <h5>Price: $1000</h5>
-                        <Rate value={5}/>
+                        <small>Brand: <span className='text-info'>{data?.inputBrandData}</span></small>
+                        <h3>{data?.title}</h3>
+                        <p>{data?.description}</p>
+                        <h5>Price: ${data?.price}</h5>
+                        <Rate value={data?.inputRating} disabled/>
                         <div className='mt-2 mb-4'>
                             <IoMdRemove onClick={handleMinas} className='cart_page_icon text-danger'/>
-                            <input value={count} className='cart_page_input' type="text" />
+                            <input value={count} readOnly className='cart_page_input' type="text" />
                             <MdOutlineAdd onClick={handlePlus} className='cart_page_icon text-success'/>
                         </div>
                         <div className='d-flex '>
@@ -66,7 +82,7 @@ const SingleProduct = () => {
                     </div>
                 </div>
                 {/* Laptop Section -------------------------- */}
-                <h4 className='text-center pt-md-5 pb-4'>Our Recomended Product</h4>
+                <p className='text-center pt-md-5 pb-4'>Our Recomended Product</p>
                 <OnlyHpLaptop></OnlyHpLaptop>
             </main>
         {/* Footer Section ---------------------------------- */}

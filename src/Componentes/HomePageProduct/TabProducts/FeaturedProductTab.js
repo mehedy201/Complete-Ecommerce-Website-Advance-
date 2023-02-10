@@ -8,8 +8,8 @@ import ProductCardComponents from '../../../Shared/ProductCardComponents/Product
 const FeaturedProductTab = () => {
     // useNavigate hook From React -------------------------
     const navigate = useNavigate();
-    const handleBuyNowButton = () => {
-        navigate(`/single-product`)
+    const handleBuyNowButton = (id) => {
+        navigate(`/single-product/${id}`)
     }
 
     const {data,  isLoading} = useQuery({
@@ -17,25 +17,29 @@ const FeaturedProductTab = () => {
         queryFn: () => fetch('http://localhost:5000/products')
         .then(res => res.json())
       })
+
+    console.log(data)
   
     let loadingElement;
-    if(isLoading){
-      return  loadingElement = <Spin/>
-    }
-
     const matched1 = [];
     let featured;
-    for(const product of data){
-      if(product.inputCriteriaData.includes("Featured")){
-        matched1.push(product) 
-      }
-      featured = matched1.slice(0, 8)
+    if(isLoading){
+       console.log('yes')
+       return loadingElement = <Spin/>
+    }else{
+        for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+            if(element.inputCriteriaData.includes("Featured")){
+                matched1.push(element) 
+            }
+                featured = matched1.slice(0, 8)
+            }
     }
+
 
     return (
             <div className="for_grid mt-3">
-                {loadingElement}
-                {featured.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton}/>)}
+                {featured?.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton} />)}
             </div>
     );
 };

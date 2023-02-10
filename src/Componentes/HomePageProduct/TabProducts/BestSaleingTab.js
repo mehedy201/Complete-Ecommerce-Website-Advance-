@@ -1,16 +1,15 @@
 import { useQuery } from '@tanstack/react-query';
-import { Badge, Rate, Spin } from 'antd';
+import { Spin } from 'antd';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import laptopImage from '../../../Images/Hp-removebg-preview.png'
 import ProductCardComponents from '../../../Shared/ProductCardComponents/ProductCardComponents';
 
 
 const BestSaleingTab = () => {
     // useNavigate hook From React -------------------------
     const navigate = useNavigate();
-    const handleBuyNowButton = () => {
-        navigate(`/single-product`)
+    const handleBuyNowButton = (id) => {
+        navigate(`/single-product/${id}`)
     }
 
 
@@ -37,7 +36,7 @@ const BestSaleingTab = () => {
     return (
         <div className="for_grid mt-3">
             {loadingElement}
-            {bestSaleing.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton}/>)}
+            {bestSaleing?.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton}/>)}
         </div>
     );
 };

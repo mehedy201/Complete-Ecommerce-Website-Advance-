@@ -7,8 +7,8 @@ import ProductCardComponents from '../../../Shared/ProductCardComponents/Product
 const TopRatedTab = () => {
     // useNavigate hook From React -------------------------
     const navigate = useNavigate();
-    const handleBuyNowButton = () => {
-        navigate(`/single-product`)
+    const handleBuyNowButton = (id) => {
+        navigate(`/single-product/${id}`)
     }
     const {data,  isLoading} = useQuery({
         queryKey: ['featuredProduct'],
@@ -33,7 +33,7 @@ const TopRatedTab = () => {
     return (
         <div className="for_grid mt-3">
            {loadingElement}
-           {topRated.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton}/>)}
+           {topRated?.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton}/>)}
         </div>
     );
 };

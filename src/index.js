@@ -8,6 +8,7 @@ import {
    QueryClient,
    QueryClientProvider,
  } from '@tanstack/react-query';
+import ScrollToTop from './Hooks/ScrollToTop';
  const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,7 +16,9 @@ root.render(
       <React.StrictMode>
          <QueryClientProvider client={queryClient}>
             <BrowserRouter>
-               <App />
+               <ScrollToTop>
+                  <App />
+               </ScrollToTop>
             </BrowserRouter>
          </QueryClientProvider>
       </React.StrictMode>

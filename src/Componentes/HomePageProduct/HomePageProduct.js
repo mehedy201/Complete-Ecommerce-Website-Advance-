@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './HomePageProduct.css';
 import { Tabs } from 'antd';
-import { useNavigate } from 'react-router-dom';
 import FeaturedProductTab from './TabProducts/FeaturedProductTab';
 import BestSaleingTab from './TabProducts/BestSaleingTab';
 import TopRatedTab from './TabProducts/TopRatedTab';
@@ -11,7 +10,7 @@ const HomePageProduct = () => {
     const onChange = (key) => {
         console.log(key);
     };
-
+    
     
 
     return (

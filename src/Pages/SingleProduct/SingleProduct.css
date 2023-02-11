@@ -1,4 +1,12 @@
 .cart_page_image{
     width: auto;
-    height: 25rem;
+    height: 24rem;
 }
+
+/* Responsive CSS ---------------------------------- */
+@media (max-width: 500px) {
+    .cart_page_image{
+        width: 100%;
+        height: auto;
+    }
+  }

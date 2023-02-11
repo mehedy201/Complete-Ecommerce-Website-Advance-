@@ -16,7 +16,6 @@ const OnlyHpLaptop = () => {
       })
   
     if(isLoading){
-        console.log('yes')
          return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
     }
 

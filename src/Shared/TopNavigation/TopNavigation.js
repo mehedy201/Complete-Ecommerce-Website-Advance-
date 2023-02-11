@@ -29,7 +29,7 @@ const TopNavigation = () => {
     const [user, loading] = useAuthState(auth);
 
     if(loading){
-        return <Spin/>
+        return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
     }
 
     const menu = (

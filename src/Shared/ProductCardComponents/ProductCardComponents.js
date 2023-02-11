@@ -3,6 +3,7 @@ import React from 'react';
 import './ProductCardComponents.css'
 
 const ProductCardComponents = ({product, handleBuyNowButton}) => {
+  
     return (
         <>
           {

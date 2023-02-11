@@ -1,5 +1,5 @@
 import { Spin } from 'antd';
-import React from 'react';
+import React, { useState } from 'react';
 import './OnlyHpLaptop.css';
 import Carousel from 'react-multi-carousel';
 import { useQuery } from '@tanstack/react-query';
@@ -10,7 +10,7 @@ const OnlyHpLaptop = () => {
 
 
     const navigate = useNavigate()
-    const {data,  isLoading} = useQuery({
+    const {data: carouselData,  isLoading} = useQuery({
         queryKey: ['featuredProduct'],
         queryFn: () => fetch('http://localhost:5000/products')
         .then(res => res.json())
@@ -20,10 +20,12 @@ const OnlyHpLaptop = () => {
     const matched1 = [];
     let laptop;
     if(isLoading){
-         loadingElement = <Spin/>
-    }else{
-        for (let i = 0; i < data.length; i++) {
-            const element = data[i];
+        console.log('yes')
+         return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
+    }
+    if(carouselData){
+        for (let i = 0; i < carouselData.length; i++) {
+            const element = carouselData[i];
             if(element.inputCategoryData.includes("Laptop")){
                 matched1.push(element) 
             }
@@ -66,12 +68,14 @@ const OnlyHpLaptop = () => {
                     </div>
                 </div>
                 <div className="col-md-9">
-                    {loadingElement}
-                    <Carousel  
-                    responsive={responsive}
-                    >
-                        {laptop?.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton} />)}
-                    </Carousel>
+                    {
+                        laptop &&
+                        <Carousel  
+                         responsive={responsive}
+                         >
+                             {laptop.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton} />)}
+                         </Carousel>
+                    }
                 </div>
             </div>
         </div>

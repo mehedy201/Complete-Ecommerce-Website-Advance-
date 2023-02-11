@@ -10,20 +10,19 @@ const TopRatedTab = () => {
     const handleBuyNowButton = (id) => {
         navigate(`/single-product/${id}`)
     }
-    const {data,  isLoading} = useQuery({
+    const {data: productData,  isLoading} = useQuery({
         queryKey: ['featuredProduct'],
         queryFn: () => fetch('http://localhost:5000/products')
         .then(res => res.json())
       })
     
-    let loadingElement;
     if(isLoading){
-      return  loadingElement = <Spin/>
+      return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
     }
 
     const matched1 = [];
     let topRated;
-    for(const product of data){
+    for(const product of productData){
       if(product.inputCriteriaData.includes("Top Rated")){
         matched1.push(product) 
       }
@@ -32,7 +31,6 @@ const TopRatedTab = () => {
     
     return (
         <div className="for_grid mt-3">
-           {loadingElement}
            {topRated?.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton}/>)}
         </div>
     );

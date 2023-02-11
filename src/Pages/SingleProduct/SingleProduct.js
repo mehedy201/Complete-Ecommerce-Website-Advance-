@@ -1,5 +1,5 @@
 import { Rate, Spin } from 'antd';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
@@ -13,6 +13,7 @@ import OnlyHpLaptop from '../../Componentes/OnlyHpLaptop/OnlyHpLaptop';
 const SingleProduct = () => {
 
     const {id} = useParams();
+
 
     // useNavigate from react hooks
     const navigate = useNavigate();
@@ -39,15 +40,14 @@ const SingleProduct = () => {
             }
     }
 
-    const {data,  isLoading} = useQuery({
-        queryKey: ['featuredProduct'],
+    const {data: singleData,  isLoading} = useQuery({
+        queryKey: ['singleProduct'],
         queryFn: () => fetch(`http://localhost:5000/products/${id}`)
         .then(res => res.json())
     })
   
-    let loadingElement;
     if(isLoading){
-      return  loadingElement = <Spin/>
+      return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
     }
 
     return (
@@ -58,18 +58,17 @@ const SingleProduct = () => {
             <Navigation></Navigation>
         </header>
         {/* Single Product Page Main Section ------------------------ */}
-            <main className='container my-5'>
-                {loadingElement}
-                <div className="row mb-5 align-items-center">
+                <main className='container my-5'>
+                    <div className="row mb-5 align-items-center">
                     <div className="col-md-6 p-4">
-                        <img className='cart_page_image' src={data?.featuredImage} alt="" />
+                        <img className='cart_page_image' src={singleData?.featuredImage} alt="" />
                     </div>
                     <div className="col-md-6 p-4">
-                        <small>Brand: <span className='text-info'>{data?.inputBrandData}</span></small>
-                        <h3>{data?.title}</h3>
-                        <p>{data?.description}</p>
-                        <h5>Price: ${data?.price}</h5>
-                        <Rate value={data?.inputRating} disabled/>
+                        <small>Brand: <span className='text-info'>{singleData?.inputBrandData}</span></small>
+                        <h3>{singleData?.title}</h3>
+                        <p>{singleData?.description}</p>
+                        <h5>Price: ${singleData?.price}</h5>
+                        <Rate value={singleData?.inputRating} disabled/>
                         <div className='mt-2 mb-4'>
                             <IoMdRemove onClick={handleMinas} className='cart_page_icon text-danger'/>
                             <input value={count} readOnly className='cart_page_input' type="text" />

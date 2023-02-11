@@ -30,7 +30,8 @@ const ManageProduct = () => {
   
     let productLoading;
     if(isLoading){
-      productLoading = <Spin />
+      // productLoading = <Spin />
+      return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
     }
 
     

@@ -12,20 +12,19 @@ const FeaturedProductTab = () => {
         navigate(`/single-product/${id}`)
     }
 
-    const {data,  isLoading} = useQuery({
+    const {data: productData,  isLoading} = useQuery({
         queryKey: ['featuredProduct'],
         queryFn: () => fetch('http://localhost:5000/products')
         .then(res => res.json())
       })
   
-    let loadingElement;
     const matched1 = [];
     let featured;
     if(isLoading){
-       return loadingElement = <Spin/>
+       return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
     }else{
-        for (let i = 0; i < data.length; i++) {
-            const element = data[i];
+        for (let i = 0; i < productData.length; i++) {
+            const element = productData[i];
             if(element.inputCriteriaData.includes("Featured")){
                 matched1.push(element) 
             }

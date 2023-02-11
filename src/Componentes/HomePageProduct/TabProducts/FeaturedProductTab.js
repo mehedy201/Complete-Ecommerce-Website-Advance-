@@ -17,14 +17,11 @@ const FeaturedProductTab = () => {
         queryFn: () => fetch('http://localhost:5000/products')
         .then(res => res.json())
       })
-
-    console.log(data)
   
     let loadingElement;
     const matched1 = [];
     let featured;
     if(isLoading){
-       console.log('yes')
        return loadingElement = <Spin/>
     }else{
         for (let i = 0; i < data.length; i++) {

@@ -1,5 +1,6 @@
 import { Badge, Rate } from 'antd';
 import React from 'react';
+import './ProductCardComponents.css'
 
 const ProductCardComponents = ({product, handleBuyNowButton}) => {
     return (
@@ -13,7 +14,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                     </div>
                     <div className='px-4 pb-4'>
                         <small>{product?.inputBrandData}</small>
-                        {product?.title.length > 22 ? <h5 className='mb-1'>{product.title.slice(0,22)}..</h5> : <h5 className='mb-1'>{product?.title}</h5>}
+                        {product?.title.length > 22 ? <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product.title.slice(0,22)}..</h5> : <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>}
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
                         <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
@@ -30,7 +31,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                     </div>
                     <div className='px-4 pb-4'>
                         <small>{product?.inputBrandData}</small>
-                        {product?.title.length > 22 ? <h5 className='mb-1'>{product.title.slice(0,22)}..</h5> : <h5 className='mb-1'>{product?.title}</h5>}
+                        {product?.title.length > 22 ? <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product.title.slice(0,22)}..</h5> : <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>}
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
                         <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
@@ -47,7 +48,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                     </div>
                     <div className='px-4 pb-4'>
                         <small>{product?.inputBrandData}</small>
-                        {product?.title.length > 22 ? <h5 className='mb-1'>{product.title.slice(0,22)}..</h5> : <h5 className='mb-1'>{product?.title}</h5>}
+                        {product?.title.length > 22 ? <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product.title.slice(0,22)}..</h5> : <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>}
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
                         <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
@@ -64,7 +65,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                     </div>
                     <div className='px-4 pb-4'>
                         <small>{product?.inputBrandData}</small>
-                        <h5 className='mb-1'>{product?.title}</h5>
+                        <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
                         <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>

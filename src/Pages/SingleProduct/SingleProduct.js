@@ -82,7 +82,7 @@ const SingleProduct = () => {
                     </div>
                 </div>
                 {/* Laptop Section -------------------------- */}
-                <p className='text-center pt-md-5 pb-4'>Our Recomended Product</p>
+                <p className='text-center fw-bold fs-5 pt-md-5 pb-4'>Our Recomended Product</p>
                 <OnlyHpLaptop></OnlyHpLaptop>
             </main>
         {/* Footer Section ---------------------------------- */}

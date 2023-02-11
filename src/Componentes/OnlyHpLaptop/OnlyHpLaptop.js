@@ -1,10 +1,39 @@
-import { Rate } from 'antd';
+import { Spin } from 'antd';
 import React from 'react';
 import './OnlyHpLaptop.css';
-import laptopImage from '../../Images/Hp-removebg-preview.png';
 import Carousel from 'react-multi-carousel';
+import { useQuery } from '@tanstack/react-query';
+import ProductCardComponents from '../../Shared/ProductCardComponents/ProductCardComponents';
+import { useNavigate } from 'react-router-dom';
 
 const OnlyHpLaptop = () => {
+
+
+    const navigate = useNavigate()
+    const {data,  isLoading} = useQuery({
+        queryKey: ['featuredProduct'],
+        queryFn: () => fetch('http://localhost:5000/products')
+        .then(res => res.json())
+      })
+  
+    let loadingElement;
+    const matched1 = [];
+    let laptop;
+    if(isLoading){
+         loadingElement = <Spin/>
+    }else{
+        for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+            if(element.inputCategoryData.includes("Laptop")){
+                matched1.push(element) 
+            }
+                laptop = matched1.slice(0, 8)
+            }
+    }
+
+    const handleBuyNowButton = (id) => {
+        navigate(`/single-product/${id}`)
+    }
 
     // Responsive Carousel Style -----------------------------
     const responsive = {
@@ -37,57 +66,11 @@ const OnlyHpLaptop = () => {
                     </div>
                 </div>
                 <div className="col-md-9">
+                    {loadingElement}
                     <Carousel  
                     responsive={responsive}
                     >
-                        <div className="product_border_top overflow-hidden rounded shadow-sm mx-2">
-                            <div className='d-flex justify-content-center'>
-                                <img className='hompage_product_image_size p-1' src={laptopImage} alt="" />
-                            </div>
-                            <div className='px-4 pb-4'>
-                                <small>HP</small>
-                                <h5 className='mb-1'>Laptop</h5>
-                                <p className='mb-0 text-info fw-semibold'>Price: $100.00</p>
-                                <Rate value={5} />
-                                <button className='btn btn-sm bg-warning mt-2 d-block'>Buy Now</button>
-                            </div>
-                        </div>
-                        <div className="product_border_top overflow-hidden rounded shadow-sm mx-2">
-                            <div className='d-flex justify-content-center'>
-                                <img className='hompage_product_image_size p-1' src={laptopImage} alt="" />
-                            </div>
-                            <div className='px-4 pb-4'>
-                                <small>HP</small>
-                                <h5 className='mb-1'>Laptop</h5>
-                                <p className='mb-0 text-info fw-semibold'>Price: $100.00</p>
-                                <Rate value={5} />
-                                <button className='btn btn-sm bg-warning mt-2 d-block'>Buy Now</button>
-                            </div>
-                        </div>
-                        <div className="product_border_top overflow-hidden rounded shadow-sm mx-2">
-                            <div className='d-flex justify-content-center'>
-                                <img className='hompage_product_image_size p-1' src={laptopImage} alt="" />
-                            </div>
-                            <div className='px-4 pb-4'>
-                                <small>HP</small>
-                                <h5 className='mb-1'>Laptop</h5>
-                                <p className='mb-0 text-info fw-semibold'>Price: $100.00</p>
-                                <Rate value={5} />
-                                <button className='btn btn-sm bg-warning mt-2 d-block'>Buy Now</button>
-                            </div>
-                        </div>
-                        <div className="product_border_top overflow-hidden rounded shadow-sm mx-2">
-                            <div className='d-flex justify-content-center'>
-                                <img className='hompage_product_image_size p-1' src={laptopImage} alt="" />
-                            </div>
-                            <div className='px-4 pb-4'>
-                                <small>HP</small>
-                                <h5 className='mb-1'>Laptop</h5>
-                                <p className='mb-0 text-info fw-semibold'>Price: $100.00</p>
-                                <Rate value={5} />
-                                <button className='btn btn-sm bg-warning mt-2 d-block'>Buy Now</button>
-                            </div>
-                        </div>
+                        {laptop?.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton} />)}
                     </Carousel>
                 </div>
             </div>

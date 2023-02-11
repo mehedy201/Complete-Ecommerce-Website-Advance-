@@ -14,7 +14,7 @@ const BestSaleingTab = () => {
 
 
     const {data: productData,  isLoading} = useQuery({
-        queryKey: ['featuredProduct'],
+        queryKey: ['forTabs'],
         queryFn: () => fetch('http://localhost:5000/products')
         .then(res => res.json())
       })

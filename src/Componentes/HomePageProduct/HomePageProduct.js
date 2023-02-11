@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './HomePageProduct.css';
 import { Tabs } from 'antd';
 import FeaturedProductTab from './TabProducts/FeaturedProductTab';

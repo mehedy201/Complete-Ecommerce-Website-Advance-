@@ -1,3 +1,9 @@
 .for_pointer{
     cursor: pointer;
 }
+.card_cart_icon{
+    height: 25px;
+    width: 25px;
+    color: rgb(104, 104, 104);
+    cursor: pointer;
+}

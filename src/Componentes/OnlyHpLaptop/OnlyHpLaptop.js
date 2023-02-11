@@ -8,29 +8,16 @@ import { useNavigate } from 'react-router-dom';
 
 const OnlyHpLaptop = () => {
 
-
     const navigate = useNavigate()
     const {data: carouselData,  isLoading} = useQuery({
-        queryKey: ['featuredProduct'],
-        queryFn: () => fetch('http://localhost:5000/products')
+        queryKey: ['laptop'],
+        queryFn: () => fetch('http://localhost:5000/products/category/Laptop')
         .then(res => res.json())
       })
   
-    let loadingElement;
-    const matched1 = [];
-    let laptop;
     if(isLoading){
         console.log('yes')
          return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
-    }
-    if(carouselData){
-        for (let i = 0; i < carouselData.length; i++) {
-            const element = carouselData[i];
-            if(element.inputCategoryData.includes("Laptop")){
-                matched1.push(element) 
-            }
-                laptop = matched1.slice(0, 8)
-            }
     }
 
     const handleBuyNowButton = (id) => {
@@ -69,11 +56,11 @@ const OnlyHpLaptop = () => {
                 </div>
                 <div className="col-md-9">
                     {
-                        laptop &&
+                        carouselData &&
                         <Carousel  
                          responsive={responsive}
                          >
-                             {laptop.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton} />)}
+                             {carouselData.map(product => <ProductCardComponents key={product._id} product={product} handleBuyNowButton={handleBuyNowButton} />)}
                          </Carousel>
                     }
                 </div>

@@ -1,6 +1,8 @@
 import { Badge, Rate } from 'antd';
 import React from 'react';
 import './ProductCardComponents.css'
+import { BsCartPlus } from 'react-icons/bs';
+
 
 const ProductCardComponents = ({product, handleBuyNowButton}) => {
   
@@ -18,7 +20,10 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         {product?.title.length > 22 ? <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product.title.slice(0,22)}..</h5> : <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>}
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
-                        <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                            <BsCartPlus className='card_cart_icon'/>
+                        </div>
                     </div>
                 </div>
                 </Badge.Ribbon>
@@ -35,7 +40,10 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         {product?.title.length > 22 ? <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product.title.slice(0,22)}..</h5> : <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>}
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
-                        <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                            <BsCartPlus className='card_cart_icon'/>
+                        </div>
                     </div>
                 </div>
                 </Badge.Ribbon>
@@ -52,7 +60,10 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         {product?.title.length > 22 ? <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product.title.slice(0,22)}..</h5> : <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>}
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
-                        <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                            <BsCartPlus className='card_cart_icon'/>
+                        </div>
                     </div>
                 </div>
                 </Badge.Ribbon>
@@ -69,7 +80,10 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>
                         <p className='mb-0 text-info fw-semibold'>{product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
-                        <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                        <div className='d-flex justify-content-between align-items-center'>
+                            <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
+                            <BsCartPlus className='card_cart_icon'/>
+                        </div>
                     </div>
                 </div>
                 </Badge.Ribbon>

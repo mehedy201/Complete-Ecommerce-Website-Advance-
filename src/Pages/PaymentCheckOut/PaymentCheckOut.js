@@ -1,5 +1,5 @@
 import { Divider } from 'antd';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
@@ -14,7 +14,42 @@ import PaymentSummary from './PaymentSummary/PaymentSummary';
 const PaymentCheckOut = () => {
 
     // Load Cart Product From LocalStorage______________________________________________
-    const cartProductData = JSON.parse(localStorage.getItem('cartProduct'));
+    const [cartProductData, setCartProductData] = useState([])
+    const [newPrice, setNewPrice] = useState(0)
+    const [itemCount, setItemCount] = useState(0)
+    
+
+ 
+    useEffect( () => {
+        const data = JSON.parse(localStorage.getItem('cartProduct'));
+        setCartProductData(data)
+    },[])
+
+
+    useEffect(() => {
+        let price = 0 ;
+        let quantity = 0;
+
+        cartProductData.map(newProduct => {
+            price = price + parseInt(newProduct.price)
+            quantity = quantity + parseInt(newProduct.quantity)
+        })
+        
+        setNewPrice(price)
+        setItemCount(cartProductData.length)
+        console.log(price)
+
+    }, [cartProductData])
+
+
+    const cartDeleteHandle = (id) => {
+        const deletedCart = cartProductData.filter(cart => {
+            return cart.id !== id;
+        })
+        localStorage.setItem('cartProduct', JSON.stringify(deletedCart));
+        setCartProductData(deletedCart)
+    }
+
     
 
     return (
@@ -27,20 +62,20 @@ const PaymentCheckOut = () => {
         {/* Main Section Laptop Page ---------------------------------------- */}
             <div className='container my-5'>
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-6 pe-4">
                         <h4 className='text-secondary mb-1 fw-normal'>Order Overview</h4>
                         <Divider className='mt-0 mb-4'/>
                         {
                             cartProductData && 
-                            cartProductData.map(cartProduct => <OrderdOverView key={cartProduct.id} cartProduct={cartProduct}/>)
+                            cartProductData.map(cartProduct => <OrderdOverView key={cartProduct.id} cartDeleteHandle={cartDeleteHandle} cartProduct={cartProduct}/>)
                         }
                         <h4 className='text-secondary pt-5 mb-1 fw-normal'>Payment Summary</h4>
                         <Divider className='mt-0 mb-4'/>
                         <div className='mx-md-2'>
-                            <PaymentSummary/>
+                            <PaymentSummary key={'2'} newPrice={newPrice} />
                         </div>
                     </div>
-                    <div className="col-md-6 border-start p-4">
+                    <div className="col-md-6 p-4 shadow-sm">
                         <h4 className='text-secondary text-center mb-1'>Please fill your shiping Information</h4>
                         <Divider className='mt-0 mb-4'/>
                         <div>

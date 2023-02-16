@@ -2,6 +2,11 @@ import { Divider } from 'antd';
 import React from 'react';
 
 const PaymentSummary = ({newPrice}) => {
+
+    const percentage = (newPrice / 100) * 5;
+    const totalValue = newPrice + percentage + 10;
+
+
     return (
         <div className='border p-4 bg-light'>
             <div className='d-flex justify-content-between'>
@@ -19,7 +24,7 @@ const PaymentSummary = ({newPrice}) => {
             <Divider className='mt-1 mb-2'/>
             <div className='d-flex justify-content-between'>
                 <h6>Total Price</h6>
-                <p className='fw-bold'>$<span>150</span></p>
+                <p className='fw-bold'>$<span>{totalValue}</span></p>
             </div>
         </div>
     );

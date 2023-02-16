@@ -10,7 +10,10 @@ import {auth} from '../../Firebase.init';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
-const TopNavigation = () => {
+const TopNavigation = ({itemCount}) => {
+
+    const cartProductData = JSON.parse(localStorage.getItem('cartProduct'));
+
     // Sign Out button 
     const singOutButton = () => {
       signOut(auth);
@@ -69,9 +72,17 @@ const TopNavigation = () => {
                                 </div> 
                             </div>
                         </div>
-                         <Badge count={1} showZero size="small">
-                            <FiShoppingCart onClick={cartNavigate} className='navigation_icon p-1'/>
-                        </Badge>
+                        {
+                            itemCount ?
+                            <Badge count={itemCount} size="small">
+                                <FiShoppingCart onClick={cartNavigate} className='navigation_icon p-1'/>
+                            </Badge>
+                            : 
+                            <Badge count={cartProductData.length} size="small">
+                                <FiShoppingCart onClick={cartNavigate} className='navigation_icon p-1'/>
+                            </Badge>
+                        } 
+                         
                          {/* <CiUser className='navigation_icon'/> */}
                             <Dropdown overlay={menu} placement="bottom" arrow>
                                 <Link onClick={(e) => e.preventDefault()}>

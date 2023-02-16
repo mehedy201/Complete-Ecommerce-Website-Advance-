@@ -16,6 +16,7 @@
     width: 30px;
     margin-right: 6px;
     margin-left: 6px;
+    cursor: pointer;
 }
 
 .for_responsivness_phone_input{

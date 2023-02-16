@@ -9,6 +9,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import './SingleProduct.css'
 import OnlyHpLaptop from '../../Componentes/OnlyHpLaptop/OnlyHpLaptop';
+import { async } from '@firebase/util';
 
 const SingleProduct = () => {
 
@@ -24,18 +25,21 @@ const SingleProduct = () => {
     // Increase and decress product number ----------------------------------------------
     const [count, setCount] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0)
+    const [itemCount, setItemCount] = useState(0)
+
 
     
 
     const {data: singleData, isLoading} = useQuery({
         queryKey: ['singleProduct'],
         queryFn: () => fetch(`http://localhost:5000/products/${id}`)
-        .then(res => res.json())
+                       .then(res => res.json())
     })
   
     if(isLoading){
       return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
     }
+
 
     // Handle Product increase button --------------------------------------------------
     let productPrice = singleData.price
@@ -45,13 +49,12 @@ const SingleProduct = () => {
         setCount(plusCount);
         const newPrice = productPrice * plusCount ;
         setTotalPrice(newPrice)
-        console.log(totalPrice)
     }
-    // Handle Product increase button -------------------------------------------------
+    // Handle Product decrease button -------------------------------------------------
     const handleMinas = () => {
             console.log(totalPrice)
             if(count < 2){
-                return alert('Must you buy 1 Product')
+                return alert('Must you have to buy 1 Product')
             }
             else{
                 const minasCount = count - 1;
@@ -60,6 +63,8 @@ const SingleProduct = () => {
                 setCount(minasCount);
             }
     }
+
+
 
     // Set Product Local Storage________________________________________________________________
     const addToCart = () => {
@@ -73,8 +78,38 @@ const SingleProduct = () => {
         const brand = singleData.inputBrandData;
         const quantity = count;
 
-        const localStoreData = {id, title, description, price, rating, image, category, brand, quantity, totalPrice}
-        console.log(localStoreData)
+        let totalAmount = singleData.price;
+        const localStoreData = {id, title, description, price, rating, image, category, brand, quantity, totalAmount}
+
+        let cartProduct;
+        const storage = localStorage.getItem('cartProduct')
+        if(totalPrice === 0){
+            if(storage === null){
+                cartProduct = []
+                cartProduct.push(localStoreData)
+            }else{
+                cartProduct = JSON.parse(storage)
+                cartProduct.push(localStoreData)
+            }
+            // cartProduct.push(localStoreData)
+            localStorage.setItem('cartProduct', JSON.stringify(cartProduct));
+        }else{
+            totalAmount = totalPrice;
+            if(storage === null){
+                cartProduct = []
+                cartProduct.push(localStoreData)
+            }else{
+                cartProduct = JSON.parse(storage)
+                cartProduct.push(localStoreData)
+            }
+            localStorage.setItem('cartProduct', JSON.stringify(cartProduct));
+        }
+
+
+        var getObj = JSON.parse(localStorage.getItem('cartProduct'));
+        setItemCount(getObj.length)
+        console.log(getObj)
+
     }
 
 
@@ -83,7 +118,7 @@ const SingleProduct = () => {
         <>
         {/* Header Section -------------------------------- */}
         <header>
-            <TopNavigation></TopNavigation>
+            <TopNavigation key={'itemCount'} itemCount={itemCount} ></TopNavigation>
             <Navigation></Navigation>
         </header>
         {/* Single Product Page Main Section ------------------------ */}

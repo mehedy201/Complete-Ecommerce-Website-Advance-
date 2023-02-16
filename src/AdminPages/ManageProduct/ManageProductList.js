@@ -37,7 +37,7 @@ const ManageProductList = ({index, product, handleDelete}) => {
                     <Tooltip title="Delete">
                       <AiOutlineDelete onClick={() => handleDelete(product._id)} className='text-danger me-3 for_pointer' style={{height: '20px', width: 'auto'}}/> 
                     </Tooltip>
-                    <Popover content={content} title="Action">
+                    <Popover placement="topRight" content={content} title="Action">
                         <BiDotsVerticalRounded className='text-secondary for_pointer' style={{height: '20px', width: 'auto'}}/>
                     </Popover>
                 </td>

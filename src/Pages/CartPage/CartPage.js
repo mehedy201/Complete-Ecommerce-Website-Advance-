@@ -1,5 +1,5 @@
 import { Divider } from 'antd';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
@@ -11,10 +11,51 @@ import './CartPage.css'
 
 const CartPage = () => {
     // UseNavigate from React hooks -----------------------------------------------------
+
+
     const navigate = useNavigate();
     const proceedCheckOut = () => {
         navigate('/payment-check-out')
     }
+    // Load Cart Product From LocalStorage______________________________________________
+    
+    const [cartProductData, setCartProductData] = useState([])
+    const [newPrice, setNewPrice] = useState(0)
+    const [itemCount, setItemCount] = useState(0)
+    
+
+ 
+    useEffect( () => {
+        const data = JSON.parse(localStorage.getItem('cartProduct'));
+        setCartProductData(data)
+    },[])
+
+
+    useEffect(() => {
+        let price = 0 ;
+        let quantity = 0;
+
+        cartProductData.map(newProduct => {
+            price = price + parseInt(newProduct.price)
+            quantity = quantity + parseInt(newProduct.quantity)
+        })
+        
+        setNewPrice(price)
+        setItemCount(cartProductData.length)
+        console.log(price)
+
+    }, [cartProductData])
+
+
+    const cartDeleteHandle = (id) => {
+        const deletedCart = cartProductData.filter(cart => {
+            return cart.id !== id;
+        })
+        localStorage.setItem('cartProduct', JSON.stringify(deletedCart));
+        setCartProductData(deletedCart)
+    }
+
+
 
 
 
@@ -22,7 +63,7 @@ const CartPage = () => {
         <>
         {/* Header Section -------------------------------- */}
         <header>
-            <TopNavigation></TopNavigation>
+            <TopNavigation key={'quantity'} itemCount={itemCount}></TopNavigation>
             <Navigation></Navigation>
         </header>
         {/* Cart Page Main Section -----------------------= */}
@@ -31,10 +72,13 @@ const CartPage = () => {
                     <h4>Cart Over View</h4>
                     <Divider className='mt-0'/>
                     <div className="col-md-8">
-                        <OrderdOverView/>
+                        {
+                            cartProductData && 
+                            cartProductData.map(cartProduct => <OrderdOverView key={cartProduct.id} cartProduct={cartProduct} cartDeleteHandle={cartDeleteHandle}/>)
+                        }
                     </div>
                     <div className="col-md-4 mt-2">
-                        <PaymentSummary/>
+                        <PaymentSummary key={'1'} newPrice={newPrice}/>
                         <div className='d-flex justify-content-end'>
                             <button onClick={proceedCheckOut} className='bg-info payment_check_out_btn fw-bold mt-3'>Procced to Check Out</button>
                         </div>

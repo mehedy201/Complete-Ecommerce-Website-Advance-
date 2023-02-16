@@ -12,6 +12,9 @@ import PaymentSummary from './PaymentSummary/PaymentSummary';
 
 
 const PaymentCheckOut = () => {
+
+    // Load Cart Product From LocalStorage______________________________________________
+    const cartProductData = JSON.parse(localStorage.getItem('cartProduct'));
     
 
     return (
@@ -27,8 +30,10 @@ const PaymentCheckOut = () => {
                     <div className="col-md-6">
                         <h4 className='text-secondary mb-1 fw-normal'>Order Overview</h4>
                         <Divider className='mt-0 mb-4'/>
-                        <OrderdOverView/>
-                        <OrderdOverView/>
+                        {
+                            cartProductData && 
+                            cartProductData.map(cartProduct => <OrderdOverView key={cartProduct.id} cartProduct={cartProduct}/>)
+                        }
                         <h4 className='text-secondary pt-5 mb-1 fw-normal'>Payment Summary</h4>
                         <Divider className='mt-0 mb-4'/>
                         <div className='mx-md-2'>

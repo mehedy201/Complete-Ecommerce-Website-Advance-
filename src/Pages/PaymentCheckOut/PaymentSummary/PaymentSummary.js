@@ -1,12 +1,12 @@
 import { Divider } from 'antd';
 import React from 'react';
 
-const PaymentSummary = () => {
+const PaymentSummary = ({newPrice}) => {
     return (
         <div className='border p-4 bg-light'>
             <div className='d-flex justify-content-between'>
                 <h6 className='fw-normal'>Total Product Price</h6>
-                <p className='fw-bold'>$<span>100</span></p>
+                <p className='fw-bold'>$<span>{newPrice}</span></p>
             </div>
             <div className='d-flex justify-content-between'>
                 <h6 className='fw-normal'>Vat</h6>

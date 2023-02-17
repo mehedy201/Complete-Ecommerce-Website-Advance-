@@ -11,6 +11,8 @@ import './CartPage.css'
 
 
 const CartPage = () => {
+
+    const {itemCount, setItemCount } = useContext(CART_CONTEXT);
     // UseNavigate from React hooks -----------------------------------------------------
 
     const navigate = useNavigate();
@@ -46,6 +48,8 @@ const CartPage = () => {
             return cart.id !== id;
         })
         localStorage.setItem('cartProduct', JSON.stringify(deletedCart));
+        let newCount = itemCount - 1;
+        setItemCount(newCount)
         setCartProductData(deletedCart)
     }
 

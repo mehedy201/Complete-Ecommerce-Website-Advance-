@@ -8,8 +8,6 @@ const OrderdOverView = ({cartProduct, cartDeleteHandle}) => {
     // Increase and decress product number ---------------------
     // const [count, setCount] = useState(0)
 
-    // const {count, setCount } = useContext(CART_CONTEXT);
-
     // console.log(cartProduct)
 
 

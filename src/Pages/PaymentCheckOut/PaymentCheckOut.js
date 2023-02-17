@@ -14,6 +14,8 @@ import PaymentSummary from './PaymentSummary/PaymentSummary';
 
 const PaymentCheckOut = () => {
 
+    const {itemCount, setItemCount } = useContext(CART_CONTEXT);
+
     // Load Cart Product From LocalStorage______________________________________________
     const [cartProductData, setCartProductData] = useState([])
     const [newPrice, setNewPrice] = useState(0);
@@ -41,6 +43,8 @@ const PaymentCheckOut = () => {
             return cart.id !== id;
         })
         localStorage.setItem('cartProduct', JSON.stringify(deletedCart));
+        let newCount = itemCount - 1;
+        setItemCount(newCount)
         setCartProductData(deletedCart)
     }
 

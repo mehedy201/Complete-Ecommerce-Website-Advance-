@@ -1,5 +1,6 @@
 import { Divider } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { CART_CONTEXT } from '../../App';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
@@ -15,11 +16,8 @@ const PaymentCheckOut = () => {
 
     // Load Cart Product From LocalStorage______________________________________________
     const [cartProductData, setCartProductData] = useState([])
-    const [newPrice, setNewPrice] = useState(0)
-    const [itemCount, setItemCount] = useState(0)
+    const [newPrice, setNewPrice] = useState(0);
     
-
- 
     useEffect( () => {
         const data = JSON.parse(localStorage.getItem('cartProduct'));
         setCartProductData(data)
@@ -34,11 +32,7 @@ const PaymentCheckOut = () => {
             price = price + parseInt(newProduct.price)
             quantity = quantity + parseInt(newProduct.quantity)
         })
-        
         setNewPrice(price)
-        setItemCount(cartProductData.length)
-        console.log(price)
-
     }, [cartProductData])
 
 
@@ -72,7 +66,7 @@ const PaymentCheckOut = () => {
                         <h4 className='text-secondary pt-5 mb-1 fw-normal'>Payment Summary</h4>
                         <Divider className='mt-0 mb-4'/>
                         <div className='mx-md-2'>
-                            <PaymentSummary key={'2'} newPrice={newPrice} />
+                            <PaymentSummary key={'payment'} newPrice={newPrice}/>
                         </div>
                     </div>
                     <div className="col-md-6 p-4 shadow-sm">

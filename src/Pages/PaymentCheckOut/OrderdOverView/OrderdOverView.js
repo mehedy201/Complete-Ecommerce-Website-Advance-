@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './OrderdOverView.css'
-import { IoMdRemove } from 'react-icons/io';
-import { MdOutlineAdd } from 'react-icons/md';
+// import { IoMdRemove } from 'react-icons/io';
+// import { MdOutlineAdd } from 'react-icons/md';
 import { CloseOutlined } from '@ant-design/icons';
 
 const OrderdOverView = ({cartProduct, cartDeleteHandle}) => {
     // Increase and decress product number ---------------------
     // const [count, setCount] = useState(0)
+
+    // const {count, setCount } = useContext(CART_CONTEXT);
 
     // console.log(cartProduct)
 
@@ -15,7 +17,6 @@ const OrderdOverView = ({cartProduct, cartDeleteHandle}) => {
     // const handlePlus = () => {
     //     const plusCount = count + 1;
     //     setCount(plusCount);
-    //     setDependencyCount(plusCount)
     // }
     // // Handle Product increase button --------------------------
     // const handleMinas = () => {
@@ -25,7 +26,6 @@ const OrderdOverView = ({cartProduct, cartDeleteHandle}) => {
     //         else{
     //             const minasCount = count - 1;
     //             setCount(minasCount);
-    //             setDependencyCount(minasCount)
     //         }
     // }
     return (
@@ -55,7 +55,7 @@ const OrderdOverView = ({cartProduct, cartDeleteHandle}) => {
                     </div>
                     <div>
                         <p className='text-center mb-2'>Total Price</p>
-                        <p className='text-center mb-1'>$ <span className='fw-bold'>{cartProduct.totalAmount}</span></p>
+                        <p className='text-center mb-1'>$ <span className='fw-bold'>{parseInt(cartProduct.price) * parseInt(cartProduct.quantity)}</span></p>
                     </div>
                 </div>
             </div>

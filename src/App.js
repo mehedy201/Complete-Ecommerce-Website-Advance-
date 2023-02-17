@@ -25,11 +25,21 @@ import DashBoardMain from './AdminPages/DashBoardMain/DashBoardMain';
 import ManageProduct from './AdminPages/ManageProduct/ManageProduct';
 import ManageOrder from './AdminPages/ManageOrder/ManageOrder';
 import EditProduct from './AdminPages/ManageProduct/EditProduct';
+import { createContext, useState } from 'react';
+
+export const CART_CONTEXT = createContext()
 
 function App() {
+
+  const [count, setCount] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [itemCount, setItemCount] = useState(0);
+  const value = {count, setCount, totalPrice, setTotalPrice, itemCount, setItemCount };
+
   return (
     <>
     {/* React Router Routes ---------------------------- */}
+      <CART_CONTEXT.Provider value={value}>
       <Routes>
         {/* Web site Front End ---------------------------------------------------------------------------- */}
         <Route path='/' element={<Home/>}></Route>
@@ -57,6 +67,7 @@ function App() {
           <Route path='manage-order' element={<ManageOrder/>}/>
         </Route>
       </Routes>
+      </CART_CONTEXT.Provider>
     </>
   );
 }

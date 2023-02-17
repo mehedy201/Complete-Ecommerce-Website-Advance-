@@ -1,6 +1,7 @@
 import { Divider } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { CART_CONTEXT } from '../../App';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
@@ -12,17 +13,13 @@ import './CartPage.css'
 const CartPage = () => {
     // UseNavigate from React hooks -----------------------------------------------------
 
-
     const navigate = useNavigate();
     const proceedCheckOut = () => {
         navigate('/payment-check-out')
     }
     // Load Cart Product From LocalStorage______________________________________________
-    
     const [cartProductData, setCartProductData] = useState([])
     const [newPrice, setNewPrice] = useState(0)
-    const [itemCount, setItemCount] = useState(0)
-    
 
  
     useEffect( () => {
@@ -33,17 +30,14 @@ const CartPage = () => {
 
     useEffect(() => {
         let price = 0 ;
-        let quantity = 0;
 
         cartProductData.map(newProduct => {
-            price = price + parseInt(newProduct.price)
-            quantity = quantity + parseInt(newProduct.quantity)
+            let productPrice = parseInt(newProduct.price)
+            let priceQuantity = productPrice * parseInt(newProduct.quantity)
+            price = price + priceQuantity;
         })
         
         setNewPrice(price)
-        setItemCount(cartProductData.length)
-        console.log(price)
-
     }, [cartProductData])
 
 
@@ -63,7 +57,7 @@ const CartPage = () => {
         <>
         {/* Header Section -------------------------------- */}
         <header>
-            <TopNavigation key={'quantity'} itemCount={itemCount}></TopNavigation>
+            <TopNavigation></TopNavigation>
             <Navigation></Navigation>
         </header>
         {/* Cart Page Main Section -----------------------= */}

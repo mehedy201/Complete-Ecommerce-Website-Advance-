@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './TopNavigation.css'
 import { Dropdown, Menu, Space, Spin } from 'antd'
 import { SlCallOut } from 'react-icons/sl';
@@ -9,10 +9,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import {auth} from '../../Firebase.init';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { CART_CONTEXT } from '../../App';
 
-const TopNavigation = ({itemCount}) => {
+const TopNavigation = () => {
+
+    const { itemCount } = useContext(CART_CONTEXT);
 
     const cartProductData = JSON.parse(localStorage.getItem('cartProduct'));
+
+    // Context State ____________________________________________________________________
+    
 
     // Sign Out button 
     const singOutButton = () => {

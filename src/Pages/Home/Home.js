@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FlashSale from '../../Componentes/FlashSale/FlashSale';
 import HeroSection from '../../Componentes/HeroSection/HeroSection';
 import HomePageProduct from '../../Componentes/HomePageProduct/HomePageProduct';
@@ -11,6 +11,9 @@ import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 
 const Home = () => {
+  const [count, setCount] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0)
+  const [itemCount, setItemCount] = useState(0)
     return (
         <>
             {/* Header Section -------------------------------- */}

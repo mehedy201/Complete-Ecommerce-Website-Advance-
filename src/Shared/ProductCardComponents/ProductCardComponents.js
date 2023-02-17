@@ -1,10 +1,62 @@
 import { Badge, Rate } from 'antd';
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './ProductCardComponents.css'
 import { BsCartPlus } from 'react-icons/bs';
+import { useNavigate } from 'react-router-dom';
+import { CART_CONTEXT } from '../../App';
 
 
 const ProductCardComponents = ({product, handleBuyNowButton}) => {
+
+    // setCount, setTotalPrice, itemCount, 
+
+    // Context State ____________________________________________________________________
+    const {count, totalPrice, setItemCount } = useContext(CART_CONTEXT)
+
+    const handleCartIcon = (singleData) => {
+        const id = singleData._id;
+        const title = singleData.title;
+        const description = singleData.description;
+        const price = singleData.price;
+        const rating = singleData.inputRating;
+        const image = singleData.featuredImage;
+        const category = singleData.inputCategoryData;
+        const brand = singleData.inputBrandData;
+        const quantity = count;
+
+        let totalAmount = singleData.price;
+        const localStoreData = {id, title, description, price, rating, image, category, brand, quantity, totalAmount}
+
+        let cartProduct;
+        const storage = localStorage.getItem('cartProduct')
+        if(totalPrice === 0){
+            if(storage === null){
+                cartProduct = []
+                cartProduct.push(localStoreData)
+            }else{
+                cartProduct = JSON.parse(storage)
+                cartProduct.push(localStoreData)
+            }
+            // cartProduct.push(localStoreData)
+            localStorage.setItem('cartProduct', JSON.stringify(cartProduct));
+        }else{
+            totalAmount = totalPrice;
+            if(storage === null){
+                cartProduct = []
+                cartProduct.push(localStoreData)
+            }else{
+                cartProduct = JSON.parse(storage)
+                cartProduct.push(localStoreData)
+            }
+            localStorage.setItem('cartProduct', JSON.stringify(cartProduct));
+        }
+
+
+        var getObj = JSON.parse(localStorage.getItem('cartProduct'));
+        setItemCount(getObj.length)
+        console.log(getObj)
+
+    }
   
     return (
         <>
@@ -22,7 +74,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         <Rate value={product?.inputRating} disabled/>
                         <div className='d-flex justify-content-between align-items-center'>
                             <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
-                            <BsCartPlus className='card_cart_icon'/>
+                            <BsCartPlus onClick={() => handleCartIcon(product)} className='card_cart_icon'/>
                         </div>
                     </div>
                 </div>

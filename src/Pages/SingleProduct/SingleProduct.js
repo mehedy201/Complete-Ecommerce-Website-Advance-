@@ -1,5 +1,5 @@
 import { Rate, Spin } from 'antd';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
@@ -10,6 +10,7 @@ import { useQuery } from '@tanstack/react-query';
 import './SingleProduct.css'
 import OnlyHpLaptop from '../../Componentes/OnlyHpLaptop/OnlyHpLaptop';
 import { async } from '@firebase/util';
+import { CART_CONTEXT } from '../../App';
 
 const SingleProduct = () => {
 
@@ -21,13 +22,9 @@ const SingleProduct = () => {
     const handleBuyButton = () => {
         navigate('/payment-check-out')
     }
-   
-    // Increase and decress product number ----------------------------------------------
-    const [count, setCount] = useState(1);
-    const [totalPrice, setTotalPrice] = useState(0)
-    const [itemCount, setItemCount] = useState(0)
 
-
+    // Context State ____________________________________________________________________
+    const {count, setCount, totalPrice, setTotalPrice, itemCount, setItemCount } = useContext(CART_CONTEXT)
     
 
     const {data: singleData, isLoading} = useQuery({
@@ -118,7 +115,7 @@ const SingleProduct = () => {
         <>
         {/* Header Section -------------------------------- */}
         <header>
-            <TopNavigation key={'itemCount'} itemCount={itemCount} ></TopNavigation>
+            <TopNavigation></TopNavigation>
             <Navigation></Navigation>
         </header>
         {/* Single Product Page Main Section ------------------------ */}

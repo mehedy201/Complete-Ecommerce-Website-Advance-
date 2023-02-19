@@ -4,9 +4,11 @@ import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 import mehedi from '../../Images/aaaaaIMG_9935-mikkkkkn.JPG'
-import { Divider } from 'antd';
+import { Divider  } from 'antd';
 
 const AboutUs = () => {
+
+  
     return (
         <>
         {/* Header Section -------------------------------- */}
@@ -38,6 +40,7 @@ const AboutUs = () => {
                     </div>
                     <div className="col-md-6 d-flex justify-content-center">
                         <h1 className='text-secondary my-auto'>Imgae will be here</h1>
+                        
                     </div>
                 </div>
             </div>

@@ -26,6 +26,7 @@ import ManageProduct from './AdminPages/ManageProduct/ManageProduct';
 import ManageOrder from './AdminPages/ManageOrder/ManageOrder';
 import EditProduct from './AdminPages/ManageProduct/EditProduct';
 import { createContext, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 export const CART_CONTEXT = createContext()
 
@@ -68,6 +69,7 @@ function App() {
         </Route>
       </Routes>
       </CART_CONTEXT.Provider>
+      <Toaster />
     </>
   );
 }

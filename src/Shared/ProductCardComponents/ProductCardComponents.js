@@ -1,9 +1,11 @@
 import { Badge, Rate } from 'antd';
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './ProductCardComponents.css'
 import { BsCartPlus } from 'react-icons/bs';
-import { useNavigate } from 'react-router-dom';
 import { CART_CONTEXT } from '../../App';
+import toast from 'react-hot-toast';
+
+
 
 
 const ProductCardComponents = ({product, handleBuyNowButton}) => {
@@ -12,6 +14,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
 
     // Context State ____________________________________________________________________
     const {count, totalPrice, setItemCount } = useContext(CART_CONTEXT)
+
 
     const handleCartIcon = (singleData) => {
         const id = singleData._id;
@@ -54,8 +57,10 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
 
         var getObj = JSON.parse(localStorage.getItem('cartProduct'));
         setItemCount(getObj.length)
-        console.log(getObj)
-
+        toast.success('Added Your Cart Item!', {
+            duration: 3000,
+            position: 'top-right'
+        });
     }
   
     return (

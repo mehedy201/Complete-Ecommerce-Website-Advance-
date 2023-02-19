@@ -1,5 +1,5 @@
 import { Rate, Spin } from 'antd';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import Navigation from '../../Shared/Navigation/Navigation';
 import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
@@ -9,8 +9,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import './SingleProduct.css'
 import OnlyHpLaptop from '../../Componentes/OnlyHpLaptop/OnlyHpLaptop';
-import { async } from '@firebase/util';
 import { CART_CONTEXT } from '../../App';
+import toast from 'react-hot-toast';
 
 const SingleProduct = () => {
 
@@ -24,7 +24,7 @@ const SingleProduct = () => {
     }
 
     // Context State ____________________________________________________________________
-    const {count, setCount, totalPrice, setTotalPrice, itemCount, setItemCount } = useContext(CART_CONTEXT)
+    const {count, setCount, totalPrice, setTotalPrice, setItemCount } = useContext(CART_CONTEXT)
     
 
     const {data: singleData, isLoading} = useQuery({
@@ -105,7 +105,10 @@ const SingleProduct = () => {
 
         var getObj = JSON.parse(localStorage.getItem('cartProduct'));
         setItemCount(getObj.length)
-        console.log(getObj)
+        toast.success('Added Your Cart Item!', {
+            duration: 3000,
+            position: 'top-right'
+        });
 
     }
 

@@ -5,6 +5,7 @@ import { BsPlusLg } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import ManageProductList from './ManageProductList';
+import toast from 'react-hot-toast';
 
 const ManageProduct = () => {
 
@@ -47,7 +48,10 @@ const ManageProduct = () => {
               const remain = productData.filter(item => item._id !== id);
               console.log(data, productData);
               setProductData(remain);
-              // toast('Delete')
+              toast.success('Product Deleted.!', {
+                duration: 3000,
+                position: 'top-right'
+            });
           })
       }
   }

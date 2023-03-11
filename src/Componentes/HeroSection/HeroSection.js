@@ -9,7 +9,7 @@ import { CiCamera } from 'react-icons/ci';
 import { CiHeadphones } from 'react-icons/ci';
 import { CiSpeaker } from 'react-icons/ci';
 import { CiMonitor } from 'react-icons/ci';
-import { TfiGame } from 'react-icons/tfi';
+import { GiDeliveryDrone } from 'react-icons/gi';
 
 
 
@@ -26,7 +26,7 @@ const HeroSection = () => {
                         <Link className='text-black fw-bold py-2 px-md-0 px-lg-4 shadow-sm my-1 d-block rounded text_hover_color' to="/laptop"><IoIosLaptop className='hero_section_catagory_icon'/>Laptop<BsArrowRight className='hero_animeted_icon'/></Link>
                         <Link className='text-black fw-bold py-2 px-md-0 px-lg-4 shadow-sm my-1 d-block rounded text_hover_color' to="/smartPhone"><AiOutlineMobile className='hero_section_catagory_icon'/>Smart Phone<BsArrowRight className='hero_animeted_icon'/></Link>
                         <Link className='text-black fw-bold py-2 px-md-0 px-lg-4 shadow-sm my-1 d-block rounded text_hover_color' to="/camera"><CiCamera className='hero_section_catagory_icon'/>Camera<BsArrowRight className='hero_animeted_icon'/></Link>
-                        <Link className='text-black fw-bold py-2 px-md-0 px-lg-4 shadow-sm my-1 d-block rounded text_hover_color' to="/gameing"><TfiGame className='hero_section_catagory_icon'/>Gaming<BsArrowRight className='hero_animeted_icon'/></Link>
+                        <Link className='text-black fw-bold py-2 px-md-0 px-lg-4 shadow-sm my-1 d-block rounded text_hover_color' to="/drone"><GiDeliveryDrone className='hero_section_catagory_icon'/>Drone<BsArrowRight className='hero_animeted_icon'/></Link>
                         <Link className='text-black fw-bold py-2 px-md-0 px-lg-4 shadow-sm my-1 d-block rounded text_hover_color' to="/headPhone"><CiHeadphones className='hero_section_catagory_icon'/>Headphones<BsArrowRight className='hero_animeted_icon'/></Link>
                         <Link className='text-black fw-bold py-2 px-md-0 px-lg-4 shadow-sm my-1 d-block rounded text_hover_color' to="/speakers"><CiSpeaker className='hero_section_catagory_icon'/>Speakers<BsArrowRight className='hero_animeted_icon'/></Link>
                         <Link className='text-black fw-bold py-2 px-md-0 px-lg-4 shadow-sm my-1 d-block rounded text_hover_color' to="/monitor"><CiMonitor className='hero_section_catagory_icon'/>Monitor<BsArrowRight className='hero_animeted_icon'/></Link>  

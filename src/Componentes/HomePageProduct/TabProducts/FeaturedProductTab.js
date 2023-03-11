@@ -16,7 +16,7 @@ const FeaturedProductTab = () => {
         queryKey: ['forTabs'],
         queryFn: () => fetch('http://localhost:5000/products')
         .then(res => res.json())
-      })
+    })
   
     const matched1 = [];
     let featured;

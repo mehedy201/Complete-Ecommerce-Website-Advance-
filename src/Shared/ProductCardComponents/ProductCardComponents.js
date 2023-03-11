@@ -2,8 +2,8 @@ import { Badge, Rate } from 'antd';
 import React, { useContext } from 'react';
 import './ProductCardComponents.css'
 import { BsCartPlus } from 'react-icons/bs';
-import { CART_CONTEXT } from '../../App';
 import toast from 'react-hot-toast';
+import { CART_CONTEXT } from '../../App';
 
 
 

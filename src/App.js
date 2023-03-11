@@ -45,15 +45,15 @@ function App() {
         {/* Web site Front End ---------------------------------------------------------------------------- */}
         <Route path='/' element={<Home/>}></Route>
         <Route path='/cart' element={<CartPage/>}></Route>
-        <Route path='/shop' element={<ShopPage/>}></Route>
         <Route path='/single-product/:id' element={<SingleProduct/>}></Route>
+        <Route path='/shop' element={<ShopPage/>}></Route>
         <Route path='/laptop' element={<LaptopPage/>}></Route>
         <Route path='/smartPhone' element={<SmartPhonePage/>}></Route>
         <Route path='/camera' element={<CameraPage/>}></Route>
         <Route path='/headPhone' element={<HeadPhonePage/>}></Route>
         <Route path='/monitor' element={<MonitorPage/>}></Route>
         <Route path='/speakers' element={<SpeakarsPage/>}></Route>
-        <Route path='/gameing' element={<GamingPage/>}></Route>
+        <Route path='/drone' element={<GamingPage/>}></Route>
         <Route path='/payment-check-out' element={<PaymentCheckOut/>}></Route>
         <Route path='/log-in' element={<LogIn/>}></Route>
         <Route path='/sign-up' element={<RegistretionPage/>}></Route>

@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import FooterSection from '../../../Shared/FooterSection/FooterSection';
 import Navigation from '../../../Shared/Navigation/Navigation';
@@ -8,6 +9,17 @@ import ProductPageLeftSideComponents from '../ProductPageLeftSideComponents/Prod
 const LaptopPage = () => {
     // Props for Product Page left side components ---------------------------
     const brandName = 'Laptop';
+
+    const {data,  isLoading} = useQuery({
+        queryKey: ['laptopData'],
+        queryFn: () => fetch(`http://localhost:5000/products/category/${brandName}`)
+        .then(res => res.json())
+    })
+
+    console.log(data)
+    if(isLoading){
+        return isLoading;
+    }
 
     return (
         <>
@@ -22,7 +34,9 @@ const LaptopPage = () => {
                     <ProductPageLeftSideComponents brandName={brandName}></ProductPageLeftSideComponents>
                     <div className="col-md-9">
                         <div className="shop_page_grid my-4">
-                            <ShopProduct></ShopProduct>
+                            {
+                                data.map(product => <ShopProduct key={product._id} product={product}></ShopProduct>)
+                            }
                         </div>
                     </div>
                 </div>

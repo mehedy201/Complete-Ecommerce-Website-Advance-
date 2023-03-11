@@ -9,15 +9,15 @@ import { ref , getDownloadURL, uploadBytesResumable} from "firebase/storage";
 const AddProduct = () => {
 
   // Select Category and Brand Name Start -------------------
-  const categoryData  = ['Laptop', 'SmartPhone', 'Camera', 'Gaming', 'Headphones', 'Speakers', 'Monitor'];
+  const categoryData  = ['Laptop', 'SmartPhone', 'Camera', 'Drone', 'Headphones', 'Speakers', 'Monitor'];
   const brandData = {
-    Laptop: ['HP', 'Asus', 'Dell'],
-    SmartPhone: ['Iphone', 'Nokia', 'Samsung', 'Vivo'],
-    Camera: ['Canon', 'Nikon', 'Sony'],
-    Gaming: ['game1', 'game2', 'game3'],
-    Headphones: ['Bose', 'Apple', 'Sony'],
-    Speakers: ['Spekar1', 'Spekar2', 'Spekar3'],
-    Monitor: ['monitor1', 'monitor2', 'monitor3'],
+    Laptop: ['HP', 'Asus', 'Dell', 'Lenovo', 'Acer', 'MSI', 'Microsoft'],
+    SmartPhone: ['Iphone', 'Nokia', 'Samsung', 'Vivo', 'Realme', 'Readme', 'Sony'],
+    Camera: ['Canon', 'Nikon', 'Sony', 'Fujifilm', 'Panasonic', 'Olympus', 'PENTAX' ],
+    Drone: ['DJI', 'Yuneec', 'Parrot SA', 'Autel Robotics', 'Hubsan'],
+    Headphones: ['Bose', 'Apple', 'Sony', 'JBL', 'Beats'],
+    Speakers: ['Amazon', 'Anker', 'Apple', 'Bose', 'Google', 'JBL'],
+    Monitor: ['Acer', 'ASUS', 'Dell', 'Gigabyte', 'LG', 'Samsung'],
   };
   const [category, setCategory] = useState(brandData[categoryData[0]]);
   const [brand, setBrand] = useState(brandData[categoryData[0]][0]);
@@ -47,7 +47,6 @@ const AddProduct = () => {
 
   // Select Criteria Data ---------------------------------
   const handleChange = (value) => {
-      // console.log(`selected ${value}`);
       setInputCriteriaData(value)
   };
 
@@ -57,8 +56,7 @@ const AddProduct = () => {
 
   // Handle upload OnChange---------------------------------
   const handleUpload = async  (file) => {
-    // console.log(file)
-    // setInputUpload([]);
+
     try {
             var imageUrl = [];
             for (let i = 0; i < file.length; i++) {

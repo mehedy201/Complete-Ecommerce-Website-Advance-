@@ -27,6 +27,12 @@ import ManageOrder from './AdminPages/ManageOrder/ManageOrder';
 import EditProduct from './AdminPages/ManageProduct/EditProduct';
 import { createContext, useState } from 'react';
 import { Toaster } from 'react-hot-toast';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from './Firebase.init';
+import { Spin } from 'antd';
+import Admin from './Shared/Admin/Admin';
+import TopNavigation from './Shared/TopNavigation/TopNavigation';
+import Navigation from './Shared/Navigation/Navigation';
 
 export const CART_CONTEXT = createContext()
 
@@ -37,10 +43,25 @@ function App() {
   const [itemCount, setItemCount] = useState(0);
   const value = {count, setCount, totalPrice, setTotalPrice, itemCount, setItemCount };
 
+  const [user, loading] = useAuthState(auth);
+
+    if(loading){
+        return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
+    }
+
+    console.log(user?.email)
   return (
     <>
+    
     {/* React Router Routes ---------------------------- */}
       <CART_CONTEXT.Provider value={value}>
+        {
+          user?.email === 'admin@gmail.com' ? '' :
+          <header>
+                <TopNavigation></TopNavigation>
+                <Navigation></Navigation>
+          </header>
+        }
       <Routes>
         {/* Web site Front End ---------------------------------------------------------------------------- */}
         <Route path='/' element={<Home/>}></Route>
@@ -59,6 +80,7 @@ function App() {
         <Route path='/sign-up' element={<RegistretionPage/>}></Route>
         <Route path='/about-us' element={<AboutUs/>}></Route>
         <Route path='/contact-us' element={<ContactUs/>}></Route>
+        <Route path='/admin' element={<Admin/>}></Route>
         {/* Admin Pages ----------------------------------------------------------------------------------- */}
         <Route path='/dashboard' element={<DashBoard/>}>
           <Route index element={<DashBoardMain/>}/>

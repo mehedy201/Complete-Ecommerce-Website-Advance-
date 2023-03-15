@@ -9,8 +9,6 @@ import { CiHeadphones } from 'react-icons/ci';
 import { CiSpeaker } from 'react-icons/ci';
 import { CiMonitor } from 'react-icons/ci';
 import { TfiGame } from 'react-icons/tfi';
-import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
-import Navigation from '../../Shared/Navigation/Navigation';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import ShopProduct from './ShopProduct/ShopProduct';
 
@@ -18,10 +16,6 @@ const ShopPage = (index) => {
 
     return (
         <>
-        <header>
-            <TopNavigation></TopNavigation>
-            <Navigation></Navigation>
-        </header>
         <div className='container my-5'>
             <div className='row'>
                 <div className="col-md-3 shadow-sm rounded p-md-4 bg-light">

@@ -7,8 +7,6 @@ import OurPratners from '../../Componentes/OurPratners/OurPratners';
 import ShopPolicy from '../../Componentes/ShopPolicy/ShopPolicy';
 import SubscribeNow from '../../Componentes/SubscribeNow/SubscribeNow';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
-import Navigation from '../../Shared/Navigation/Navigation';
-import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 
 const Home = () => {
   // const [count, setCount] = useState(1);
@@ -16,11 +14,6 @@ const Home = () => {
   // const [itemCount, setItemCount] = useState(0)
     return (
         <>
-            {/* Header Section -------------------------------- */}
-            <header>
-              <TopNavigation></TopNavigation>
-              <Navigation></Navigation>
-            </header>
             {/* Website main Part of home page ---------------- */}
             <main>
                 <HeroSection></HeroSection>

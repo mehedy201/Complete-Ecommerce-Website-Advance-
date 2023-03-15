@@ -1,8 +1,6 @@
 import { Rate, Spin } from 'antd';
 import React, { useContext } from 'react';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
-import Navigation from '../../Shared/Navigation/Navigation';
-import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 import { IoMdRemove } from 'react-icons/io';
 import { MdOutlineAdd } from 'react-icons/md';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -116,11 +114,6 @@ const SingleProduct = () => {
 
     return (
         <>
-        {/* Header Section -------------------------------- */}
-        <header>
-            <TopNavigation></TopNavigation>
-            <Navigation></Navigation>
-        </header>
         {/* Single Product Page Main Section ------------------------ */}
                 <main className='container my-5'>
                     <div className="row mb-5 align-items-center">

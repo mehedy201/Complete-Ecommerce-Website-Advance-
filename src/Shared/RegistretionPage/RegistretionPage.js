@@ -2,8 +2,6 @@ import React from 'react';
 import './RegistretionPage.css'
 import { useForm } from "react-hook-form";
 import FooterSection from '../FooterSection/FooterSection';
-import TopNavigation from '../TopNavigation/TopNavigation';
-import Navigation from '../Navigation/Navigation';
 import { MdAppRegistration } from 'react-icons/md';
 import { BsGithub } from 'react-icons/bs';
 import { FaGoogle } from 'react-icons/fa';
@@ -94,11 +92,6 @@ const RegistretionPage = () => {
 
     return (
         <>
-        {/* Navigation ------------------------------------------------------------------------------------ */}
-        <header>
-            <TopNavigation></TopNavigation>
-            <Navigation></Navigation>
-        </header>
         {/* Form Section ---------------------------------------------------------------------------------- */}
             <div className='container'>
                 <div className='d-flex justify-content-center my-5'>

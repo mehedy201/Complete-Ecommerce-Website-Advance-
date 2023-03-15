@@ -1,8 +1,6 @@
 import React from 'react';
 import './AboutUs.css'
 import FooterSection from '../../Shared/FooterSection/FooterSection';
-import Navigation from '../../Shared/Navigation/Navigation';
-import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 import mehedi from '../../Images/aaaaaIMG_9935-mikkkkkn.JPG'
 import { Divider  } from 'antd';
 
@@ -11,11 +9,6 @@ const AboutUs = () => {
   
     return (
         <>
-        {/* Header Section -------------------------------- */}
-        <header>
-            <TopNavigation></TopNavigation>
-            <Navigation></Navigation>
-        </header>
         {/* Cart Page Main Section -----------------------= */}
             <div className='container my-5'>
                 <div className='row shadow rounded align-items-center p-4 about_page_hero_section my-4'>

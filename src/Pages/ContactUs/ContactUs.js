@@ -1,8 +1,6 @@
 import React from 'react';
 import './ContactUs.css'
 import FooterSection from '../../Shared/FooterSection/FooterSection';
-import Navigation from '../../Shared/Navigation/Navigation';
-import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 import { Divider } from 'antd';
 import { FiMapPin } from 'react-icons/fi';
 import { CgSmartphone } from 'react-icons/cg';
@@ -18,11 +16,6 @@ import { Link } from 'react-router-dom';
 const ContactUs = () => {
     return (
         <>
-        {/* Header Section -------------------------------- */}
-        <header>
-            <TopNavigation></TopNavigation>
-            <Navigation></Navigation>
-        </header>
         {/* Cart Page Main Section -----------------------= */}
           
             <div>

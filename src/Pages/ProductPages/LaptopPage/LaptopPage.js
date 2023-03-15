@@ -1,18 +1,16 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import FooterSection from '../../../Shared/FooterSection/FooterSection';
-import Navigation from '../../../Shared/Navigation/Navigation';
-import TopNavigation from '../../../Shared/TopNavigation/TopNavigation';
 import ShopProduct from '../../ShopPage/ShopProduct/ShopProduct';
-import ProductPageLeftSideComponents from '../ProductPageLeftSideComponents/ProductPageLeftSideComponents';
+import { BsArrowRight } from 'react-icons/bs';
 
 const LaptopPage = () => {
     // Props for Product Page left side components ---------------------------
-    const brandName = 'Laptop';
 
     const {data,  isLoading} = useQuery({
         queryKey: ['laptopData'],
-        queryFn: () => fetch(`http://localhost:5000/products/category/${brandName}`)
+        queryFn: () => fetch(`http://localhost:5000/products/category/Laptop`)
         .then(res => res.json())
     })
 
@@ -23,15 +21,18 @@ const LaptopPage = () => {
 
     return (
         <>
-        {/* Navigation ---------------------------------------------------- */}
-        <header>
-            <TopNavigation></TopNavigation>
-            <Navigation></Navigation>
-        </header>
         {/* Main Section Laptop Page ---------------------------------------- */}
             <div className='container my-5'>
                 <div className="row">
-                    <ProductPageLeftSideComponents brandName={brandName}></ProductPageLeftSideComponents>
+                    <div className="col-md-3">
+                        <div  className='shadow-sm rounded p-md-4 sticky-top'>
+                        <h2 className='text-secondary fs-5'>Laptop Brands...</h2>
+                        <hr />
+                            {
+                                data.map(brandName => <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop">{brandName.inputBrandData}<BsArrowRight className='hero_animeted_icon'/></Link>)
+                            }
+                        </div>
+                    </div>
                     <div className="col-md-9">
                         <div className="shop_page_grid my-4">
                             {

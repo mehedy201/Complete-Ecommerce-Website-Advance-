@@ -94,7 +94,7 @@ const TopNavigation = () => {
                                 <Link onClick={(e) => e.preventDefault()}>
                                     <Space>
                                         {
-                                            user? <Badge count={user.displayName.slice(0,1)} style={{backgroundColor: '#52c41a'}} size="small" offset={[-5, 0]}>
+                                            user?.displayName ? <Badge count={user.displayName.slice(0,1)} style={{backgroundColor: '#52c41a'}} size="small" offset={[-5, 0]}>
                                                     <CiUser className='navigation_icon'/>
                                                   </Badge>
                                                   :

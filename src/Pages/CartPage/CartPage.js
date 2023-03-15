@@ -3,8 +3,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CART_CONTEXT } from '../../App';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
-import Navigation from '../../Shared/Navigation/Navigation';
-import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 import OrderdOverView from '../PaymentCheckOut/OrderdOverView/OrderdOverView';
 import PaymentSummary from '../PaymentCheckOut/PaymentSummary/PaymentSummary';
 import './CartPage.css'
@@ -59,11 +57,6 @@ const CartPage = () => {
 
     return (
         <>
-        {/* Header Section -------------------------------- */}
-        <header>
-            <TopNavigation></TopNavigation>
-            <Navigation></Navigation>
-        </header>
         {/* Cart Page Main Section -----------------------= */}
             <div className='container my-5'>
                 <div className="row">

@@ -1,13 +1,23 @@
 import { Badge, Dropdown, Menu, Space } from 'antd';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CiUser } from 'react-icons/ci';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../../Firebase.init';
 
 const AdminNavigation = () => {
+
+    const navigate = useNavigate();
+    // Sign Out button 
+    const singOut = () => {
+        signOut(auth);
+        navigate('/admin')
+        console.log('navigate')
+      }
     const menu = (
         <Menu
           items={[
-            { key: '1', label: ( <Link to={'/'}>Sign Out</Link>),},
+            { key: '1', label: ( <Link onClick={singOut} to={'/'}>Sign Out</Link>),},
           ]}
         />
       );

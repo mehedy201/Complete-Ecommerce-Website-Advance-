@@ -1,7 +1,5 @@
 import React from 'react';
 import FooterSection from '../../../Shared/FooterSection/FooterSection';
-import Navigation from '../../../Shared/Navigation/Navigation';
-import TopNavigation from '../../../Shared/TopNavigation/TopNavigation';
 import ShopProduct from '../../ShopPage/ShopProduct/ShopProduct';
 import ProductPageLeftSideComponents from '../ProductPageLeftSideComponents/ProductPageLeftSideComponents';
 
@@ -10,11 +8,6 @@ const HeadPhonePage = () => {
     const brandName = 'Head Phone';
     return (
         <>
-        {/* Navigation ---------------------------------------------------- */}
-        <header>
-            <TopNavigation></TopNavigation>
-            <Navigation></Navigation>
-        </header>
         {/* Main Section Laptop Page ---------------------------------------- */}
             <div className='container my-5'>
                 <div className="row">

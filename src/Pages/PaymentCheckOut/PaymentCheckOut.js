@@ -52,11 +52,6 @@ const PaymentCheckOut = () => {
 
     return (
         <>
-        {/* Navigation ---------------------------------------------------- */}
-        <header>
-            <TopNavigation></TopNavigation>
-            <Navigation></Navigation>
-        </header>
         {/* Main Section Laptop Page ---------------------------------------- */}
             <div className='container my-5'>
                 <div className="row">

@@ -65,7 +65,7 @@ const ContactUs = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-6 p-md-4 shadow rounded mt-4">
+                        <div className="col-md-6 p-md-4 shadow rounded mt-4 for_transform">
                             <h4 className='mb-0 text-secondary text-center mt-2'>Contact with Email</h4>
                             <p className="text-center">I will get back soon</p>
                             <form action="">

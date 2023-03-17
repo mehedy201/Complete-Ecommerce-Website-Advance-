@@ -1,6 +1,10 @@
 import React from 'react';
 import headPhoneImage from '../../Images/headphones.jpg';
 import Carousel from 'react-multi-carousel';
+import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { Spin } from 'antd';
+import FlashSaleSlider from './FlashSaleSlider';
 
 
 const FlashSale = () => {
@@ -25,37 +29,50 @@ const FlashSale = () => {
           items: 1
         }
       };
+
+      const navigate = useNavigate();
+    const handleBuyNowButton = (id) => {
+        navigate(`/single-product/${id}`)
+    }
+
+    const {data: productData,  isLoading} = useQuery({
+        queryKey: ['forTabs'],
+        queryFn: () => fetch('http://localhost:5000/products')
+        .then(res => res.json())
+    })
+  
+    const matched1 = [];
+    let flashSale;
+    if(isLoading){
+       return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
+    }else{
+        for (let i = 0; i < productData.length; i++) {
+            const element = productData[i];
+            if(element.inputCriteriaData.includes("Flash Sale")){
+                matched1.push(element) 
+            }
+                flashSale = matched1.slice(0, 8)
+            }
+    }
     return (
         <div className='container mt-5'>
             <h4>Today Flash Sale</h4>
             <div className='border border-warning p-4 rounded'>
             <Carousel
              responsive={responsive}
-             className=''>
-                <div className='w-md-50 d-flex align-items-center'>
+             >
+                {/* <div className='w-md-50 d-flex align-items-center'>
                     <img style={{height: 'auto', width: '150px', margin: '15px'}} src={headPhoneImage} alt="" />
                     <div>
                         <h4>Lorem ipsum dolor sit amet.</h4>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, porro?</p>
                         <button className='btn bg-info'>Buy Now</button>
                     </div>
-                </div>
-                <div className='w-md-50 d-flex align-items-center'>
-                    <img style={{height: 'auto', width: '150px', margin: '15px'}} src={headPhoneImage} alt="" />
-                    <div>
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, porro?</p>
-                        <button className='btn bg-info'>Buy Now</button>
-                    </div>
-                </div>
-                <div className='w-md-50 d-flex align-items-center'>
-                    <img style={{height: 'auto', width: '150px', margin: '15px'}} src={headPhoneImage} alt="" />
-                    <div>
-                        <h4>Lorem ipsum dolor sit amet.</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat, porro?</p>
-                        <button className='btn bg-info'>Buy Now</button>
-                    </div>
-                </div>
+                </div> */}
+              
+               {
+                 flashSale.map(product => <FlashSaleSlider key={product._id} product={product} handleBuyNowButton={handleBuyNowButton} />)
+               }
             </Carousel>
             </div>
             <br />

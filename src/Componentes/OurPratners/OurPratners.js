@@ -10,8 +10,8 @@ import nike from '../../Images/brands-logo/nike_PNG5.png'
 const OurPratners = () => {
     return (
         <div className='container my-5'>
-            <h4 className='text-center pt-2'>Our Partners</h4>
-            <div className="row align-items-center p-4">
+            <h4 className='text-center pt-4'>Our Partners</h4>
+            <div className="row align-items-center px-4 pb-4">
                 <div className="col-md-2 col-sm-4 border-end p-2 border-start"><img className='brand_image' src={payPal} alt="" /></div>
                 <div className="col-md-2 col-sm-4 border-end p-2"><img className='brand_image' src={walMart} alt="" /></div>
                 <div className="col-md-2 col-sm-4 border-end p-2"><img className='brand_image' src={mirosoft} alt="" /></div>

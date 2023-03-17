@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './TopNavigation.css'
 import { Dropdown, Menu, Space, Spin } from 'antd'
 import { SlCallOut } from 'react-icons/sl';
@@ -10,12 +10,14 @@ import {auth} from '../../Firebase.init';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { CART_CONTEXT } from '../../App';
+import CartPage from '../../Pages/CartPage/CartPage';
 
 const TopNavigation = () => {
 
     const { itemCount } = useContext(CART_CONTEXT);
 
     const cartProductData = JSON.parse(localStorage.getItem('cartProduct'));
+
 
     // Context State ____________________________________________________________________
     

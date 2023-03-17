@@ -2,8 +2,6 @@ import { Divider } from 'antd';
 import React, { useContext, useEffect, useState } from 'react';
 import { CART_CONTEXT } from '../../App';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
-import Navigation from '../../Shared/Navigation/Navigation';
-import TopNavigation from '../../Shared/TopNavigation/TopNavigation';
 import OrderdOverView from './OrderdOverView/OrderdOverView';
 import './PaymentCheckOut.css'
 import PaymentSummary from './PaymentSummary/PaymentSummary';
@@ -15,6 +13,8 @@ import PaymentSummary from './PaymentSummary/PaymentSummary';
 const PaymentCheckOut = () => {
 
     const {itemCount, setItemCount } = useContext(CART_CONTEXT);
+    const cartProductCount = JSON.parse(localStorage.getItem('cartProduct'));
+
 
     // Load Cart Product From LocalStorage______________________________________________
     const [cartProductData, setCartProductData] = useState([])
@@ -43,7 +43,7 @@ const PaymentCheckOut = () => {
             return cart.id !== id;
         })
         localStorage.setItem('cartProduct', JSON.stringify(deletedCart));
-        let newCount = itemCount - 1;
+        let newCount = cartProductCount.length - 1;
         setItemCount(newCount)
         setCartProductData(deletedCart)
     }

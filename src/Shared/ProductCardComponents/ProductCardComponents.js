@@ -75,7 +75,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                     <div className='px-4 pb-4'>
                         <small>{product?.inputBrandData}</small>
                         {product?.title.length > 22 ? <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product.title.slice(0,22)}..</h5> : <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>}
-                        <p className='mb-0 text-info fw-semibold'>{product.price}</p>
+                        <p className='mb-0 text-info fw-semibold'>Price: ${product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
                         <div className='d-flex justify-content-between align-items-center'>
                             <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
@@ -95,7 +95,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                     <div className='px-4 pb-4'>
                         <small>{product?.inputBrandData}</small>
                         {product?.title.length > 22 ? <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product.title.slice(0,22)}..</h5> : <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>}
-                        <p className='mb-0 text-info fw-semibold'>{product.price}</p>
+                        <p className='mb-0 text-info fw-semibold'>Price: ${product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
                         <div className='d-flex justify-content-between align-items-center'>
                             <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
@@ -115,7 +115,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                     <div className='px-4 pb-4'>
                         <small>{product?.inputBrandData}</small>
                         {product?.title.length > 22 ? <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product.title.slice(0,22)}..</h5> : <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>}
-                        <p className='mb-0 text-info fw-semibold'>{product.price}</p>
+                        <p className='mb-0 text-info fw-semibold'>Price: ${product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
                         <div className='d-flex justify-content-between align-items-center'>
                             <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
@@ -135,7 +135,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                     <div className='px-4 pb-4'>
                         <small>{product?.inputBrandData}</small>
                         <h5 onClick={() => handleBuyNowButton(product._id)} className='mb-1 for_pointer'>{product?.title}</h5>
-                        <p className='mb-0 text-info fw-semibold'>{product.price}</p>
+                        <p className='mb-0 text-info fw-semibold'>Price: ${product.price}</p>
                         <Rate value={product?.inputRating} disabled/>
                         <div className='d-flex justify-content-between align-items-center'>
                             <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>

@@ -18,6 +18,43 @@ const SingleProduct = () => {
     // useNavigate from react hooks
     const navigate = useNavigate();
     const handleBuyButton = () => {
+        const id = singleData._id;
+        const title = singleData.title;
+        const description = singleData.description;
+        const price = singleData.price;
+        const rating = singleData.inputRating;
+        const image = singleData.featuredImage;
+        const category = singleData.inputCategoryData;
+        const brand = singleData.inputBrandData;
+        const quantity = count;
+
+        let totalAmount = singleData.price;
+        const localStoreData = {id, title, description, price, rating, image, category, brand, quantity, totalAmount}
+
+        let cartProduct;
+        const storage = localStorage.getItem('cartProduct')
+        if(totalPrice === 0){
+            if(storage === null){
+                cartProduct = []
+                cartProduct.push(localStoreData)
+            }else{
+                cartProduct = JSON.parse(storage)
+                cartProduct.push(localStoreData)
+            }
+            // cartProduct.push(localStoreData)
+            localStorage.setItem('cartProduct', JSON.stringify(cartProduct));
+        }else{
+            totalAmount = totalPrice;
+            if(storage === null){
+                cartProduct = []
+                cartProduct.push(localStoreData)
+            }else{
+                cartProduct = JSON.parse(storage)
+                cartProduct.push(localStoreData)
+            }
+            localStorage.setItem('cartProduct', JSON.stringify(cartProduct));
+        }
+
         navigate('/payment-check-out')
     }
 

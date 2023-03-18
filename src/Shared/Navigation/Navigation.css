@@ -5,3 +5,30 @@
 .hover_dropdown_link:hover{
     background-color: aliceblue;
 }
+.navigation_image{
+    height: 100px;
+    width: auto;
+}
+.for_hover_style{
+    transition: 0.5s;
+    position: relative;
+    overflow: hidden;
+}
+.for_hover_style::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: rgb(255, 255, 255);
+    border-radius: 5px;
+    transition: 0.5s;
+}
+.for_hover_style:hover::after{
+    width: 100%;
+}
+.for_hover_style:hover{
+    color: #FFC000 !important;
+}

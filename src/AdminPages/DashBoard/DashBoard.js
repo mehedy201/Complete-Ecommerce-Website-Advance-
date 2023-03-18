@@ -1,12 +1,11 @@
 import { Divider } from 'antd';
 import React, { useState } from 'react';
 import './DashBoard.css'
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 import AdminNavigation from '../AdminPagesComponents/AdminNavigation/AdminNavigation'
-import { CiHome } from 'react-icons/ci';
-import { MdAddShoppingCart } from 'react-icons/md';
-import { CiEdit } from 'react-icons/ci';
-import { CgEditUnmask } from 'react-icons/cg';
+import { MdSpaceDashboard, MdAddToPhotos, MdUnsubscribe } from 'react-icons/md';
+import { SiGoogletagmanager } from 'react-icons/si';
+import { AiTwotoneTags } from 'react-icons/ai';
 import logoImage from '../../Images/shop_logo.png'
 
 
@@ -22,10 +21,11 @@ const DashBoard = () => {
                         <img src={logoImage} style={{height: '60px', width: 'auto'}} alt="" />
                     </div>
                     <Divider/>
-                    <Link to={''} className='d-block my-2'><CiHome className='admin_dasboard_icon'/>Dashboard</Link>
-                    <Link to={'add-product'} className='d-block my-2'><MdAddShoppingCart className='admin_dasboard_icon'/>Add Product</Link>
-                    <Link to={'manage-product'} className='d-block my-2'><CiEdit className='admin_dasboard_icon'/>Manage Product</Link>
-                    <Link to={'manage-order'} className='d-block my-2'><CgEditUnmask className='admin_dasboard_icon'/>Manage Order</Link>
+                    <NavLink to={''} className='d-block p-2 fw-bold dashboard_link'><MdSpaceDashboard className='admin_dasboard_icon'/>Dashboard</NavLink>
+                    <NavLink to={'add-product'} className='d-block p-2 fw-bold dashboard_link'><MdAddToPhotos className='admin_dasboard_icon'/>Add Product</NavLink>
+                    <NavLink to={'manage-product'} className='d-block p-2 fw-bold dashboard_link'><SiGoogletagmanager className='admin_dasboard_icon'/>Manage Product</NavLink>
+                    <NavLink to={'manage-order'} className='d-block p-2 fw-bold dashboard_link'><AiTwotoneTags className='admin_dasboard_icon'/>Manage Order</NavLink>
+                    <NavLink to={'subscriber'} className='d-block p-2 fw-bold dashboard_link'><MdUnsubscribe className='admin_dasboard_icon'/>Subscriber</NavLink>
                 </div>
                 <div className="col-10 p-0">
                     <AdminNavigation/>

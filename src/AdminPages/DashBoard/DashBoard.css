@@ -4,3 +4,13 @@
   width: 22px;
   margin-right: 4px;
 }
+
+.dashboard_link{
+  color: rgb(56, 54, 54);
+}
+.dashboard_link:hover{
+  background-color: rgb(255, 255, 255);
+}
+.dashboard_link:active{
+  color: rgb(173, 12, 12);
+}

@@ -10,13 +10,45 @@ import {auth} from '../../Firebase.init';
 import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { CART_CONTEXT } from '../../App';
-import CartPage from '../../Pages/CartPage/CartPage';
+import { useQuery } from '@tanstack/react-query';
+import { useForm } from 'react-hook-form';
 
 const TopNavigation = () => {
 
+    const navigate = useNavigate();
+
+
     const { itemCount } = useContext(CART_CONTEXT);
+    const [user, loading] = useAuthState(auth);
+    const [searchInput, setSearchInput] = useState('')
+    const [filter, setFilter] = useState([])
+
 
     const cartProductData = JSON.parse(localStorage.getItem('cartProduct'));
+
+    
+    
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const onSubmit = async (data) => {
+        console.log('data', data)
+        forFilter.map()
+        // const filter = nameFilter.filter(data =>( data.identityName === identityName)
+       
+    };
+
+
+    const {data: forFilter , isLoading} = useQuery({
+        queryKey: ['allProduct'],
+        queryFn: () => fetch(`http://localhost:5000/products`)
+                       .then(res => res.json())
+    })
+  
+    if(isLoading){
+      return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
+    }
+
+   
+
 
 
     // Context State ____________________________________________________________________
@@ -28,7 +60,6 @@ const TopNavigation = () => {
       navigate('/log-in')
     }
      // useNavigete from react hooks ----------------------
-    const navigate = useNavigate();
     const logoNavigate = () => {
         navigate('/')
     };
@@ -36,8 +67,7 @@ const TopNavigation = () => {
         navigate('/cart')
     }
 
-    // User Icon Dropdown ---------------------------------
-    const [user, loading] = useAuthState(auth);
+    
 
     if(loading){
         return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
@@ -58,6 +88,8 @@ const TopNavigation = () => {
         />
       );
 
+      
+
 
     return (
         <div className='for_navigation_background sticky-top z-index'>
@@ -65,10 +97,10 @@ const TopNavigation = () => {
                 <div className="d-flex justify-content-between align-items-center">
                     <h1 onClick={logoNavigate} className='fs-4 fw-bold my-auto for_logo_cursor'>Ecommerce Shop</h1>
                     <div className='for_responsivness_input'>
-                        <div className='d-flex rounded-pill overflow-hidden'>
-                            <input className='input_design border-0 px-4 py-2' type="text" name="" id="" />
-                            <button className='border-0 px-4 py-2 fw-bold'>Search</button>
-                        </div>
+                        <form onSubmit={handleSubmit(onSubmit)} className='d-flex rounded-pill overflow-hidden'>
+                            <input {...register("searchText", { required: true })}  className='input_design border-0 px-4 py-2' type="text" />
+                            <input type="submit" className='border-0 px-4 py-2 fw-bold' value="Search" />
+                        </form>
                     </div>
                     <div className='d-flex align-items-center justify-content-between'>
                         <div className='for_responsivness_call'>

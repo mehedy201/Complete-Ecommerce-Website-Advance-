@@ -1,21 +1,47 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import FooterSection from '../../../Shared/FooterSection/FooterSection';
 import ShopProduct from '../../ShopPage/ShopProduct/ShopProduct';
 import { BsArrowRight } from 'react-icons/bs';
+import { Spin } from 'antd';
 
 const GamingPage = () => {
     // Props for Product Page left side components ---------------------------
-    const {data,  isLoading} = useQuery({
-        queryKey: ['droneData'],
-        queryFn: () => fetch(`http://localhost:5000/products/category/Drone`)
+    const [product, setProduct] = useState([]);
+    const [newData, setNewData] = useState([])
+
+    let isLoading = false;
+    useEffect(() => {
+        isLoading = true;
+        fetch('http://localhost:5000/products/category/Drone')
         .then(res => res.json())
-    })
+        .then(data => {
+            isLoading = false;
+            setProduct(data)
+            setNewData(data)
+        })
+    },[])
 
     if(isLoading){
-        return isLoading;
+        return <Spin/>;
     }
+
+    const uniques = {}
+    for (const d of product) {
+      const key = d.inputBrandData 
+      uniques[key] = d                    
+    }
+    const uniqueThing = Object.values(uniques)
+
+    const filterHandle = (value) => {
+        const remain = product.filter(item => item.inputBrandData === value);
+        setNewData(remain)
+    }
+    
+    const filterAll = () => {
+        setNewData(product)
+    }
+    
+    
 
     return (
         <>
@@ -26,15 +52,16 @@ const GamingPage = () => {
                         <div  className='shadow-sm rounded p-md-4 sticky-top'>
                         <h2 className='text-secondary fs-5'>Drone Brands...</h2>
                         <hr />
+                        <p onClick={() => filterAll()} className='fw-bold py-2 px-4 shadow-sm my-1 d-block rounded'>All<BsArrowRight className='hero_animeted_icon'/></p>
                             {
-                                data.map(brandName => <Link className='text-black py-2 px-4 shadow-sm my-1 d-block rounded text_hover_color' to="laptop">{brandName.inputBrandData}<BsArrowRight className='hero_animeted_icon'/></Link>)
+                                uniqueThing.map(brandName => <p onClick={() => filterHandle(brandName.inputBrandData)} key={brandName._id} className='fw-bold py-2 px-4 shadow-sm my-1 d-block rounded'>{brandName.inputBrandData}<BsArrowRight className='hero_animeted_icon'/></p>)
                             }
                         </div>
                     </div>
                     <div className="col-md-9">
                         <div className="shop_page_grid my-4">
                             {
-                                data.map(product => <ShopProduct key={product._id} product={product}></ShopProduct>)
+                                newData.map(product => <ShopProduct key={product._id} product={product}></ShopProduct>)
                             }
                         </div>
                     </div>

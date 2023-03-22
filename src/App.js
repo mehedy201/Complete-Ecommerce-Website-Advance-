@@ -49,7 +49,7 @@ function App() {
         return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
     }
 
-    console.log(user?.email)
+    // console.log(user?.email)
   return (
     <>
     

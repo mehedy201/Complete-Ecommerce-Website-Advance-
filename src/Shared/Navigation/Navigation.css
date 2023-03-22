@@ -27,7 +27,7 @@
     transition: 0.5s;
 }
 .for_hover_style:hover::after{
-    width: 100%;
+    width: 90%;
 }
 .for_hover_style:hover{
     color: #FFC000 !important;

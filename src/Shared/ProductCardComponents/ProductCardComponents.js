@@ -99,7 +99,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         <Rate value={product?.inputRating} disabled/>
                         <div className='d-flex justify-content-between align-items-center'>
                             <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
-                            <BsCartPlus className='card_cart_icon'/>
+                            <BsCartPlus onClick={() => handleCartIcon(product)} className='card_cart_icon'/>
                         </div>
                     </div>
                 </div>
@@ -119,7 +119,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         <Rate value={product?.inputRating} disabled/>
                         <div className='d-flex justify-content-between align-items-center'>
                             <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
-                            <BsCartPlus className='card_cart_icon'/>
+                            <BsCartPlus onClick={() => handleCartIcon(product)} className='card_cart_icon'/>
                         </div>
                     </div>
                 </div>
@@ -139,7 +139,7 @@ const ProductCardComponents = ({product, handleBuyNowButton}) => {
                         <Rate value={product?.inputRating} disabled/>
                         <div className='d-flex justify-content-between align-items-center'>
                             <button onClick={() => handleBuyNowButton(product._id)} className='btn btn-sm bg-warning mt-2 d-block fw-bold'>Buy Now</button>
-                            <BsCartPlus className='card_cart_icon'/>
+                            <BsCartPlus onClick={() => handleCartIcon(product)} className='card_cart_icon'/>
                         </div>
                     </div>
                 </div>

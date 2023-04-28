@@ -1,5 +1,6 @@
 import { Divider } from 'antd';
 import React, { useContext, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { CART_CONTEXT } from '../../App';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import OrderdOverView from './OrderdOverView/OrderdOverView';
@@ -17,6 +18,7 @@ const PaymentCheckOut = () => {
 
 
     // Load Cart Product From LocalStorage______________________________________________
+    const [storedData, setStoredData] = useState([])
     const [cartProductData, setCartProductData] = useState([])
     const [newPrice, setNewPrice] = useState(0);
     
@@ -48,6 +50,13 @@ const PaymentCheckOut = () => {
         setCartProductData(deletedCart)
     }
 
+    // For React form hooks ------------------------------------------------------
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
+    const onSubmit = async (data) => {
+        setStoredData(data)
+        console.log('data', storedData``)
+    };
+
     
 
     return (
@@ -72,42 +81,42 @@ const PaymentCheckOut = () => {
                         <h4 className='text-secondary text-center mb-1'>Please fill your shiping Information</h4>
                         <Divider className='mt-0 mb-4'/>
                         <div>
-                            <form action="">
+                            <form onSubmit={handleSubmit(onSubmit)}>
                                 <div className='d-flex'>
                                     <div className='w-100 m-2'>
                                         <span className='d-block text-secondary'>First Name</span>
-                                        <input className='payment_check_out_input' type="text" />
+                                        <input className='payment_check_out_input' type="text" {...register("firstName", { required: true })} />
                                     </div>
                                     <div className='w-100 m-2'>
                                         <span className='d-block text-secondary'>Last Name</span>
-                                        <input className='payment_check_out_input' type="text" />
+                                        <input className='payment_check_out_input' type="text" {...register("lastName", { required: true })}  />
                                     </div>
                                 </div>
                                 <div className='m-2'>
                                     <span className='d-block text-secondary'>Your Email</span>
-                                    <input className='payment_check_out_input' type="text" />
+                                    <input className='payment_check_out_input' type="email" {...register("email", { required: true })} />
                                 </div>
                                 <div className='m-2'>
                                     <span className='d-block text-secondary'>Phone</span>
-                                    <input className='payment_check_out_input' type="text" />
+                                    <input className='payment_check_out_input' type="text" {...register("phone", { required: true })} />
                                 </div>
                                 <div className='m-2'>
                                     <span className='d-block text-secondary'>Address</span>
-                                    <input className='payment_check_out_input' type="text" />
+                                    <input className='payment_check_out_input' type="text" {...register("address", { required: true })} />
                                 </div>
                                 <div className='d-flex'>
                                     <div className='w-100 m-2'>
                                         <span className='d-block text-secondary'>Postal Code</span>
-                                        <input className='payment_check_out_input' type="text" />
+                                        <input className='payment_check_out_input' type="text" {...register("postalCode", { required: true })} />
                                     </div>
                                     <div className='w-100 m-2'>
                                         <span className='d-block text-secondary'>City</span>
-                                        <input className='payment_check_out_input' type="text" />
+                                        <input className='payment_check_out_input' type="text" {...register("city", { required: true })} />
                                     </div>
                                 </div>
                                 <div className='m-2'>
                                     <span className='d-block text-secondary'>Your Comment</span>
-                                    <textarea className='payment_check_out_input' type="text" />
+                                    <textarea className='payment_check_out_input' type="text" {...register("comment", { required: true })} />
                                 </div>
                                 <div className='d-flex justify-content-end'>
                                     <input className='m-2 payment_check_out_btn bg-info fw-bold' type="submit" value={'Procced To Check Out'} />

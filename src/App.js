@@ -33,6 +33,7 @@ import { Spin } from 'antd';
 import Admin from './Shared/Admin/Admin';
 import TopNavigation from './Shared/TopNavigation/TopNavigation';
 import Navigation from './Shared/Navigation/Navigation';
+import StripePay from './Pages/PaymentCheckOut/StripePay/StripePay';
 
 export const CART_CONTEXT = createContext()
 
@@ -81,6 +82,7 @@ function App() {
         <Route path='/about-us' element={<AboutUs/>}></Route>
         <Route path='/contact-us' element={<ContactUs/>}></Route>
         <Route path='/admin' element={<Admin/>}></Route>
+        <Route path='/stripe' element={<StripePay/>}></Route>
         {/* Admin Pages ----------------------------------------------------------------------------------- */}
         <Route path='/dashboard' element={<DashBoard/>}>
           <Route index element={<DashBoardMain/>}/>

@@ -48,7 +48,7 @@ const OnlyHpLaptop = () => {
             <div className="row">
                 <div className="col-md-3 laptop_section_background">
                     <div className="overly">
-                        <h3 className='text-white'>We owner of HP laptop showroom</h3>
+                        <h3 className='text-white'>HP laptop</h3>
                         <p className='text-white'>You can buy orginal hp product from me. Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium, facilis.</p>
                         <button className='btn btn-info'>View All</button>
                     </div>

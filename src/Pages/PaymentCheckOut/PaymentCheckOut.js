@@ -1,6 +1,7 @@
 import { Divider } from 'antd';
 import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { CART_CONTEXT } from '../../App';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import OrderdOverView from './OrderdOverView/OrderdOverView';
@@ -18,7 +19,6 @@ const PaymentCheckOut = () => {
 
 
     // Load Cart Product From LocalStorage______________________________________________
-    const [storedData, setStoredData] = useState([])
     const [cartProductData, setCartProductData] = useState([])
     const [newPrice, setNewPrice] = useState(0);
     
@@ -51,10 +51,13 @@ const PaymentCheckOut = () => {
     }
 
     // For React form hooks ------------------------------------------------------
+    const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
-        setStoredData(data)
-        console.log('data', storedData``)
+        const orderdData = {data, cartProductData, newPrice}
+        localStorage.setItem('orderdData', JSON.stringify(orderdData));
+        reset();
+        navigate('/stripe')
     };
 
     

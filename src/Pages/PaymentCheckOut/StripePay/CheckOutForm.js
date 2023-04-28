@@ -1,13 +1,33 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const CheckOutForm = () => {
 
     const stripe = useStripe();
-    const elements = useElements()
+    const elements = useElements();
+    const [cardError, setCardError] = useState('');
+    const [clientSecret, setClientSecret] = useState('')
+
+    const orderdData = JSON.parse(localStorage.getItem('orderdData'));
+    const {newPrice} = orderdData;
+
+
+    useEffect(() => {
+      // Create PaymentIntent as soon as the page loads
+      fetch("http://localhost:5000/create-payment-intent", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderdData),
+      })
+        .then((res) => res.json())
+        .then((data) => setClientSecret(data.clientSecret));
+    }, [orderdData]);
+
 
     const handleSubmit = async (event) => {
       event.preventDefault();
+
+
 
       if (!stripe || !elements) {
         return;
@@ -26,10 +46,26 @@ const CheckOutForm = () => {
 
       if (error) {
         console.log('[error]', error);
+        setCardError(error.message)
       } else {
         console.log('[PaymentMethod]', paymentMethod);
       }
+
+      const {paymentIntent, error: confirmError} = await stripe.confirmCardPayment(
+        clientSecret,
+        {
+          payment_method: {
+            card: card,
+          },
+        },
+      );
+      if(confirmError){
+        console.log('confirmError 1111111111111111111', confirmError.message);
+      }
+      console.log('paymentIntent22222222222222222222', paymentIntent);
     }
+
+    
 
 
 
@@ -38,6 +74,7 @@ const CheckOutForm = () => {
 
 
     return (
+      <>
         <form onSubmit={handleSubmit}>
           <CardElement
             options={{
@@ -55,10 +92,10 @@ const CheckOutForm = () => {
               },
             }}
           />
-        <button type="submit" disabled={!stripe}>
-          Pay
-        </button>
-      </form>
+        <button disabled={!stripe || !clientSecret} className='btn btn-info btn-sm fw-bold  px-4 mt-3' type="submit">Pay</button>
+        <p className='text-danger'>{cardError}</p>
+        </form>
+      </>
     );
 };
 

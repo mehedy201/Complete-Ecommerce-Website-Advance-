@@ -14,7 +14,7 @@ import PaymentSummary from './PaymentSummary/PaymentSummary';
 
 const PaymentCheckOut = () => {
 
-    const {itemCount, setItemCount } = useContext(CART_CONTEXT);
+    const {setItemCount } = useContext(CART_CONTEXT);
     const cartProductCount = JSON.parse(localStorage.getItem('cartProduct'));
 
 
@@ -32,10 +32,12 @@ const PaymentCheckOut = () => {
         let price = 0 ;
         let quantity = 0;
 
-        cartProductData.map(newProduct => {
-            price = price + parseInt(newProduct.price)
-            quantity = quantity + parseInt(newProduct.quantity)
-        })
+        if(cartProductData){
+            cartProductData.map(newProduct => {
+                price = price + parseInt(newProduct.price)
+                quantity = quantity + parseInt(newProduct.quantity)
+            })
+        }
         setNewPrice(price)
     }, [cartProductData])
 

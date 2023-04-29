@@ -1,19 +1,21 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { Spin } from 'antd';
 import React, { useContext, useEffect, useState } from 'react';
 import { CART_CONTEXT } from '../../../App';
 
 const CheckOutForm = () => {
 
-    const { setItemCount } = useContext(CART_CONTEXT);
+    const { setItemCount, setPaymentPrice } = useContext(CART_CONTEXT);
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
     const [paymentSuccess, setPaymentSuccess] = useState('');
-    const [transactionId, setTransactionId] = useState('')
+    const [transactionId, setTransactionId] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [buttonDesable, setButtonDesable] = useState(false)
 
     let orderdData = JSON.parse(localStorage.getItem('orderdData'));
-    // const {newPrice} = orderdData;
 
 
     useEffect(() => {
@@ -30,8 +32,7 @@ const CheckOutForm = () => {
 
     const handleSubmit = async (event) => {
       event.preventDefault();
-
-
+      setLoading(true)
 
       if (!stripe || !elements) {
         return;
@@ -64,14 +65,27 @@ const CheckOutForm = () => {
         },
       );
       if(confirmError){
-        console.log('confirmError 1111111111111111111', confirmError.message);
+        console.log('confirmError', confirmError.message);
       }
       if(paymentIntent.status === "succeeded"){
+        fetch('http://localhost:5000/userOrderdData', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(orderdData)
+        })
+        .then(res => res.json())
+        .then(data => console.log(data))
+
+        setLoading(false);
+        setButtonDesable(true)
         setPaymentSuccess('Congrats! Your payment complete');
         setTransactionId(paymentIntent.id);
-        localStorage.removeItem("cartProduct");
         setItemCount(0);
+        setPaymentPrice(0);
         orderdData = [];
+        localStorage.removeItem("cartProduct");
         localStorage.removeItem("orderdData");
         return
       }
@@ -104,7 +118,12 @@ const CheckOutForm = () => {
               },
             }}
           />
-        <button disabled={!stripe || !clientSecret} className='btn btn-info btn-sm fw-bold  px-4 mt-3' type="submit">Pay</button>
+        <div>
+          <button disabled={!stripe || !clientSecret || buttonDesable} className='btn btn-info btn-sm fw-bold mr-2 px-4 mt-3' type="submit">Pay</button>
+          {
+            loading === true && <Spin/>
+          }
+        </div>
         <p className='text-danger'>{cardError}</p>
         <h5 className='text-success'>{paymentSuccess}</h5>
         {transactionId && <p className='text-info fw-bold'>Transaction ID: {transactionId}</p>}

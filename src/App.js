@@ -42,7 +42,8 @@ function App() {
   const [count, setCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [itemCount, setItemCount] = useState(0);
-  const value = {count, setCount, totalPrice, setTotalPrice, itemCount, setItemCount };
+  const [paymentPrice, setPaymentPrice] = useState(0)
+  const value = {count, setCount, totalPrice, setTotalPrice, itemCount, setItemCount, paymentPrice, setPaymentPrice };
 
   const [user, loading] = useAuthState(auth);
 

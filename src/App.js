@@ -34,6 +34,7 @@ import Admin from './Shared/Admin/Admin';
 import TopNavigation from './Shared/TopNavigation/TopNavigation';
 import Navigation from './Shared/Navigation/Navigation';
 import StripePay from './Pages/PaymentCheckOut/StripePay/StripePay';
+import SearchPage from './Pages/SearchPage/SearchPage';
 
 export const CART_CONTEXT = createContext()
 
@@ -42,8 +43,8 @@ function App() {
   const [count, setCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const [itemCount, setItemCount] = useState(0);
-  const [paymentPrice, setPaymentPrice] = useState(0)
-  const value = {count, setCount, totalPrice, setTotalPrice, itemCount, setItemCount, paymentPrice, setPaymentPrice };
+  const [searchProduct, setSearchProduct] = useState([])
+  const value = {count, setCount, totalPrice, setTotalPrice, itemCount, setItemCount, searchProduct, setSearchProduct };
 
   const [user, loading] = useAuthState(auth);
 
@@ -77,6 +78,7 @@ function App() {
         <Route path='/monitor' element={<MonitorPage/>}></Route>
         <Route path='/speakers' element={<SpeakarsPage/>}></Route>
         <Route path='/drone' element={<GamingPage/>}></Route>
+        <Route path='/searchPage' element={<SearchPage/>}></Route>
         <Route path='/payment-check-out' element={<PaymentCheckOut/>}></Route>
         <Route path='/log-in' element={<LogIn/>}></Route>
         <Route path='/sign-up' element={<RegistretionPage/>}></Route>

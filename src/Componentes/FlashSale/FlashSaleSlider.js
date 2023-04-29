@@ -1,7 +1,6 @@
 import React from 'react';
 
 const FlashSaleSlider = ({product, handleBuyNowButton}) => {
-    console.log(product)
     return (
         <div className='row'>
             <div className='col-md-4'>

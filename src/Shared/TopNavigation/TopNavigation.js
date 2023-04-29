@@ -18,27 +18,25 @@ const TopNavigation = () => {
     const navigate = useNavigate();
 
 
-    const { itemCount } = useContext(CART_CONTEXT);
+    const { itemCount, setSearchProduct } = useContext(CART_CONTEXT);
     const [user, loading] = useAuthState(auth);
     const [searchInput, setSearchInput] = useState('')
-    const [filter, setFilter] = useState([])
 
 
     const cartProductData = JSON.parse(localStorage.getItem('cartProduct'));
 
     
     
-    const { register, formState: { errors }, handleSubmit, reset } = useForm();
-    const onSubmit = async (data) => {
-        console.log('data', data)
-        forFilter.map()
-        // const filter = nameFilter.filter(data =>( data.identityName === identityName)
-       
+    const handleSubmit = () => {
+        const search = forFilter.filter(d =>d.title.toLowerCase().includes(searchInput.toLocaleLowerCase()))
+        setSearchProduct(search)
+        setSearchInput('')
+        navigate('/searchPage')
     };
 
 
     const {data: forFilter , isLoading} = useQuery({
-        queryKey: ['allProduct'],
+        queryKey: ['allProductData'],
         queryFn: () => fetch(`http://localhost:5000/products`)
                        .then(res => res.json())
     })
@@ -97,10 +95,10 @@ const TopNavigation = () => {
                 <div className="d-flex justify-content-between align-items-center">
                     <h1 onClick={logoNavigate} className='fs-4 fw-bold my-auto for_logo_cursor'>Ecommerce Shop</h1>
                     <div className='for_responsivness_input'>
-                        <form onSubmit={handleSubmit(onSubmit)} className='d-flex rounded-pill overflow-hidden'>
-                            <input {...register("searchText", { required: true })}  className='input_design border-0 px-4 py-2' type="text" />
-                            <input type="submit" className='border-0 px-4 py-2 fw-bold' value="Search" />
-                        </form>
+                        <div className='d-flex rounded-pill overflow-hidden'>
+                            <input onChange={e => setSearchInput(e.target.value)}  className='input_design border-0 px-4 py-2' type="text" />
+                            <button onClick={() => handleSubmit()} className='btn-secondary border-0 px-4 py-2 fw-bold'>Search</button>
+                        </div>
                     </div>
                     <div className='d-flex align-items-center justify-content-between'>
                         <div className='for_responsivness_call'>

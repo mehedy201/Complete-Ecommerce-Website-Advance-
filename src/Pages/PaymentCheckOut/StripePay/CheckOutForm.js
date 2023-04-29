@@ -1,15 +1,19 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { CART_CONTEXT } from '../../../App';
 
 const CheckOutForm = () => {
 
+    const { setItemCount } = useContext(CART_CONTEXT);
     const stripe = useStripe();
     const elements = useElements();
     const [cardError, setCardError] = useState('');
-    const [clientSecret, setClientSecret] = useState('')
+    const [clientSecret, setClientSecret] = useState('');
+    const [paymentSuccess, setPaymentSuccess] = useState('');
+    const [transactionId, setTransactionId] = useState('')
 
-    const orderdData = JSON.parse(localStorage.getItem('orderdData'));
-    const {newPrice} = orderdData;
+    let orderdData = JSON.parse(localStorage.getItem('orderdData'));
+    // const {newPrice} = orderdData;
 
 
     useEffect(() => {
@@ -62,7 +66,15 @@ const CheckOutForm = () => {
       if(confirmError){
         console.log('confirmError 1111111111111111111', confirmError.message);
       }
-      console.log('paymentIntent22222222222222222222', paymentIntent);
+      if(paymentIntent.status === "succeeded"){
+        setPaymentSuccess('Congrats! Your payment complete');
+        setTransactionId(paymentIntent.id);
+        localStorage.removeItem("cartProduct");
+        setItemCount(0);
+        orderdData = [];
+        localStorage.removeItem("orderdData");
+        return
+      }
     }
 
     
@@ -94,6 +106,8 @@ const CheckOutForm = () => {
           />
         <button disabled={!stripe || !clientSecret} className='btn btn-info btn-sm fw-bold  px-4 mt-3' type="submit">Pay</button>
         <p className='text-danger'>{cardError}</p>
+        <h5 className='text-success'>{paymentSuccess}</h5>
+        {transactionId && <p className='text-info fw-bold'>Transaction ID: {transactionId}</p>}
         </form>
       </>
     );

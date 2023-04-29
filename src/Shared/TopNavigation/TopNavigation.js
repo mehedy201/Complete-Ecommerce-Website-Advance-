@@ -113,12 +113,12 @@ const TopNavigation = () => {
                             </div>
                         </div>
                         {
-                            itemCount ?
-                            <Badge count={itemCount} size="small">
+                            cartProductData ?
+                            <Badge count={cartProductData.length} size="small">
                                 <FiShoppingCart onClick={cartNavigate} className='navigation_icon p-1'/>
                             </Badge>
                             : 
-                            <Badge count={cartProductData.length} size="small">
+                            <Badge count={itemCount} size="small">
                                 <FiShoppingCart onClick={cartNavigate} className='navigation_icon p-1'/>
                             </Badge>
                         } 

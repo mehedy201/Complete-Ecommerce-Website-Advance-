@@ -32,11 +32,13 @@ const CartPage = () => {
     useEffect(() => {
         let price = 0 ;
 
-        cartProductData.map(newProduct => {
+        cartProductData &&
+            cartProductData.map(newProduct => {
             let productPrice = parseInt(newProduct.price)
             let priceQuantity = productPrice * parseInt(newProduct.quantity)
             price = price + priceQuantity;
         })
+
         
         setNewPrice(price)
     }, [cartProductData])

@@ -1,8 +1,10 @@
-import { Divider } from 'antd';
+import { Divider, Spin } from 'antd';
 import React, { useContext, useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { CART_CONTEXT } from '../../App';
+import { auth } from '../../Firebase.init';
 import FooterSection from '../../Shared/FooterSection/FooterSection';
 import OrderdOverView from './OrderdOverView/OrderdOverView';
 import './PaymentCheckOut.css'
@@ -14,8 +16,10 @@ import PaymentSummary from './PaymentSummary/PaymentSummary';
 
 const PaymentCheckOut = () => {
 
+    const [user, loading] = useAuthState(auth);
     const {setItemCount } = useContext(CART_CONTEXT);
     const cartProductCount = JSON.parse(localStorage.getItem('cartProduct'));
+
 
 
     // Load Cart Product From LocalStorage______________________________________________
@@ -56,11 +60,16 @@ const PaymentCheckOut = () => {
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
-        const orderdData = {data, cartProductData, newPrice}
+        const email = user.email;
+        const orderdData = {data, cartProductData, newPrice, email}
         localStorage.setItem('orderdData', JSON.stringify(orderdData));
         reset();
         navigate('/stripe')
     };
+
+    if(loading){
+        return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
+    }
 
     
 

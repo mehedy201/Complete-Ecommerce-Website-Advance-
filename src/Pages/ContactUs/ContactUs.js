@@ -58,10 +58,10 @@ const ContactUs = () => {
                                 <h5 className='text-center text-secondary mt-4'>Social Link</h5>
                                 <Divider className='mt-0'/>
                                 <div className='d-flex align-items-center justify-content-center'>
-                                    <Link to={'https://www.linkedin.com/in/md-mehedi-hasan-65b110178/'} target='_blank'><FaLinkedin className='contact_us_page_social_icon mx-2'/></Link>
-                                    <Link to={'https://github.com/mehedy201'} target='_blank'><GoMarkGithub className='contact_us_page_social_icon mx-2'/></Link>
-                                    <Link to={'https://github.com/mehedy201'} target='_blank'><BsFacebook className='contact_us_page_social_icon mx-2'/></Link>
-                                    <Link to={'https://github.com/mehedy201'} target='_blank'><CgWebsite className='contact_us_page_social_icon mx-2'/></Link>
+                                    <a href='https://www.linkedin.com/in/md-mehedi-hasan-65b110178/' target='_blank' rel="noreferrer"><FaLinkedin className='contact_us_page_social_icon mx-2'/></a>
+                                    <a href='https://github.com/mehedy201' target='_blank' rel="noreferrer"><GoMarkGithub className='contact_us_page_social_icon mx-2'/></a>
+                                    <a href='https://github.com/mehedy201' target='_blank' rel="noreferrer"><BsFacebook className='contact_us_page_social_icon mx-2'/></a>
+                                    <a href='https://github.com/mehedy201' target='_blank' rel="noreferrer"><CgWebsite className='contact_us_page_social_icon mx-2'/></a>
                                 </div>
                             </div>
                         </div>

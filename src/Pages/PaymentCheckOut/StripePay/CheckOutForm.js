@@ -118,7 +118,7 @@ const CheckOutForm = () => {
               },
             }}
           />
-        <div>
+        <div className='d-flex align-items-center'>
           <button disabled={!stripe || !clientSecret || buttonDesable} className='btn btn-info btn-sm fw-bold mr-2 px-4 mt-3' type="submit">Pay</button>
           {
             loading === true && <Spin/>

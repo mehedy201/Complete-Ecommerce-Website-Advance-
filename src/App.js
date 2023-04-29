@@ -36,6 +36,7 @@ import Navigation from './Shared/Navigation/Navigation';
 import StripePay from './Pages/PaymentCheckOut/StripePay/StripePay';
 import SearchPage from './Pages/SearchPage/SearchPage';
 import NotFound from './Pages/NotFound/NotFound';
+import RequirAuth from './Pages/RequirAuth/RequirAuth';
 
 export const CART_CONTEXT = createContext()
 
@@ -80,13 +81,13 @@ function App() {
         <Route path='/speakers' element={<SpeakarsPage/>}></Route>
         <Route path='/drone' element={<GamingPage/>}></Route>
         <Route path='/searchPage' element={<SearchPage/>}></Route>
-        <Route path='/payment-check-out' element={<PaymentCheckOut/>}></Route>
         <Route path='/log-in' element={<LogIn/>}></Route>
         <Route path='/sign-up' element={<RegistretionPage/>}></Route>
         <Route path='/about-us' element={<AboutUs/>}></Route>
         <Route path='/contact-us' element={<ContactUs/>}></Route>
         <Route path='/admin' element={<Admin/>}></Route>
-        <Route path='/stripe' element={<StripePay/>}></Route>
+        <Route path='/payment-check-out' element={<RequirAuth> <PaymentCheckOut/> </RequirAuth>}></Route>
+        <Route path='/stripe' element={ <RequirAuth> <StripePay/> </RequirAuth>}></Route>
         <Route path='*' element={<NotFound/>}></Route>
         {/* Admin Pages ----------------------------------------------------------------------------------- */}
         <Route path='/dashboard' element={<DashBoard/>}>

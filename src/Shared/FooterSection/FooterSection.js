@@ -43,7 +43,7 @@ const FooterSection = () => {
             </div>
         </div>
             <div className='bg-dark py-3'>
-                <p className='mb-0 text-center text-white'>All Rights Reserved 2022 &copy; Md. Mehedi Hasan <span style={{color: '#FFC000'}}>Full-Stack Web Developer</span></p>
+                <p className='mb-0 text-center text-white'>All Rights Reserved 2023 &copy; Md. Mehedi Hasan <span style={{color: '#FFC000'}}>Full-Stack Web Developer</span></p>
             </div>
         </>
     );

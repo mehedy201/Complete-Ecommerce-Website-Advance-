@@ -12,7 +12,7 @@ const SpeakarsPage = () => {
     let isLoading = false;
     useEffect(() => {
         isLoading = true;
-        fetch('http://localhost:5000/products/category/Speakers')
+        fetch('https://ecommerce-shop-yshv.onrender.com/products/category/Speakers')
         .then(res => res.json())
         .then(data => {
             isLoading = false;

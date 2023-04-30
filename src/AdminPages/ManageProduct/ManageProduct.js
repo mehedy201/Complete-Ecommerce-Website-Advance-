@@ -19,7 +19,7 @@ const ManageProduct = () => {
 
     const {data,  isLoading} = useQuery({
       queryKey: ['heroContent'],
-      queryFn: () => fetch('http://localhost:5000/products')
+      queryFn: () => fetch('https://ecommerce-shop-yshv.onrender.com/products')
                      .then(res => res.json())
     })
 
@@ -39,7 +39,7 @@ const ManageProduct = () => {
     const handleDelete = (id) => {
       const proceed = window.confirm('Are you sure to Delete');
       if(proceed){
-          const url = `http://localhost:5000/products/${id}`;
+          const url = `https://ecommerce-shop-yshv.onrender.com/products/${id}`;
           fetch(url, {
               method: 'DELETE'
           })

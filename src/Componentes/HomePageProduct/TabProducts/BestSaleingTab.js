@@ -15,7 +15,7 @@ const BestSaleingTab = () => {
 
     const {data: productData,  isLoading} = useQuery({
         queryKey: ['forTabs'],
-        queryFn: () => fetch('http://localhost:5000/products')
+        queryFn: () => fetch('https://ecommerce-shop-yshv.onrender.com/products')
         .then(res => res.json())
       })
   

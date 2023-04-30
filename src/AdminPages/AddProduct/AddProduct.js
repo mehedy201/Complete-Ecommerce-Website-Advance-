@@ -90,7 +90,7 @@ const AddProduct = () => {
     console.log('Form Data =', formData);
     
   // Sent Email Data Server ----------------------
-    fetch('http://localhost:5000/products',{
+    fetch('https://ecommerce-shop-yshv.onrender.com/products',{
       method: 'POST',
       headers: {
           'content-type': 'application/json'

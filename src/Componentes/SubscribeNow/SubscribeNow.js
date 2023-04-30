@@ -10,7 +10,7 @@ const SubscribeNow = () => {
   const onSubmit = data => {
     
   // Sent Email Data Server ----------------------
-    fetch('http://localhost:5000/subscriber',{
+    fetch('https://ecommerce-shop-yshv.onrender.com/subscriber',{
       method: 'POST',
       headers: {
           'content-type': 'application/json'

@@ -11,7 +11,7 @@ const OnlyHpLaptop = () => {
     const navigate = useNavigate()
     const {data: carouselData,  isLoading} = useQuery({
         queryKey: ['laptop'],
-        queryFn: () => fetch('http://localhost:5000/products/category/Laptop')
+        queryFn: () => fetch('https://ecommerce-shop-yshv.onrender.com/products/category/Laptop')
         .then(res => res.json())
       })
   

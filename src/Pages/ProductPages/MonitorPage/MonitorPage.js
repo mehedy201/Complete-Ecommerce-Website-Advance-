@@ -12,7 +12,7 @@ const MonitorPage = () => {
     let isLoading = false;
     useEffect(() => {
         isLoading = true;
-        fetch('http://localhost:5000/products/category/Monitor')
+        fetch('https://ecommerce-shop-yshv.onrender.com/products/category/Monitor')
         .then(res => res.json())
         .then(data => {
             isLoading = false;

@@ -14,7 +14,7 @@
     
       useEffect(() => {
         if(id){
-          fetch(`http://localhost:5000/products/${id}`)
+          fetch(`https://ecommerce-shop-yshv.onrender.com/products/${id}`)
           .then(res=> res.json())
           .then(data => setSingleProductData(data));
         }
@@ -124,7 +124,7 @@
         console.log('Form Data', newData)
         // 
 
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://ecommerce-shop-yshv.onrender.com/products/${id}`, {
           method: 'PUT',
           headers:{
               'content-type': 'application/json'

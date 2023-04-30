@@ -60,8 +60,18 @@ const PaymentCheckOut = () => {
     const navigate = useNavigate();
     const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
+
+        const forDate = new Date();
+        let day = forDate.getDate();
+        let month = forDate.getMonth() + 1
+        let year = forDate.getFullYear();
+
+        let date = `${month}-${day}-${year}`
+        
+
+
         const email = user.email;
-        const orderdData = {data, cartProductData, newPrice, email}
+        const orderdData = {data, cartProductData, newPrice, email, date}
         localStorage.setItem('orderdData', JSON.stringify(orderdData));
         reset();
         navigate('/stripe')

@@ -51,9 +51,9 @@ const HeadPhonePage = () => {
                         <div  className='shadow-sm rounded p-md-4 sticky-top'>
                         <h2 className='text-secondary fs-5'>Headphone Brands...</h2>
                         <hr />
-                            <p onClick={() => filterAll()} className='fw-bold py-2 px-4 shadow-sm my-1 d-block rounded'>All<BsArrowRight className='hero_animeted_icon'/></p>
+                            <p onClick={() => filterAll()} className='fw-bold py-2 px-4 shadow-sm my-1 d-block rounded for_cursor_pointer'>All<BsArrowRight className='hero_animeted_icon'/></p>
                             {
-                                uniqueThing.map(brandName => <p onClick={() => filterHandle(brandName.inputBrandData)} key={brandName._id} className='fw-bold py-2 px-4 shadow-sm my-1 d-block rounded'>{brandName.inputBrandData}<BsArrowRight className='hero_animeted_icon'/></p>)
+                                uniqueThing.map(brandName => <p onClick={() => filterHandle(brandName.inputBrandData)} key={brandName._id} className='fw-bold py-2 px-4 shadow-sm my-1 d-block rounded for_cursor_pointer'>{brandName.inputBrandData}<BsArrowRight className='hero_animeted_icon'/></p>)
                             }
                         </div>
                     </div>

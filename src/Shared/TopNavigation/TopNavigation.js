@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './TopNavigation.css'
 import { Dropdown, Menu, Space, Spin } from 'antd'
 import { SlCallOut } from 'react-icons/sl';
@@ -11,7 +11,6 @@ import { signOut } from 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { CART_CONTEXT } from '../../App';
 import { useQuery } from '@tanstack/react-query';
-import { useForm } from 'react-hook-form';
 
 const TopNavigation = () => {
 

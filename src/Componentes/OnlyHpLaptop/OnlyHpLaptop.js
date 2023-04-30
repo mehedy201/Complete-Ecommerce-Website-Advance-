@@ -1,5 +1,5 @@
 import { Spin } from 'antd';
-import React, { useState } from 'react';
+import React from 'react';
 import './OnlyHpLaptop.css';
 import Carousel from 'react-multi-carousel';
 import { useQuery } from '@tanstack/react-query';

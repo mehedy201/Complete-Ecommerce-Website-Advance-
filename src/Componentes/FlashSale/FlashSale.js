@@ -1,5 +1,4 @@
 import React from 'react';
-import headPhoneImage from '../../Images/headphones.jpg';
 import Carousel from 'react-multi-carousel';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';

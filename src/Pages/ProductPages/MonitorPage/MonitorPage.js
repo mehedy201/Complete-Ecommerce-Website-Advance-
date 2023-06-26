@@ -12,7 +12,7 @@ const MonitorPage = () => {
     let isLoading = false;
     useEffect(() => {
         isLoading = true;
-        fetch('https://complete-ecommerce-shop-advance-server-site.vercel.app/category/Monitor')
+        fetch('https://ecommerce-shop-yshv.onrender.com/category/Monitor')
         .then(res => res.json())
         .then(data => {
             isLoading = false;

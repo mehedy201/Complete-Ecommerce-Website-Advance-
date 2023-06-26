@@ -12,7 +12,7 @@ const GamingPage = () => {
     let isLoading = false;
     useEffect(() => {
         isLoading = true;
-        fetch('https://complete-ecommerce-shop-advance-server-site.vercel.app/category/Drone')
+        fetch('https://ecommerce-shop-yshv.onrender.com/category/Drone')
         .then(res => res.json())
         .then(data => {
             isLoading = false;

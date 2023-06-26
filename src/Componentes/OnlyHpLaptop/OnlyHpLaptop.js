@@ -11,10 +11,11 @@ const OnlyHpLaptop = () => {
     const navigate = useNavigate()
     const {data: carouselData,  isLoading} = useQuery({
         queryKey: ['laptop'],
-        queryFn: () => fetch('https://complete-ecommerce-shop-advance-server-site.vercel.app/category/Laptop')
+        queryFn: () => fetch('https://ecommerce-shop-yshv.onrender.com/products/category/Laptop')
         .then(res => res.json())
       })
   
+      console.log('carouselData', carouselData)
     if(isLoading){
          return <Spin style={{position: "fixed", top: '50%', left: '50%'}}/>
     }

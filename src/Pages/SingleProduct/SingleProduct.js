@@ -64,7 +64,7 @@ const SingleProduct = () => {
 
     const {data: singleData, isLoading} = useQuery({
         queryKey: ['singleProduct'],
-        queryFn: () => fetch(`https://ecommerce-shop-yshv.onrender.com/products/${id}`)
+        queryFn: () => fetch(`https://complete-ecommerce-shop-advance-server-site.vercel.app/${id}`)
                        .then(res => res.json())
     })
   

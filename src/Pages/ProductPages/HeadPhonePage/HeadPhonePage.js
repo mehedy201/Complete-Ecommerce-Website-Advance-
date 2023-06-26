@@ -12,7 +12,7 @@ const HeadPhonePage = () => {
     let isLoading = false;
     useEffect(() => {
         isLoading = true;
-        fetch('https://ecommerce-shop-yshv.onrender.com/products/category/Headphones')
+        fetch('https://complete-ecommerce-shop-advance-server-site.vercel.app/category/Headphones')
         .then(res => res.json())
         .then(data => {
             isLoading = false;

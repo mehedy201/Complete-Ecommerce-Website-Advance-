@@ -39,7 +39,7 @@ const ManageProduct = () => {
     const handleDelete = (id) => {
       const proceed = window.confirm('Are you sure to Delete');
       if(proceed){
-          const url = `https://ecommerce-shop-yshv.onrender.com/products/${id}`;
+          const url = `https://complete-ecommerce-shop-advance-server-site.vercel.app/${id}`;
           fetch(url, {
               method: 'DELETE'
           })

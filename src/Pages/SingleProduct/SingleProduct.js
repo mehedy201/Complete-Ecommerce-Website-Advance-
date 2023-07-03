@@ -64,7 +64,7 @@ const SingleProduct = () => {
 
     const {data: singleData, isLoading} = useQuery({
         queryKey: ['singleProduct'],
-        queryFn: () => fetch(`https://ecommerce-shop-yshv.onrender.com/${id}`)
+        queryFn: () => fetch(`https://ecommerce-shop-yshv.onrender.com/products/${id}`)
                        .then(res => res.json())
     })
   

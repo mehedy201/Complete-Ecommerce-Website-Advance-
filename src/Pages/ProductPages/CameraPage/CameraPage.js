@@ -13,7 +13,7 @@ const CameraPage = () => {
     let isLoading = false;
     useEffect(() => {
         isLoading = true;
-        fetch('https://ecommerce-shop-yshv.onrender.com/category/Camera')
+        fetch('https://ecommerce-shop-yshv.onrender.com/products/category/Camera')
         .then(res => res.json())
         .then(data => {
             isLoading = false;

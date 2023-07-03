@@ -13,7 +13,7 @@ const SmartPhonePage = () => {
     let isLoading = false;
     useEffect(() => {
         isLoading = true;
-        fetch('https://ecommerce-shop-yshv.onrender.com/category/SmartPhone')
+        fetch('https://ecommerce-shop-yshv.onrender.com/products/category/SmartPhone')
         .then(res => res.json())
         .then(data => {
             isLoading = false;

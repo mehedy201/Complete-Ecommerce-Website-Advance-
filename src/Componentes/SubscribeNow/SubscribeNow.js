@@ -10,7 +10,7 @@ const SubscribeNow = () => {
   const onSubmit = data => {
     
   // Sent Email Data Server ----------------------
-    fetch('https://ecommerce-shop-yshv.onrender.com/subscriber',{
+    fetch('https://complete-ecommerce-shop-server.vercel.app/subscriber',{
       method: 'POST',
       headers: {
           'content-type': 'application/json'

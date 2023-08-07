@@ -36,7 +36,7 @@ const FlashSale = () => {
 
     const {data: productData,  isLoading} = useQuery({
         queryKey: ['forTabs'],
-        queryFn: () => fetch('https://ecommerce-shop-yshv.onrender.com/products')
+        queryFn: () => fetch('https://complete-ecommerce-shop-server.vercel.app/products')
         .then(res => res.json())
     })
   

@@ -13,7 +13,7 @@ const LaptopPage = () => {
     let isLoading = false;
     useEffect(() => {
         isLoading = true;
-        fetch('https://ecommerce-shop-yshv.onrender.com/products/category/Laptop')
+        fetch('https://complete-ecommerce-shop-server.vercel.app/products/category/Laptop')
         .then(res => res.json())
         .then(data => {
             isLoading = false;

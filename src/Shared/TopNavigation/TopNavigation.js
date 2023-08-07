@@ -36,7 +36,7 @@ const TopNavigation = () => {
 
     const {data: forFilter , isLoading} = useQuery({
         queryKey: ['allProductData'],
-        queryFn: () => fetch(`https://ecommerce-shop-yshv.onrender.com/products`)
+        queryFn: () => fetch(`https://complete-ecommerce-shop-server.vercel.app/products`)
                        .then(res => res.json())
     })
   

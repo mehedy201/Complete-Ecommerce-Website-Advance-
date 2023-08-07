@@ -20,7 +20,7 @@ const CheckOutForm = () => {
 
     useEffect(() => {
       // Create PaymentIntent as soon as the page loads
-      fetch("https://ecommerce-shop-yshv.onrender.com/create-payment-intent", {
+      fetch("https://complete-ecommerce-shop-server.vercel.app/create-payment-intent", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(orderdData),
@@ -68,7 +68,7 @@ const CheckOutForm = () => {
         console.log('confirmError', confirmError.message);
       }
       if(paymentIntent.status === "succeeded"){
-        fetch('https://ecommerce-shop-yshv.onrender.com/userOrderdData', {
+        fetch('https://complete-ecommerce-shop-server.vercel.app/userOrderdData', {
           method: 'POST',
           headers: {
             "Content-Type": "application/json"

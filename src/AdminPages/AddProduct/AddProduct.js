@@ -90,7 +90,7 @@ const AddProduct = () => {
     console.log('Form Data =', formData);
     
   // Sent Email Data Server ----------------------
-    fetch('https://ecommerce-shop-yshv.onrender.com/products',{
+    fetch('https://complete-ecommerce-shop-server.vercel.app/products',{
       method: 'POST',
       headers: {
           'content-type': 'application/json'

@@ -14,7 +14,7 @@
     
       useEffect(() => {
         if(id){
-          fetch(`https://ecommerce-shop-yshv.onrender.com/${id}`)
+          fetch(`https://complete-ecommerce-shop-server.vercel.app/${id}`)
           .then(res=> res.json())
           .then(data => setSingleProductData(data));
         }
@@ -124,7 +124,7 @@
         console.log('Form Data', newData)
         // 
 
-        fetch(`https://ecommerce-shop-yshv.onrender.com/${id}`, {
+        fetch(`https://complete-ecommerce-shop-server.vercel.app/${id}`, {
           method: 'PUT',
           headers:{
               'content-type': 'application/json'

@@ -19,7 +19,7 @@ const ManageProduct = () => {
 
     const {data,  isLoading} = useQuery({
       queryKey: ['heroContent'],
-      queryFn: () => fetch('https://ecommerce-shop-yshv.onrender.com/products')
+      queryFn: () => fetch('https://complete-ecommerce-shop-server.vercel.app/products')
                      .then(res => res.json())
     })
 
@@ -39,7 +39,7 @@ const ManageProduct = () => {
     const handleDelete = (id) => {
       const proceed = window.confirm('Are you sure to Delete');
       if(proceed){
-          const url = `https://ecommerce-shop-yshv.onrender.com/${id}`;
+          const url = `https://complete-ecommerce-shop-server.vercel.app/${id}`;
           fetch(url, {
               method: 'DELETE'
           })
